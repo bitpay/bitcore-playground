@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="playApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="playApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="playApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="playApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bitcore Playground</title>
+  <meta name="description" content="A bitcoin playground">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+  <div class="row">
+    <div calss="large-12 columns">
+    <span class="logo">Bitcore playground</span>
+    <span class="right">Docs API GitHub</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-2 columns">
+      <input type="checkbox"/> Testnet
+      <ul class="menu">
+        <li><a href="#/units">units</a></li>
+        <li><a href="#/keys">keys</a></li>
+        <li><a href="#/multisig">multisig</a></li>
+        <li><a href="#/hdkeys">hdkeys</a></li>
+        <li><a href="#/transaction">transaction</a></li>
+      </ul>
+    </div>
+
+    <div class="large-10 columns">
+      <div ng-view></div>
+    </div>
+  </div>
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  
+  <div class="row">
+    <div class="large-12 columns">
+      Playground, Bitcore v0.8
+    </div>
+  </div>
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.js"></script>
+  <script src="units/units.js"></script>
+</body>
+</html>

@@ -1,3 +1,3 @@
-# Bitcore.PrivateKey Demo
+# Bitcore Playgrounds
 
-Check it online [here](http://yemel.github.io/bitcore-keys-demo).
+Check it online [here](http://yemel.github.io/bitcore-playground).

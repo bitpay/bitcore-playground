@@ -1,0 +1,14 @@
+{
+  "name": "bitcore-playground",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A bitcoin playground powered by bitcore",
+  "repository": "https://github.com/bitpay/bitcore-playground",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1"
+  }
+}
