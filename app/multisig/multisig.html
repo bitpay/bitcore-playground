@@ -1,0 +1,24 @@
+<div class="large-6 columns">
+  <h2>Keys</h2>
+  <div ng-controller="keysCtrl">
+        <span>Private Key</span>, <span>Public Key</span>
+    <ul>
+      <li ng-repeat="key in keys">
+        <span><input ng-model="key.privKey" ng-change="updatePriv($index)">, </span>
+        <span>Public: <input ng-model="key.pubKey" ng-change="updatePub($index)"></span>
+        <button class="remove" ng-click="remove($index)">Remove</button>
+      </li>
+    </ul>
+        <button id="new" ng-click="add()">Add</button>
+    <div>
+      Required Signatures: <select ng-model="threshold" ng-options="num for num in Range()"></select> 
+    </div>
+  </div>
+</div>
+
+<div class="large-6 columns">
+  <h3>Address</h3>
+  <div>
+    <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<h2>Transaction</h2>
+<div>
+  <h3>In (amount: {{transaction._inputAmount | btc}})</h3>
+<ul>
+  <li ng-repeat="input in transaction.inputs">{{input}}</li>
+</ul>
+</div>
+
+<div>
+  <h3>Out (amount: {{transaction._outputAmount | btc}})</h3>
+  <ul>
+    <li ng-repeat="output in transaction.outputs">{{output}}</li>
+  </ul>
+</div>
+
+<div><h3>Input management</h3>
+  <div>
+    <h4>From address:</h4>
+    <form ng-submit="fromAddress()">
+      <input ng-model="fromAddressData.address" placeholder="Address">
+      <button type="submit"></button>
+    </form>
+  </div>
+
+  <div>
+    <h4>Sign with:</h4>
+    <form ng-submit="signWith()">
+      <input ng-model="signWithData.privkey" placeholder="Private Key">
+      <button type="submit"></button>
+    </form>
+    <h4>Known private keys</h4>
+    <ul>
+      <li ng-repeat="privkey in privateKeys">{{privkey}}</li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <h3>Outputs</h3>
+  <div>
+    <h4>To</h4>
+    <form name="form" ng-submit="addAddress()">
+      <input ng-model="addToAddress.address" placeholder="Address"></input>
+      <input ng-model="addToAddress.amount" type="number" placeholder="Amount (satoshis)"></input>
+      <button type="submit"></button>
+    </form>
+  </div>
+  <div>
+    <h4>Append data (OP_RETURN)</h4>
+    <form name="form_data" ng-submit="addData()">
+      <input ng-model="addData.data">
+      <input ng-model="addData.isHexa" type="checkbox">
+      <button type="submit"></button>
+    </form>
+  </div>
+</div>
+<textarea ng-model="lines" cols=120 rows=20>
+</textarea>
+

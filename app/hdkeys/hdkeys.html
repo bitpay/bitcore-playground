@@ -1,0 +1,24 @@
+<h3>Root HD Private Key</h2>
+<div>
+  <input id="privateKey" type="text" placeholder="Hex format"/>
+  <button type="button" id="newKey">New</button>
+</div>
+<h3>Root HD Public Key</h3>
+<div>
+  <input id="publicKey" type="text" placeholder="Hex format"/>
+</div>
+
+<h3>Path</h3>
+<div>
+  <input id="path" type="text" placeholder="m" value="m/0"/>
+</div>
+
+<h2>Derivation</h2>
+<div>
+  <span>HDPrivateKey(<i class="path">m/0</i>):</span> <input id="derivedHDPriv" type="text" readonly/>
+  <span>Private Key(<i class="path">m/0</i>):</span> <input id="derivedPriv" type="text" readonly/><br><br>
+
+  <span>HDPublicKey(<i class="path">m/0</i>):</span> <input id="derivedHDPub" type="text" readonly/>
+  <span>Public Key(<i class="path">m/0</i>):</span> <input id="derivedPub" type="text" readonly/>
+  <span>Address(<i class="path">m/0</i>):</span> <input id="derivedAddress" type="text" readonly/>
+</div>
