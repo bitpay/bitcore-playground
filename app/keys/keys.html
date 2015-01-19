@@ -1,13 +1,27 @@
-<h2>Private Key</h2>
-<div>
-  <input id="privateKey" type="text" placeholder="Hex format"/>
-  <button type="button" id="newKey">New</button>
+<div class="row">
+  <h2>Private Key</h2>
+  <div>
+    <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)"/>
+    <button type="button" ng-click="newKey()">New</button>
+  </div>
+  <h3>Public Key</h3>
+  <div>
+    <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)"/>
+  </div>
+  <h3>Address</h3>
+  <div>
+    <input id="address" type="text" placeholder="Bitcoin address" value="{{publicKey.toAddress().toString()}}" readonly/>
+  </div>
 </div>
-<h3>Public Key</h3>
-<div>
-  <input id="publicKey" type="text" placeholder="DER format" readonly/>
-</div>
-<h3>Address</h3>
-<div>
-  <input id="address" type="text" placeholder="Bitcoin address" readonly/>
+
+<div class="row">
+  <h3>This is how it works</h3>
+  <div class="large-6 columns">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+  <div class="large-4 columns">
+    <code>
+      var private = new bitcore.PrivateKey();
+    </code>
+  </div>
 </div>
