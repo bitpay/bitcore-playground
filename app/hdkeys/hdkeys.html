@@ -1,24 +1,94 @@
-<h3>Root HD Private Key</h2>
-<div>
-  <input id="privateKey" type="text" placeholder="Hex format"/>
-  <button type="button" id="newKey">New</button>
-</div>
-<h3>Root HD Public Key</h3>
-<div>
-  <input id="publicKey" type="text" placeholder="Hex format"/>
+<div class="row">
+
+  <h3>Master</h3>
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Seed</label>
+      </div>
+      <div class="small-9 columns">
+        <input type="text" ng-model="seed" ng-change="updateSeed(seed)">
+      </div>
+    </div>
+  </div>
+
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Root HD Private Key</label>
+      </div>
+      <div class="small-9 columns">
+        <input type="text" ng-model="privateKey" ng-change="updatePrivate(privateKey.BTC)"><button type="button" id="newKey">New</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-3 columns">
+        <label class="right inline">Root HD Public Key</label>
+      </div>
+      <div class="small-9 columns">
+        <input type="text" ng-model="publicKey" ng-change="updatePublic(publicKey.BTC)">
+      </div>
+    </div>
+  </div>
+
+  <h3>Derivation</h3>
+
+  <div class="small-12 columns">
+    <div class="row">
+      <div class="small-1 columns">
+        <label class="right inline">Path</label>
+      </div>
+      <div class="small-3 small-pull-8 columns">
+        <input type="text" ng-model="path">
+      </div>
+    </div>
+  </div>
+
+  <div class="small-12 columns">
+    <div class="small-6 columns">
+
+      <div class="row">
+
+        <div class="row"> <!-- Repeat key -->
+          <div class="small-6 columns">
+            Path: m/1/123
+          </div>
+          <div class="small-6 columns">
+            More info
+          </div>
+        </div>
+        <div class="row">
+          <span>HDPrivateKey(<i class="path">m/0</i>):</span> <input type="text" readonly/>
+          <span>Private Key(<i class="path">m/0</i>):</span> <input type="text" readonly/><br><br>
+
+          <span>HDPublicKey(<i class="path">m/0</i>):</span> <input type="text" readonly/>
+          <span>Public Key(<i class="path">m/0</i>):</span> <input type="text" readonly/>
+          <span>Address(<i class="path">m/0</i>):</span> <input type="text" readonly/>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="small-6 columns">
+      Graph
+    </div>
+  </div>
+
+  <div>
+  </div>
 </div>
 
-<h3>Path</h3>
-<div>
-  <input id="path" type="text" placeholder="m" value="m/0"/>
-</div>
-
-<h2>Derivation</h2>
-<div>
-  <span>HDPrivateKey(<i class="path">m/0</i>):</span> <input id="derivedHDPriv" type="text" readonly/>
-  <span>Private Key(<i class="path">m/0</i>):</span> <input id="derivedPriv" type="text" readonly/><br><br>
-
-  <span>HDPublicKey(<i class="path">m/0</i>):</span> <input id="derivedHDPub" type="text" readonly/>
-  <span>Public Key(<i class="path">m/0</i>):</span> <input id="derivedPub" type="text" readonly/>
-  <span>Address(<i class="path">m/0</i>):</span> <input id="derivedAddress" type="text" readonly/>
+<div class="row">
+  <h3>This is how it works</h3>
+  <div class="large-6 columns">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  </div>
+  <div class="large-4 columns">
+    <code>
+      var private = bitcore.HDPrivateKey().derive('m/123/123');
+    </code>
+  </div>
 </div>
