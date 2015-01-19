@@ -8,7 +8,7 @@
           <label class="right inline">BTC</label>
         </div>
         <div class="small-9 columns">
-          <input type="text">
+          <input type="text" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')">
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
           <label class="right inline">mBTC</label>
         </div>
         <div class="small-9 columns">
-          <input type="text">
+          <input type="text" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')">
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
           <label class="right inline">bits</label>
         </div>
         <div class="small-9 columns">
-          <input type="text">
+          <input type="text" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')">
         </div>
       </div>
     </div>
@@ -47,7 +47,7 @@
           <label class="right inline">satoshis</label>
         </div>
         <div class="small-9 columns">
-          <input type="text">
+          <input type="text" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')">
         </div>
       </div>
     </div>
@@ -65,7 +65,10 @@
         <label class="right inline">Currency</label>
       </div>
       <div class="small-9 columns">
-        <select></select>
+        <select
+          ng-model="currency"
+          ng-options="opt as opt.name for opt in currencies"
+          ng-change="updateFiat(unit.fiat, currency)"></select>
       </div>
     </div>
   </div>
@@ -79,7 +82,7 @@
         <label class="right inline">Amount</label>
       </div>
       <div class="small-9 columns">
-        <input type="text"/>
+        <input type="text" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)"/>
       </div>
     </div>
   </div>
