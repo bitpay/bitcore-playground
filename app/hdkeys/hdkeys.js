@@ -33,8 +33,22 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     $scope.keys = $scope.deriveKeys($scope.xpub, $scope.path);
   };
 
+  $scope.updatePath = function(value) {
+    $scope.keys = $scope.deriveKeys($scope.xpriv || $scope.xpub, value);
+  };
+
   $scope.deriveKeys = function(key, path) {
-    console.log('Derive ok', bitcore.HDPrivateKey.isValidPath(path));
+    var xpriv, xpub;
+    if (key instanceof bitcore.HDPrivateKey) {
+      xpriv = key;
+      xpub = key.hdPublicKey;
+    } else if (key instanceof bitcore.HDPublicKey) {
+      xpriv = null;
+      xpub = key;
+    } else {
+      return;
+    }
+
     if (!bitcore.HDPrivateKey.isValidPath(path)) return;
 
     var indexes = bitcore.HDPrivateKey._getDerivationIndexes(path);
@@ -46,7 +60,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     var nodes = paths.map(function(p) {
       return {
         path: p,
-        xpriv: key.derive(p),
+        xpriv: xpriv && key.derive(p),
         xpub: key.derive(p).hdPublicKey
       }
     });
@@ -56,5 +70,4 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   }
 
   $scope.newKey();
-  console.log('Keys:', $scope.keys);
 });
