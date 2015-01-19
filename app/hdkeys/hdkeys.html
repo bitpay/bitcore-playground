@@ -1,16 +1,6 @@
 <div class="row">
 
   <h3>Master</h3>
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-3 columns">
-        <label class="right inline">Seed</label>
-      </div>
-      <div class="small-9 columns">
-        <input type="text" ng-model="seed" ng-change="updateSeed(seed)">
-      </div>
-    </div>
-  </div>
 
   <div class="small-12 columns">
     <div class="row">
@@ -18,7 +8,8 @@
         <label class="right inline">Root HD Private Key</label>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="privateKey" ng-change="updatePrivate(privateKey.BTC)"><button type="button" id="newKey">New</button>
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(privateKey.BTC)">
+        <button type="button" ng-click="newKey()">New</button>
       </div>
     </div>
   </div>
@@ -29,7 +20,7 @@
         <label class="right inline">Root HD Public Key</label>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="publicKey" ng-change="updatePublic(publicKey.BTC)">
+        <input type="text" ng-model="xpub" ng-change="updatePublic(publicKey.BTC)">
       </div>
     </div>
   </div>
@@ -50,29 +41,30 @@
   <div class="small-12 columns">
     <div class="small-6 columns">
 
-      <div class="row">
+      <div class="row" ng-repeat="node in keys">
 
         <div class="row"> <!-- Repeat key -->
           <div class="small-6 columns">
-            Path: m/1/123
+            Path: {{node.path}}
           </div>
           <div class="small-6 columns">
-            More info
+            <a ng-hide="node.visible" ng-click="node.visible = true">More info</a>
+            <a ng-show="node.visible" ng-click="node.visible = false">Less info</a>
           </div>
         </div>
-        <div class="row">
-          <span>HDPrivateKey(<i class="path">m/0</i>):</span> <input type="text" readonly/>
-          <span>Private Key(<i class="path">m/0</i>):</span> <input type="text" readonly/><br><br>
+        <div class="row" ng-show="node.visible">
+          <span>HDPrivateKey:</span> <input type="text" value="{{node.xpriv.toString()}}" readonly/>
+          <span>Private Key</span> <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly/>
 
-          <span>HDPublicKey(<i class="path">m/0</i>):</span> <input type="text" readonly/>
-          <span>Public Key(<i class="path">m/0</i>):</span> <input type="text" readonly/>
-          <span>Address(<i class="path">m/0</i>):</span> <input type="text" readonly/>
+          <span>HDPublicKey</span> <input type="text" value="{{node.xpub.toString()}}" readonly/>
+          <span>Public Key</span> <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly/>
+          <span>Address</span> <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly/>
         </div>
 
       </div>
 
     </div>
-    <div class="small-6 columns">
+    <div class="small-5 columns">
       Graph
     </div>
   </div>
