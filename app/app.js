@@ -16,9 +16,10 @@ filter('btc', function() {
     return bitcore.Unit.fromSatoshis(satoshis).toBTC() + ' BTC';
   };
 }).
-controller('SideBar', function($scope){
+controller('SideBar', function($scope, $rootScope){
   $scope.setTestnet = function(value) {
     var networks = bitcore.Networks;
     networks.defaultNetwork = value ? networks.testnet : networks.livenet;
-  }
+    $rootScope.$broadcast('networkUpdate');
+  };
 });

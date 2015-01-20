@@ -10,10 +10,16 @@ angular.module('playApp.keys', ['ngRoute'])
 }])
 
 .controller('KeysCtrl', function($scope) {
+
+  $scope.$on('networkUpdate', function() {
+    $scope.newKey();
+  });
+
   $scope.newKey = function() {
     $scope.privateKey = new bitcore.PrivateKey();
     $scope.publicKey = $scope.privateKey.publicKey;
   };
+  $scope.newKey();
 
   $scope.privateUpdated = function(value) {
     if (bitcore.PrivateKey.isValid(value)) {

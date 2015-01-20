@@ -13,6 +13,10 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   $scope.path = 'm/817/6023';
   $scope.keys = [];
 
+  $scope.$on('networkUpdate', function() {
+    $scope.newKey();
+  });
+
   $scope.newKey = function() {
     $scope.updatePrivate(new bitcore.HDPrivateKey().toString());
   };
