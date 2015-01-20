@@ -1,24 +1,114 @@
-
 <div class="row content-title">
   <div class="small-12 columns">
     <h1>Transaction</h1>
   </div>
-</div>
-<div>
-  <h3>In (amount: {{transaction._inputAmount | btc}})</h3>
-<ul>
-  <li ng-repeat="input in transaction.inputs">{{input}}</li>
-</ul>
+  <div class="small-3 columns">
+    <h3>Unspent Outputs</h3>
+
+    <!-- Fetch unspent form -->
+    <input type="text" ng-model="utxoAddress" placeholder="enter an address">
+    <button type="button" ng-click="fetchUTXO(utxoAddress)">Fetch</button>
+
+    <div class="row" ng-repeat="utxo in utxos">
+      Amount: {{utxo.satoshis|btc}}<br>
+      <button type="button" ng-click="addUTXO(utxo)">Move to inputs</button><br>
+
+      <div ng-show="utxo.visible">
+        TX ID: {{utxo.txId}}<br>
+        OUT #: {{utxo.outputIndex}}<br>
+        Script: {{utxo.script.toString()}}
+      </div>
+
+      <a ng-hide="utxo.visible" ng-click="utxo.visible = true">More info</a>
+      <a ng-show="utxo.visible" ng-click="utxo.visible = false">Less info</a>
+    </div>
+
+  </div>
+
+  <div class="small-9 columns">
+    <h2>Transaction</h2>
+    <div class="row">
+      <div class="small-6 columns">
+        TX ID: {{transaction.id}}
+      </div>
+      <div class="small-6 columns">
+        nLockTime: {{transaction.nLockTime}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        Total Inputs: {{transaction._inputAmount | btc}}
+      </div>
+      <div class="small-3 columns">
+        Total Outputs: {{transaction._outputAmount | btc}}
+      </div>
+      <div class="small-3 columns">
+        Fee: {{transaction.getFee() | btc}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <h3>Inputs</h3>
+
+        <!-- Sign inputs form -->
+        <div class="row">
+          <div class="small-3 columns">
+            <label class="right inline">Sign all input</label>
+          </div>
+          <div class="small-5 columns">
+            <input type="text" placeholder="enter a private key">
+          </div>
+          <div class="small-4 columns">
+            <button type="button">Sign</button>
+          </div>
+        </div>
+
+        <div class="row" ng-repeat="input in transaction.inputs">
+          <div class="row">
+            <div class="small-4 columns">{{input.output.satoshis|btc}}</div>
+            <div class="small-2 columns">
+              <a ng-hide="input.visible" ng-click="input.visible = true">More Info</a>
+              <a ng-show="input.visible" ng-click="input.visible = false">Less Info</a>
+            </div>
+            <div class="small-1 columns"><span>SIGNED</span></div>
+            <div class="small-1 columns"><a ng-click="removeInput(input)">X</a></div>
+          </div>
+
+          <div class="row" ng-show="input.visible">
+            TX ID: {{input.prevTxId.toString('hex')}}<br>
+            OUT #: {{input.outputIndex}}<br>
+            Script: {{input.output.script.toString()}}
+          </div>
+        </div>
+      </div>
+
+      <div class="small-6 columns">
+        <h3>Outputs</h3>
+
+        <div class="row">
+          <div class="small-4 small-push-1 columns">
+            <button type="button">+ Add Address</button>
+          </div>
+          
+          <div class="small-4 small-push-1 columns">
+            <button type="button">+ Add Info</button>
+          </div>
+        </div>
+
+        <div ng-repeat="output in transaction.outputs">Soy un output</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <textarea rows=5>Transaction</textarea>
+    </div>
+  </div>
 </div>
 
-<div>
-  <h3>Out (amount: {{transaction._outputAmount | btc}})</h3>
-  <ul>
-    <li ng-repeat="output in transaction.outputs">{{output}}</li>
-  </ul>
-</div>
-
-<div><h3>Input management</h3>
+<!-- UTXO fetch
+  <h3>Input management</h3>
   <div>
     <h4>From address:</h4>
     <form ng-submit="fromAddress()">
@@ -26,22 +116,17 @@
       <button type="submit"></button>
     </form>
   </div>
-
+-->
+<!-- UTXO fetch
   <div>
     <h4>Sign with:</h4>
     <form ng-submit="signWith()">
       <input ng-model="signWithData.privkey" placeholder="Private Key">
       <button type="submit"></button>
     </form>
-    <h4>Known private keys</h4>
-    <ul>
-      <li ng-repeat="privkey in privateKeys">{{privkey}}</li>
-    </ul>
   </div>
-</div>
-
-<div>
-  <h3>Outputs</h3>
+ -->
+ <!-- Add TO Output
   <div>
     <h4>To</h4>
     <form name="form" ng-submit="addAddress()">
@@ -50,6 +135,8 @@
       <button type="submit"></button>
     </form>
   </div>
+-->
+<!-- Add OP_RETURN Output
   <div>
     <h4>Append data (OP_RETURN)</h4>
     <form name="form_data" ng-submit="addData()">
@@ -58,9 +145,7 @@
       <button type="submit"></button>
     </form>
   </div>
-</div>
-<textarea ng-model="lines" cols=120 rows=20>
-</textarea>
+-->
 
 <div class="row">
   <div class="explanation">
@@ -75,4 +160,3 @@
     </div>
   </div>
 </div>
-

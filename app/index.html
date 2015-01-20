@@ -51,7 +51,7 @@
       <div class="switch-sidebar">
         <fieldset class="switch round tiny fnt08 vertical-align" tabindex="0">
           <span class="switch-txt-opt">Testnet</span>
-          <input id="testnet" type="checkbox">
+          <input id="testnet" type="checkbox" ng-model="network" ng-change="setTestnet(network)">
           <label for="testnet"></label>
           <span class="switch-txt-opt">Livenet</span>
         </fieldset>
