@@ -17,6 +17,15 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     $scope.newKey();
   });
 
+  $scope.serialize = function() {
+    return JSON.stringify({
+      network: bitcore.Networks.defaultNetwork.name,
+      xpriv: $scope.xpriv,
+      xpub: $scope.xpub,
+      path: $scope.path
+    });
+  };
+
   $scope.newKey = function() {
     $scope.updatePrivate(new bitcore.HDPrivateKey().toString());
   };

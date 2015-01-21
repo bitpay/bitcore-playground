@@ -13,6 +13,7 @@
     "html5-boilerplate": "~4.3.0",
     "angular-route": "~1.3.9",
     "foundation": "~5.5.0",
-    "bitcore": "~0.8.6"
+    "bitcore": "~0.8.6",
+    "highlight.js": "~7.3.0"
   }
 }

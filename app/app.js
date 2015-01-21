@@ -16,6 +16,13 @@ filter('btc', function() {
     return bitcore.Unit.fromSatoshis(satoshis).toBTC() + ' BTC';
   };
 }).
+filter('permalink', function() {
+  return function(data, section) {
+    var url = './#/' + section + '?data=' + encodeURI(data);
+    if (url.length > 2083) throw new Error('URL too long')
+    return url;
+  };
+}).
 controller('SideBar', function($scope, $rootScope){
   $scope.setTestnet = function(value) {
     var networks = bitcore.Networks;

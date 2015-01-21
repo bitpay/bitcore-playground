@@ -14,10 +14,17 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.currencies = [];
   $scope.currency = null;
 
+  $scope.serialize = function() {
+    return JSON.stringify({
+      network: bitcore.Networks.defaultNetwork.name,
+      satoshis: $scope.unit.satoshis,
+      currency: $scope.currency && $scope.currency.code
+    });
+  };
+
   $scope.updateUnit = function(value, code) {
     var unit = new bitcore.Unit(value, code);
 
-    console.log('Value', value)
     if (value === '' || isNaN(unit.satoshis)) {
       return; // TODO: mark as invalid
     }
@@ -31,6 +38,7 @@ angular.module('playApp.units', ['ngRoute'])
       $scope.unit[code] = value;
       $scope.unit.fiat = $scope.currency ? unit.atRate($scope.currency.rate) : 0;
     }
+    console.log($scope.serialize());
   };
 
   $scope.updateFiat = function(value, rate) {
@@ -41,7 +49,17 @@ angular.module('playApp.units', ['ngRoute'])
 
   $http.get('https://bitpay.com/api/rates').
     success(function(rates) {
-      $scope.currencies = rates;
+      $scope.currencies = rates.filter(function(rate) {
+        return rate.code === 'USD' ||
+               rate.code === 'EUR' ||
+               rate.code === 'ARS' ||
+               rate.code === 'GBP' ||
+               rate.code === 'JPY' ||
+               rate.code === 'CAD' ||
+               rate.code === 'BRL' ||
+               rate.code === 'CLP';
+
+      });
       $scope.currency = rates[0];
     }).
     error(function() {
