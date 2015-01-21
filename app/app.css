@@ -1,5 +1,236 @@
-header {
-  height: 80px;
-  background-color: #3a3a3a;
-  color: white;
+  /* reset foundation */
+  label.inline {margin: 0 0 0 0;}
+  input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+  	margin: 0 0 0 0
+  }
+  input[type="file"], input[type="checkbox"], input[type="radio"], select {
+    margin: 0 0 0.5rem 0;
 }
+
+h1 {font-size: 3em;}
+
+ /* bg colors */
+ .bg-color-black2 { background-color: #3A3A3A;}
+ .bg-color-red1 { background-color: #BD1900;}
+ .bg-color-gray { background-color: #F6F6F6;}
+ .bg-color-white { background-color: #FFFFFF;}
+
+ .red-test { background-color: #D0021B;}
+ .green-test { background-color: green;}
+
+/* fonts */
+@font-face {
+font-family: 'Ubuntu-Light';
+font-style: normal;
+font-weight: 300;
+src: local('Ubuntu Light'), local('Ubuntu-Light'), url(../fonts/ubuntu-light.woff) format('woff');
+}
+@font-face {
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+src: local('Ubuntu'), url(../fonts/ubuntu.woff) format('woff');
+}
+@font-face {
+font-family: 'Ubuntu-Bold';
+font-style: normal;
+font-weight: 700;
+src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(../fonts/ubuntu-bold.woff) format('woff');
+}
+@font-face {
+font-family: 'Ubuntu-BoldItalic';
+font-style: italic;
+font-weight: 700;
+src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
+}
+
+/* Paddings and margins */
+.p20 {padding: 20px;}
+.p60 {padding: 60px;}
+.pt10t {padding-top: 10px;}
+
+/* Font Size */
+.fnt08{
+	font-size: 0.8em
+}
+
+.fnt1{
+	font-size: 1em
+}
+
+
+/* Header */
+#header {
+	 font-family: "Ubuntu-Light"!important;
+	 padding: 14px 0 0 0;
+}
+
+.playground-logo{
+	font-family: "Ubuntu-Light"!important;
+	font-style: italic;
+	color: #A0A1A0;
+	font-size: 1.3em;
+	margin: 0 0 0 2px;
+	vertical-align: middle;
+	}
+
+#nav-hd li {
+display: inline-block;
+font-size: 0.8em;
+margin: 10px 29px;
+}
+
+#nav-hd li a{
+color: #6B6B6A;
+}
+
+#nav-hd li a:hover{ color: #A39F9A;}
+
+ .docs a, .docs a:hover, .api a, .api a:hover, .github a, .github a:hover{
+background-repeat: no-repeat;
+} 
+
+.docs a{ background-image: url("../img/doc-icon.svg");
+background-position: top left;
+padding: 4px 0 4px 25px;
+}
+.docs a:hover{ background-image: url("../img/doc-icon.svg");
+background-position: bottom left;
+} 
+
+.api a{ background-image: url("../img/api-icon.svg");
+background-position: top left;
+padding: 4px 0 4px 25px;
+}
+.api a:hover{ background-image: url("../img/api-icon.svg");
+background-position: 2px left;
+} 
+
+.github a{ background-image: url("../img/githubcat-icon.svg");
+background-position: top left;
+padding: 4px 0 4px 35px;
+}
+.github a:hover{ background-image: url("../img/githubcat-icon.svg");
+background-position: bottom left;
+}
+
+/* Sidebar menu */
+.switch-txt-opt{
+	font-family: "Ubuntu-Light"!important;
+	padding: 0 5px 15px 5px !important;
+	vertical-align: middle;
+} 
+
+
+
+.menu{ 
+	 font-family: "Ubuntu";
+	font-family: "Ubuntu-Light"!important;
+}
+
+.menu ul{ 
+	} 
+
+.menu li{ 
+	list-style-type:none;
+	margin: 10px 0;
+	} 
+
+.menu li a{ 
+	color:#000000;
+	} 
+
+.menu li a:hover{ 
+	color:#BD1900;
+	} 
+
+ .units a, .units a:hover, .keys a, .keys a:hover, .hdkeys a, .hdkeys a:hover, .multisig a, .multisig a:hover, .transaction a, .transaction a:hover{
+background-repeat: no-repeat;
+padding: 4px 0 4px 40px;
+} 
+
+.units a{ background-image: url("../img/btc-nav.svg");
+background-position: top left;
+}
+.units a:hover{ background-image: url("../img/btc-nav.svg");
+background-position: bottom left;
+} 
+
+.keys a{ background-image: url("../img/key-nav.svg");
+background-position: top left;
+}
+.keys a:hover{ background-image: url("../img/key-nav.svg");
+background-position: bottom left;
+} 
+
+.hdkeys a{ background-image: url("../img/keyring-nav.svg");
+background-position: top left;
+}
+.hdkeys a:hover{ background-image: url("../img/keyring-nav.svg");
+background-position: bottom left;
+} 
+
+.multisig a{ background-image: url("../img/qr-nav.svg");
+background-position: top left;
+}
+.multisig a:hover{ background-image: url("../img/qr-nav.svg");
+background-position: bottom left;
+} 
+
+.transaction a{ background-image: url("../img/arrows-nav.svg");
+background-position: top left;
+}
+.transaction a:hover{ background-image: url("../img/arrows-nav.svg");
+background-position: bottom left;
+} 
+
+/* Content menu */
+
+.section-title{
+
+	} 
+
+#content{
+
+} 
+
+.white-box{
+	padding: 100px;
+} 
+
+.white-box input{
+	background-color: #F5F4F4;
+	height: 30px;
+	font-size: 0.8em;
+} 
+
+.white-box h2{
+	text-transform: uppercase;	
+	font-family: "Ubuntu-Bold";
+	font-size: 1em;
+	padding: 0 0 20px 0;
+} 
+
+.vertical-sep{
+	border-right: 1px solid #EDEEF1;
+	} 
+
+.explanation{
+margin:20px 0px 20px 0px;
+padding:20px 0;
+border-top: 1px solid #EDEEF1;
+} 
+
+.explanation h3{
+background-image: url("../img/gear-icon-title.svg");
+background-repeat: no-repeat;
+background-position: center left;
+font-family: "Ubuntu-Bold";
+text-transform: uppercase;
+padding: 20px 0 20px 40px;
+} 
+
+.explanation p{
+	font-size: 0.9em
+} 
+

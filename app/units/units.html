@@ -1,111 +1,127 @@
 <div class="row">
-  <div class="large-5 columns">
-    <h2>Bitcoin</h2>
+  <h1>Bitcore Units Demo</h1>
+</div>
+<div class="row bg-color-white white-box radius">
+  <!--White box starts--> 
+  <div class="">
 
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">BTC</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')">
+    <!--Bitcoin box starts-->
+    <div class="large-6 columns vertical-sep">
+      <h2 class="text-center">Bitcoin</h2>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="inline text-left">BTC</label>
+            </div>
+            <div class="small-10 columns">
+              <input type="text" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">mBTC</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="inline text-left">mBTC</label>
+            </div>
+            <div class="small-10 columns">
+              <input type="text" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">bits</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="inline text-left">bits</label>
+            </div>
+            <div class="small-10 columns">
+              <input type="text" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">satoshis</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="inline text-left">satoshis</label>
+            </div>
+            <div class="small-10 columns">
+              <input type="text" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
+    <!--Bitcoin box ends-->
+
+    <!--Fiat box starts-->
+    <div class="large-6 columns">
+      <h2 class="text-center">Fiat</h2>
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="right inline">Currency</label>
+            </div>
+            <div class="small-10 columns">
+
+              <select
+                ng-model="currency"
+                ng-options="opt as opt.name for opt in currencies"
+                ng-change="updateFiat(unit.fiat, currency)" class="radius medium"></select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="row">
+            <div class="small-2 columns">
+              <label class="right inline">Amount</label>
+            </div>
+            <div class="small-10 columns">
+              <input type="text" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-10 small-push-2 columns">
+          <div>1 BTC = 2008.88 USD</div>
+          <span>Exchange rates are taken from <a href="https://bitpay.com/api/rates">https://bitpay.com/api/rates</a></span>
+        </div>
+      </div>
+    </div>
+    <!--Fiat box ends--> 
   </div>
-
-  <div class="large-5 columns">
-    <h2>Fiat</h2>
-
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">Currency</label>
-          </div>
-          <div class="small-9 columns">
-            <select
-              ng-model="currency"
-              ng-options="opt as opt.name for opt in currencies"
-              ng-change="updateFiat(unit.fiat, currency)"></select>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="small-12 columns">
-        <div class="row">
-          <div class="small-3 columns">
-            <label class="right inline">Amount</label>
-          </div>
-          <div class="small-9 columns">
-            <input type="text" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)"/>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="small-9 small-push-3 columns">
-        <div>1 BTC = 2008.88 USD</div>
-        <span>Exchange rates are taken from <a href="https://bitpay.com/api/rates">https://bitpay.com/api/rates</a></span>
-      </div>
-    </div>
-  </div>
+  <!--White box ends--> 
 </div>
 
 <div class="row">
-  <h3>This is how it works</h3>
-  <div class="large-6 columns">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-  </div>
-  <div class="large-4 columns">
-    <code>
-      var unit = new bitcore.Unit(12, 'BTC');
-    </code>
+  <div class="explanation">
+    <h3 class="fnt1">This is how it works</h3>
+    <div class="large-6 columns">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="large-4 columns">
+      <pre><code>
+        var unit = new bitcore.Unit(12, 'BTC');
+      </code></pre>
+    </div>
   </div>
 </div>

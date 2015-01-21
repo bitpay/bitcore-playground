@@ -10,32 +10,63 @@
   <meta name="description" content="A bitcoin playground">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+  <link rel="stylesheet" href="bower_components/highlight.js/src/styles/default.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="bower_components/highlight.js/src/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-  <div class="row">
-    <div calss="large-12 columns">
-    <span class="logo">Bitcore playground</span>
-    <span class="right">Docs API GitHub</span>
+
+
+<!--Header Starts-->  
+  <section id="header" class="bg-color-black2">
+    <div class="row p10t">
+      <div class="medium-4 columns">
+        <a href="#"><img src="../img/bitcore-logo-hd.svg" width="99" height="28" alt="bitcore"/>
+          <span class="playground-logo 15em">playground</span>
+        </a>
+      </div>
+      <div class="medium-8 columns text-right">
+        <ul id="nav-hd">
+          <li class="docs"><a href="http://bitcore.io/guide/" target="_blank">Docs</a></li>
+          <li class="api"><a href="http://bitcore.io/api/" target="_blank">API</a></li>
+          <li class="github"><a href="https://github.com/bitpay/bitcore" target="_blank">Github</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
+  <!--Header Ends-->   
 
   <div class="row">
+
+    <!--Sidebar starts--> 
     <div class="large-2 columns">
-      <input type="checkbox"/> Testnet
+      <div class="switch-sidebar">
+        <fieldset class="switch round tiny fnt08 vertical-align" tabindex="0">
+          <span class="switch-txt-opt">Testnet</span>
+          <input id="testnet" type="checkbox">
+          <label for="testnet"></label>
+          <span class="switch-txt-opt">Livenet</span>
+        </fieldset>
+      </div>
       <ul class="menu">
-        <li><a href="#/units">units</a></li>
-        <li><a href="#/keys">keys</a></li>
-        <li><a href="#/multisig">multisig</a></li>
-        <li><a href="#/hdkeys">hdkeys</a></li>
-        <li><a href="#/transaction">transaction</a></li>
+        <li class="units"><a href="#/units">units</a></li>
+        <li class="keys"><a href="#/keys">keys</a></li>
+        <li class="hdkeys"><a href="#/multisig">Multisig Addresses</a></li>
+        <li class="multisig"><a href="#/hdkeys">hdkeys</a></li>
+        <li class="transaction"><a href="#/transaction">transaction</a></li>
       </ul>
     </div>
+    <!--Sidebar ends--> 
 
+    <!--Content starts--> 
     <div class="large-10 columns">
-      <div ng-view></div>
+      <div ng-view class="bg-color-gray p60"></div>
+      Sticky footer
     </div>
+    <!--Content starts--> 
+
   </div>
 
 
