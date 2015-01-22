@@ -1,27 +1,96 @@
-<div class="row">
-  <h2>Private Key</h2>
-  <div>
-    <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)"/>
-    <button type="button" ng-click="newKey()">New</button>
-  </div>
-  <h3>Public Key</h3>
-  <div>
-    <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)"/>
-  </div>
-  <h3>Address</h3>
-  <div>
-    <input id="address" type="text" placeholder="Bitcoin address" value="{{publicKey.toAddress().toString()}}" readonly/>
+<div class="row content-title">
+  <div class="small-12 columns">
+    <h1>Keys Demo</h1>
   </div>
 </div>
 
-<div class="row">
-  <h3>This is how it works</h3>
-  <div class="large-6 columns">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<!--White box starts--> 
+  <div class="row collapse bg-color-white white-box radius plr25por">
+    <div class="small-3 large-2 columns input-title-priv">
+      <span class="prefix">PRIVATE KEY</span>
+    </div>
+    <div class="small-7 large-9 columns">
+      <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)"/>
+    </div>
+    <div class="small-2 large-1 columns">
+      <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
+    </div>
   </div>
-  <div class="large-4 columns">
-    <code>
-      var private = new bitcore.PrivateKey();
-    </code>
+  <!--White box ends--> 
+
+
+
+
+<!--Flow down starts--> 
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="code-spot mt20">
+         <span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!"><a href="#"><img src="../img/transp-box.svg"></a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="mb20">
+        <img src="../img/arrow-down.svg">
+      </div>
+    </div>
+  </div>
+  <!--Flow down ends--> 
+
+
+<!--White box starts--> 
+  <div class="row collapse bg-color-white white-box radius plr25por">
+    <div class="small-3 large-2 columns input-title-pub">
+      <span class="prefix">PUBLIC KEY</span>
+    </div>
+    <div class="small-9 large-10 columns">
+      <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)"/>
+    </div>
+  </div>
+  <!--White box ends--> 
+
+<!--Flow down starts--> 
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="code-spot mt20">
+         <span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!"><a href="#"><img src="../img/transp-box.svg"></a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <div class="mb20">
+        <img src="../img/arrow-down.svg">
+      </div>
+    </div>
+  </div>
+  <!--Flow down ends--> 
+
+
+  <!--White box starts--> 
+  <div class="row collapse bg-color-white white-box radius plr25por">
+    <div class="small-3 large-2 columns input-title-btcad">
+      <span class="prefix">ADDRESS</span>
+    </div>
+    <div class="small-9 large-10 columns">
+      <input id="address" type="text" placeholder="Bitcoin address" value="{{publicKey.toAddress().toString()}}" readonly/>
+    </div>
+  </div>
+  <!--White box ends--> 
+
+<div class="row">
+  <div class="explanation">
+    <h3 class="fnt1">This is how it works</h3>
+    <div class="large-6 columns">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="large-4 columns">
+      <pre><code>
+        var unit = new bitcore.Unit(12, 'BTC');
+      </code></pre>
+    </div>
   </div>
 </div>

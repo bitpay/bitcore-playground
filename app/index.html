@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
   <script src="bower_components/highlight.js/src/highlight.js"></script>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.tooltip.js"></script>
+
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
@@ -61,11 +66,17 @@
     <!--Sidebar ends--> 
 
     <!--Content starts--> 
-    <div class="large-10 columns">
-      <div ng-view class="bg-color-gray p60"></div>
-      Sticky footer
+    <div class="no-pr large-10 columns">
+      <div ng-view class="bg-color-gray1 p60"></div>
+      <div id="terminal" class="bg-color-gray1">
+        <div id="terminaltab" class="bg-color-black2 rdt3">
+        </div>
+        <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
+          <p>var priv = new bitcore Privatekey; </p>
+        </div>
+      </div>
     </div>
-    <!--Content starts--> 
+    <!--Content ends--> 
 
   </div>
 
@@ -73,13 +84,6 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-
-  
-  <div class="row">
-    <div class="large-12 columns">
-      Playground, Bitcore v0.8
-    </div>
-  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
