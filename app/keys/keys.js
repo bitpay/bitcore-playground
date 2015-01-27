@@ -50,17 +50,19 @@ angular.module('playApp.keys', ['ngRoute'])
   };
 
   function setExampleCode(privkey, pubkey) {
-    var template;
+    var template = "";
+
     if (!privkey && !pubkey) {
-      template = "var privateKey = new bitcore.PrivateKey();\n";
+      template += "var privateKey = new bitcore.PrivateKey();\n";
       template += "var publicKey = privateKey.publicKey;\n";
     } else if (privkey) {
-      template = "var privateKey = new bitcore.PrivateKey('"+ privkey.toString() + "');\n";
+      template += "var privateKey = new bitcore.PrivateKey('"+ privkey.toString() + "');\n";
       template += "var publicKey = privateKey.publicKey;\n";
     } else {
-      template = "var publicKey = new bitcore.PublicKey('"+ pubkey.toString()+ "');\n";
+      template += "var publicKey = new bitcore.PublicKey('"+ pubkey.toString()+ "');\n";
     }
     template += "var address = publicKey.toAddress();";
+
     $scope.exampleCode = template;
   };
 
