@@ -3,18 +3,31 @@
     <h1>Multisig Addresses Demo</h1>
   </div>
 </div>
-<div class="row">
-  <div class="large-6 columns">
+
+<div class="row" data-equalizer>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </div>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+</div>
+
+
+<div class="row" data-equalizer>
+  <div class="large-6 columns" data-equalizer-watch>
     <h2>Keys</h2>
 
 
 <!--White box starts--> 
-  <div class="row collapse bg-color-white white-box radius plr25por" ng-repeat="key in keys">
-    <div class="large-4 columns">
-      <button class="remove-button" ng-click="remove($index)"></button>
+  <div class="row collapse white-box radius plr25por bg-color-white" ng-repeat="key in keys">
+    <div class="large-4 columns bg-color-gray2">
+        <div class="inline"><a href="" class="remove-button" ng-click="remove($index)"></a></div>
+        <div class="inline"><img src="../img/user-icon.svg"></div>
     </div>
     <div class="large-4 columns">
       Private Key: <input ng-model="key.privKey" ng-change="updatePriv($index)">
+
         <button ng-click="randPriv($index)">Rand</button>
     </div>
     <div class="large-4 columns">
@@ -33,24 +46,10 @@
     </div>
   </div>
 
-  <div class="large-6 columns">
+  <div class="large-6 columns bg-color-white" data-equalizer-watch>
     <div>
       Bitcoin Address
       <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="explanation">
-    <h3 class="fnt1">This is how it works</h3>
-    <div class="large-6 columns">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    </div>
-    <div class="large-4 columns">
-      <pre><code>
-        var unit = new bitcore.Unit(12, 'BTC');
-      </code></pre>
     </div>
   </div>
 </div>

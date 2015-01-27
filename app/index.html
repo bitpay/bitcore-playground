@@ -14,12 +14,14 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
   <script src="bower_components/highlight.js/src/highlight.js"></script>
+  <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+  <script src="bower_components/foundation/js/vendor/jquery.js"></script>
+  <script src="bower_components/foundation/js/foundation.js"></script>
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.tooltip.js"></script>
 
-  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 
@@ -43,10 +45,9 @@
   </section>
   <!--Header Ends-->   
 
-  <div class="row">
-
-    <!--Sidebar starts--> 
-    <div class="large-2 columns">
+<div class="main-sidebar">
+      <!--Sidebar starts--> 
+    <div class="large-12 columns">
       <div class="switch-sidebar">
         <fieldset class="switch round tiny fnt08 vertical-align" tabindex="0">
           <span class="switch-txt-opt">Testnet</span>
@@ -64,9 +65,10 @@
       </ul>
     </div>
     <!--Sidebar ends--> 
-
+</div>
+<div class="main-content">
     <!--Content starts--> 
-    <div class="no-pr large-10 columns">
+    <div class="no-pr small-12 columns">
       <div ng-view class="bg-color-gray1 p60"></div>
       <div id="terminal" class="bg-color-gray1">
         <div id="terminaltab" class="bg-color-black2 rdt3">
@@ -77,8 +79,7 @@
       </div>
     </div>
     <!--Content ends--> 
-
-  </div>
+</div>
 
 
   <!--[if lt IE 7]>
@@ -97,5 +98,6 @@
   <script src="multisig/multisig.js"></script>
   <script src="hdkeys/hdkeys.js"></script>
   <script src="transaction/transaction.js"></script>
+
 </body>
 </html>

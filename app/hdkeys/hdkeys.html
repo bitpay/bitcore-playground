@@ -1,86 +1,147 @@
-<div class="row">
-
-  <h3>Master</h3>
-
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-3 columns">
-        <label class="right inline">Root HD Private Key</label>
-      </div>
-      <div class="small-9 columns">
-        <input type="text" ng-model="xpriv" ng-change="updatePrivate(privateKey.BTC)">
-        <button type="button" ng-click="newKey()">New</button>
-      </div>
+  <div class="row content-title">
+    <div class="small-12 columns">
+      <h1>HD Keys Demo</h1>
     </div>
   </div>
 
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-3 columns">
-        <label class="right inline">Root HD Public Key</label>
+<!--White box starts--> 
+<div class="row collapse bg-color-white white-box radius plr25por">
+  <div class="row">
+      <div class="small-12 columns">
+        <h2 class="text-center">Master</h2>
+      </div>
+  </div>
+  <div class="small-12 columns input-title">
+    <div class="row collapse">
+      <div class="small-2 columns input-title text-left mb5">
+        <span class="prefix prefix-clean">Root HD Private Key</span>
       </div>
       <div class="small-9 columns">
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(privateKey.BTC)">
+      </div>
+      <div class="small-1 columns">
+        <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
+      </div>
+    </div> 
+    <div class="row collapse">
+      <div class="small-2 columns input-title text-left">
+        <span class="prefix prefix-clean">Root HD Public Key</span>
+      </div>
+      <div class="small-10 columns">
         <input type="text" ng-model="xpub" ng-change="updatePublic(publicKey.BTC)">
       </div>
     </div>
   </div>
+</div>
+<!--White box ends--> 
 
-  <h3>Derivation</h3>
-
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-1 columns">
-        <label class="right inline">Path</label>
+<!--White box starts--> 
+<div class="row collapse bg-color-white white-box radius plr25por">
+  <div class="row">
+      <div class="small-12 columns">
+        <h2 class="text-center">Derivation</h2>
       </div>
-      <div class="small-3 small-pull-8 columns">
-        <input type="text" ng-model="path" ng-change="updatePath(path)">
-      </div>
-    </div>
   </div>
+  <div class="row">
 
-  <div class="small-12 columns">
-    <div class="small-6 columns">
+    <div class="small-4 columns">
+      <div class="row collapse">
+        <div class="small-3 large-2 columns input-title">
+          <span class="prefix-clean prefix">Path</span>
+        </div>
+        <div class="small-7 large-10 columns">
+          <input type="text" ng-model="path" ng-change="updatePath(path)">
+        </div>
+      </div>
 
       <div class="row" ng-repeat="node in keys">
 
-        <div class="row"> <!-- Repeat key -->
-          <div class="small-6 columns">
-            Path: {{node.path}}
+        <div class="row capsule-inside radius p5 mt5"> <!-- Repeat key -->
+          <div class="small-7 columns">
+            <span class="fnt08"><b>Path:</b> {{node.path}}</span>
           </div>
-          <div class="small-6 columns">
-            <a ng-hide="node.visible" ng-click="node.visible = true">More info</a>
-            <a ng-show="node.visible" ng-click="node.visible = false">Less info</a>
+          <div class="small-5 columns text-right">
+            <div class="more-info fnt0">
+              <a ng-hide="node.visible" ng-click="node.visible = true" class="fnt06">More info</a>
+            </div>
+            <div class="less-info">
+              <a ng-show="node.visible" ng-click="node.visible = false" class="fnt06">Less info</a>
+            </div>
+          </div>
+        <div class="row p20tb" ng-show="node.visible">
+          <div class="small-12 columns">
+            <div class="row pt10">
+              <div class="small-6 columns">
+                <p class="data-more-info">HDPrivateKey:</p>
+              </div>
+              <div class="small-6 columns">
+                <input type="text" value="{{node.xpriv.toString()}}" readonly/>
+              </div>  
+            </div>
+            <div class="row pt10">
+              <div class="small-6 columns">
+                <p class="data-more-info">Private Key</p> 
+              </div>
+              <div class="small-6 columns">
+                <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly/>
+              </div>
+            </div> 
+            <div class="row pt10">
+              <div class="small-6 columns">
+                <p class="data-more-info">HDPublicKey</p>
+              </div>
+              <div class="small-6 columns">
+                <input type="text" value="{{node.xpub.toString()}}" readonly/>
+              </div>
+            </div> 
+            <div class="row pt10">            
+              <div class="small-6 columns"> 
+                <p class="data-more-info">Public Key</p>
+              </div>     
+              <div class="small-6 columns">
+                <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly/>
+              </div> 
+            </div> 
+            <div class="row pt10">  
+              <div class="small-6 columns"> 
+                <p class="data-more-info">Address</p>
+              </div>     
+              <div class="small-6 columns">
+                <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly/>
+              </div>  
+            </div>
           </div>
         </div>
-        <div class="row" ng-show="node.visible">
-          <span>HDPrivateKey:</span> <input type="text" value="{{node.xpriv.toString()}}" readonly/>
-          <span>Private Key</span> <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly/>
-
-          <span>HDPublicKey</span> <input type="text" value="{{node.xpub.toString()}}" readonly/>
-          <span>Public Key</span> <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly/>
-          <span>Address</span> <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly/>
         </div>
-
       </div>
 
+
     </div>
-    <div class="small-5 columns">
-      Graph
+
+    <div class="small-8 columns">
+      <h3>Graphic</h3>
     </div>
   </div>
 
-  <div>
-  </div>
+</div>
+
+
+
+
+
+
 </div>
 
 <div class="row">
-  <h3>This is how it works</h3>
-  <div class="large-6 columns">
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-  </div>
-  <div class="large-4 columns">
-    <code>
-      var private = bitcore.HDPrivateKey().derive('m/123/123');
-    </code>
+  <div class="explanation">
+    <h3 class="fnt1">This is how it works</h3>
+    <div class="large-6 columns">
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+    <div class="large-4 columns">
+      <pre><code>
+        var unit = new bitcore.Unit(12, 'BTC');
+      </code></pre>
+    </div>
   </div>
 </div>
