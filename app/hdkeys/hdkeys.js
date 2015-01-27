@@ -45,19 +45,22 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     $scope.xpriv = new bitcore.HDPrivateKey(value);
     $scope.xpub = $scope.xpriv.hdPublicKey;
     $scope.keys = $scope.deriveKeys($scope.xpriv, $scope.path);
+    setExampleCode($scope.xpriv, $scope.path);
   };
 
   $scope.updatePublic = function(value) {
     value = normalizePath(value);
-    if (!bitcore.HDPublicKey.isValid(value)) return; // mark as invalid
+    if (!bitcore.HDPublicKey.isValidSerialized(value)) return; // mark as invalid
 
     $scope.xpriv = '';
     $scope.xpub = new bitcore.HDPublicKey(value);
     $scope.keys = $scope.deriveKeys($scope.xpub, $scope.path);
+    setExampleCode($scope.xpub, $scope.path);
   };
 
   $scope.updatePath = function(value) {
     $scope.keys = $scope.deriveKeys($scope.xpriv || $scope.xpub, value);
+    setExampleCode($scope.xpriv || $scope.xpub, value);
   };
 
   $scope.deriveKeys = function(key, path) {
@@ -73,6 +76,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
       return;
     }
 
+    // TODO: Check validation path on public key as well
     if (!bitcore.HDPrivateKey.isValidPath(path)) return;
 
     var indexes = bitcore.HDPrivateKey._getDerivationIndexes(path);
@@ -92,6 +96,30 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     nodes[nodes.length-1].visible = true;
     return nodes;
   }
+
+  function setExampleCode(hdKey, path, isNew) {
+    var template = "";
+
+    if (hdKey instanceof bitcore.HDPublicKey) {
+      template += "var hdPublicKey = new bitcore.HDPrivateKey();\n";
+      template += "var derivedHdPublicKey = hdPublicKey.derive('" + path + "');\n"
+
+    } else if (hdKey instanceof bitcore.HDPrivateKey) {
+      template += "var hdPrivateKey = new bitcore.HDPrivateKey();\n";
+
+      template += "\n// private key derivation\n";
+      template += "var derivedHdPrivateKey = hdPrivateKey.derive('" + path + "');\n"
+      template += "var derivedPrivateKey = hdPrivateKey.privateKey;\n"
+
+      template += "\n// public key derivation\n";
+      template += "var derivedHdPublicKey = derivedHdPrivateKey.hdPublicKey;\n"
+    }
+
+    template += "var derivedPublicKey = derivedHdPublicKey.publicKey;\n"
+    template += "var address = derivedPublicKey.toAddress();\n"
+
+    $scope.exampleCode = template;
+  };
 
   $scope.newKey();
 });
