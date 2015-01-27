@@ -23,6 +23,16 @@ filter('permalink', function() {
     return url;
   };
 }).
+directive('exampleCode', function() {
+  return {
+    link: function(scope, element, attrs) {
+      scope.$watch(attrs.exampleCode, function(value) {
+        element.text(value);
+        hljs.highlightBlock(element[0]);
+      });
+    }
+  };
+}).
 controller('SideBar', function($scope, $rootScope){
   $scope.setTestnet = function(value) {
     var networks = bitcore.Networks;

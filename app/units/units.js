@@ -13,6 +13,14 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.unit = {};
   $scope.currencies = [];
   $scope.currency = null;
+  $scope.exampleCode = "";
+
+  function setExampleCode(value, code, fiat) {
+    var template = "var unit = new bitcore.Unit(@value, @code);"
+    template = template.replace('@value', $scope.unit.BTC);
+    template = template.replace('@code', code);
+    $scope.exampleCode = template;
+  };
 
   $scope.serialize = function() {
     return JSON.stringify({
@@ -38,7 +46,8 @@ angular.module('playApp.units', ['ngRoute'])
       $scope.unit[code] = value;
       $scope.unit.fiat = $scope.currency ? unit.atRate($scope.currency.rate) : 0;
     }
-    console.log($scope.serialize());
+
+    setExampleCode(value, code, angular.isString(code));
   };
 
   $scope.updateFiat = function(value, rate) {
