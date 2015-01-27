@@ -20,7 +20,7 @@
         <span class="prefix prefix-clean">Root HD Private Key</span>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="xpriv" ng-change="updatePrivate(privateKey.BTC)">
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)">
       </div>
       <div class="small-1 columns">
         <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
@@ -31,7 +31,7 @@
         <span class="prefix prefix-clean">Root HD Public Key</span>
       </div>
       <div class="small-10 columns">
-        <input type="text" ng-model="xpub" ng-change="updatePublic(publicKey.BTC)">
+        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)">
       </div>
     </div>
   </div>
@@ -142,8 +142,7 @@
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <div class="large-4 columns">
-      <pre><code>
-        var unit = new bitcore.Unit(12, 'BTC');
+      <pre><code class="javascript" example-code="exampleCode">
       </code></pre>
     </div>
   </div>
