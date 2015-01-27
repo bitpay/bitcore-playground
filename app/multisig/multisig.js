@@ -79,19 +79,32 @@ angular.module('playApp.multisig', ['ngRoute'])
     setAddress();
   };
 
-  var buildAddress = function() {
+  var setAddress = function() {
     var pubkeys = [];
     for (var key in $scope.keys) {
       pubkeys.push($scope.keys[key].pubKey);
     }
     var address = new bitcore.Address(pubkeys, $scope.threshold);
-    return address.toString();
-  };
-  var setAddress = function() {
-    $scope.address = buildAddress();
-  };
-  setAddress();
 
+    $scope.address = address.toString();
+    setExampleCode(pubkeys, $scope.threshold);
+  };
+
+  function setExampleCode(pubkeys, threshold) {
+    var template = "var publicKeys = [\n";
+
+    pubkeys.forEach(function(key, index) {
+      template += "  new bitcore.PublicKey('" + key.toString() + "')";
+      template += (index < pubkeys.length - 1) ? ',\n' : '\n';
+    });
+
+    template += "];\n";
+    template += "var address = new bitcore.Address(publicKeys, " + threshold + ");";
+
+    $scope.exampleCode = template;
+  };
+
+  setAddress();
   $scope.$watchCollection('keys', setAddress);
   $scope.$watch('threshold', setAddress);
 });
