@@ -10,14 +10,6 @@ angular.module('playApp.hdkeys', ['ngRoute'])
 }])
 
 .controller('HDKeysCtrl', function($scope) {
-
-  var normalizePath = function(value) {
-    if (value.endsWith('/')) {
-      value = value.substr(0, value.length - 1);
-    }
-    return value;
-  };
-
   $scope.path = 'm/817/6023';
   $scope.keys = [];
 
@@ -39,7 +31,6 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   };
 
   $scope.updatePrivate = function(value) {
-    value = normalizePath(value);
     if (!bitcore.HDPrivateKey.isValidSerialized(value)) return; // mark as invalid
 
     $scope.xpriv = new bitcore.HDPrivateKey(value);
@@ -49,7 +40,6 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   };
 
   $scope.updatePublic = function(value) {
-    value = normalizePath(value);
     if (!bitcore.HDPublicKey.isValidSerialized(value)) return; // mark as invalid
 
     $scope.xpriv = '';
@@ -59,12 +49,13 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   };
 
   $scope.updatePath = function(value) {
+    if (!bitcore.HDPrivateKey.isValidPath(value)) return; // mark as invalid
+
     $scope.keys = $scope.deriveKeys($scope.xpriv || $scope.xpub, value);
     setExampleCode($scope.xpriv || $scope.xpub, value);
   };
 
   $scope.deriveKeys = function(key, path) {
-    path = normalizePath(path);
     var xpriv, xpub;
     if (key instanceof bitcore.HDPrivateKey) {
       xpriv = key;
