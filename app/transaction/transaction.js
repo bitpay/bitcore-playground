@@ -48,4 +48,18 @@ angular.module('playApp.transaction', ['ngRoute'])
     
   };
 
+
+  function setExampleCode() {
+    var template = "";
+
+    template += "var transaction = new bitcore.Transaction()\n";
+    template += "    .from(utxos)\n";
+    template += "    .to('1bitcoinAddress...', 10000)\n";
+    template += "    .to('2bitcoinAddress...', 10000)\n";
+    template += "    .change('3bitcoinAddress...', 20000);";
+
+    $scope.exampleCode = template;
+  };
+  setExampleCode();
+
 });
