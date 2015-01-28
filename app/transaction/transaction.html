@@ -127,13 +127,13 @@
               <div class="row" ng-repeat="output in transaction.outputs">
                 <div class="row">
                   <div class="small-4 columns" ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                    {{output.satoshis|btc}} to {{output.script.toAddress()}}
+                    {{output.satoshis|btc}} to {{output.script.toAddress().toString()}}
                   </div>
                   <div class="small-4 columns" ng-show="output.script.isDataOut()">
-                    {{output.script.getData}}
+                    OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
                   </div>
                   <div class="small-4 columns" ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
-                    Data out: {{output.satoshis|btc}} to an unrecognized script
+                    {{output.satoshis|btc}} to an unrecognized script
                   </div>
                   <div class="small-2 columns">
                     <a ng-hide="output.visible" ng-click="output.visible = true">More Info</a>
