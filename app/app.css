@@ -20,7 +20,12 @@ a:hover {
 button, .button{
 	margin: 0px 0px 0rem;
 
-	}
+}
+
+input.ng-invalid {
+  background-color: pink !important;
+  border: 1px dashed red;
+}
 
 
  /* bg colors */

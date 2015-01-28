@@ -20,7 +20,7 @@
         <span class="prefix prefix-clean">Root HD Private Key</span>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)">
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key>
       </div>
       <div class="small-1 columns">
         <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
@@ -31,7 +31,7 @@
         <span class="prefix prefix-clean">Root HD Public Key</span>
       </div>
       <div class="small-10 columns">
-        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)">
+        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
           <span class="prefix-clean prefix">Path</span>
         </div>
         <div class="small-7 large-10 columns">
-          <input type="text" ng-model="path" ng-change="updatePath(path)">
+          <input type="text" ng-model="path" ng-change="updatePath(path)" path>
         </div>
       </div>
 

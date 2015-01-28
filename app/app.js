@@ -1,29 +1,35 @@
 'use strict';
 
-angular.module('playApp', [
+var app = angular.module('playApp', [
   'ngRoute',
   'playApp.units',
   'playApp.keys',
   'playApp.hdkeys',
   'playApp.transaction',
   'playApp.multisig'
-]).
-config(['$routeProvider', function($routeProvider) {
+]);
+
+// Config
+app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/units'});
-}]).
-filter('btc', function() {
+}]);
+
+// Filters
+app.filter('btc', function() {
   return function(satoshis) {
     return bitcore.Unit.fromSatoshis(satoshis).toBTC();
   };
-}).
-filter('permalink', function() {
+})
+.filter('permalink', function() {
   return function(data, section) {
     var url = './#/' + section + '?data=' + encodeURI(data);
     if (url.length > 2083) throw new Error('URL too long')
     return url;
   };
-}).
-directive('exampleCode', function() {
+});
+
+// Directives
+app.directive('exampleCode', function() {
   return {
     link: function(scope, element, attrs) {
       scope.$watch(attrs.exampleCode, function(value) {
@@ -32,8 +38,46 @@ directive('exampleCode', function() {
       });
     }
   };
-}).
-controller('SideBar', function($scope, $rootScope){
+});
+
+// Filters
+function registerValidator(app, name, validator) {
+  app.directive(name, function() {
+    return {
+      require: 'ngModel',
+      link: function(scope, elem, attr, ngModel) {
+        function validate(value) {
+          var valid = validator(value, scope, attr);
+          ngModel.$setValidity(null, valid);
+          return value;
+        }
+        ngModel.$parsers.unshift(validate);
+      }
+    };
+  });
+}
+
+registerValidator(app, 'privateKey', function(value) {
+  return bitcore.PrivateKey.isValid(value);
+});
+registerValidator(app, 'privateKey', function(value) {
+  return bitcore.PublicKey.isValid(value);
+});
+registerValidator(app, 'xprivateKey', function(value) {
+  return bitcore.HDPrivateKey.isValidSerialized(value);
+});
+registerValidator(app, 'xpublicKey', function(value) {
+  return bitcore.HDPublicKey.isValidSerialized(value);
+});
+registerValidator(app, 'path', function(value, scope) {
+  return bitcore.HDPrivateKey.isValidPath(value);
+});
+registerValidator(app, 'address', function(value) {
+  return bitcore.Address.isValid(value);
+});
+
+// Sidebar
+app.controller('SideBar', function($scope, $rootScope){
   $scope.setTestnet = function(value) {
     var networks = bitcore.Networks;
     networks.defaultNetwork = value ? networks.testnet : networks.livenet;
