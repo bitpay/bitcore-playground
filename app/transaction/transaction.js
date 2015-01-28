@@ -25,8 +25,8 @@ angular.module('playApp.transaction', ['ngRoute'])
   window.T = $scope.transaction = new bitcore.Transaction();
 
   $scope.fetchUTXO = function(address) {
-    if (!bitcore.Address.isValid(address)) return; // mark as invalid
     var client = new bitcore.transport.explorers.Insight();
+    if (!bitcore.Address.isValid(address)) return; // mark as invalid
     client.getUnspentUtxos(address, onUTXOs);
     $scope.fromAddresses.push(address);
 
@@ -46,11 +46,22 @@ angular.module('playApp.transaction', ['ngRoute'])
     }
   };
 
+  $scope.signWith = function(privKey) {
+    try {
+      var privateKey = new bitcore.PrivateKey(privKey);
+      $scope.privateKeys.push(privateKey);
+      $scope.transaction.sign(privateKey);
+      setExampleCode();
+    } catch (e) {
+      console.log('Error', e);
+    }
+  };
+
   $scope.addUTXO = function(utxo) {
     $scope.utxos = $scope.utxos.filter(function(u){
       return u !== utxo;
     });
-    $scope.usingUTXOs.push(utxo);
+    $scope.utxos.push(utxo);
     $scope.transaction.from(utxo);
     setExampleCode();
   };
@@ -84,8 +95,8 @@ angular.module('playApp.transaction', ['ngRoute'])
     var i;
 
     template += "var transaction = new bitcore.Transaction()\n";
-    for (i in $scope.usingUTXOs) {
-      template += "    .from(" + $scope.usingUTXOs[i].toJSON() + ")\n";
+    for (i in $scope.utxos) {
+      template += "    .from(" + $scope.utxos[i].toJSON() + ")\n";
     }
     for (i in $scope.toAddresses) {
       template += "    .to('" + i + "', " + $scope.toAddresses[i] + ")\n";

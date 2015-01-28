@@ -81,12 +81,12 @@
                   <span class="prefix-clean prefix">Sign all input</span>
                 </div>
                 <div class="small-8 columns">
-                  <input type="text" placeholder="enter a private key">
+                  <input type="text" placeholder="enter a private key" ng-model="privkey">
                 </div>
               </div>
               <div class="row collapse">
                 <div class="small-8 small-offset-4 columns">
-                  <button type="button" ng-click="newKey()" class="expand radius tiny button1 mt5">Sign</button>
+                  <button type="button" ng-click="signWith(privkey)" class="expand radius tiny button1 mt5">Sign</button>
                 </div>
               </div>
 
