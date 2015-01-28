@@ -13,7 +13,7 @@
       <div class="small-12 columns">
         <h2 class="text-center">Unspent Outputs</h2>    
         <!-- Fetch unspent form -->
-        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius"> 
+        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address>
         <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
         
           <div class="row" ng-repeat="utxo in utxos">
@@ -75,7 +75,7 @@
                   <span class="prefix-clean prefix">Sign all input</span>
                 </div>
                 <div class="small-8 columns">
-                  <input type="text" placeholder="enter a private key" ng-model="privkey">
+                  <input type="text" placeholder="enter a private key" ng-model="privkey" private-key>
                 </div>
               </div>
               <div class="row collapse">
@@ -111,8 +111,8 @@
                 <div class="small-6 columns">
                   <button type="button" ng-click="displayAddAddress = !displayAddAddress" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
                   <div class="small-4 small-push-1 columns" ng-show="displayAddAddress">
-                    <input type="text" ng-model="toAddress" placeholder="enter an address">
-                    <input type="text" ng-model="amount" placeholder="enter an amount">
+                    <input type="text" ng-model="toAddress" placeholder="enter an address" address>
+                    <input type="number" ng-model="amount" placeholder="enter an amount">
                     <button type="button" ng-click="addAddressOutput(toAddress, amount)">Send to Address</button>
                   </div>
                 </div>

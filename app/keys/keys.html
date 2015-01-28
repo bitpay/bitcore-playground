@@ -13,7 +13,7 @@
       <span class="prefix">PRIVATE KEY</span>
     </div>
     <div class="small-7 large-9 columns">
-      <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)"/>
+      <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)" private-key/>
     </div>
     <div class="small-2 large-1 columns">
       <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
@@ -49,7 +49,7 @@
       <span class="prefix">PUBLIC KEY</span>
     </div>
     <div class="small-9 large-10 columns">
-      <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)"/>
+      <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)" public-key/>
     </div>
   </div>
   <!--White box ends--> 
