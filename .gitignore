@@ -1,4 +1,5 @@
 logs/*
+*.sw[a-z]
 !.gitkeep
 node_modules/
 bower_components/
