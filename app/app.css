@@ -1,4 +1,6 @@
   /* reset foundation */
+
+  body{max-width:1000px !important;}
   label.inline {margin: 0 0 0 0;}
   input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
   	margin: 0 0 0 0
@@ -6,6 +8,19 @@
   input[type="file"], input[type="checkbox"], input[type="radio"], select {
     margin: 0 0 0.5rem 0;
 }
+
+a {
+    color: #BD1900;
+}
+
+a:hover {
+    color: #E7280A;
+}
+
+button, .button{
+	margin: 0px 0px 0rem;
+
+	}
 
 
  /* bg colors */
@@ -45,6 +60,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 }
 
 /* Paddings and margins */
+.p0 {padding: 0rem 0rem 0rem;}
 .p5 {padding: 5px;}
 .p20 {padding: 20px;}
 .p30 {padding: 30px;}
@@ -52,6 +68,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .pt5 {padding-top: 50px}
 .pt10 {padding-top: 10px}
 .pt20 {padding-top: 20px}
+.pb10 {padding-bottom: 10px}
 .pb20 {padding-bottom: 20px}
 .p3tb {padding: 3px 0px;}
 .p10tb {padding: 10px 0px;}
@@ -67,7 +84,14 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .mt20 {margin-top: 20px;}
 .mb20 {margin-bottom: 20px;}
 .ml10por {margin-left: 10%;}
+.mr10por {margin-right: 10%;}
 .m50 {margin: 50px;}
+.m5 {margin: 5px;}
+
+.100pr {
+	display: block;
+    width: 100% !important;
+}
 
 /* Font Size */
 
@@ -84,6 +108,18 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 /* Font Color */
 .fntwhite{
 	color: #FFFFFF;
+}
+
+.fntgrey1{
+	color: #999999;
+}
+
+.border-top{
+	border-top: 1px solid #F1EFEF;
+}
+
+.border-bottom{
+	border-bottom: 1px solid #F1EFEF;
 }
 
 /* Radius corners */
@@ -172,8 +208,6 @@ background-position: bottom left;
 	vertical-align: middle;
 } 
 
-
-
 .menu{ 
 	 font-family: "Ubuntu";
 	font-family: "Ubuntu-Light"!important;
@@ -236,6 +270,35 @@ background-position: top left;
 background-position: bottom left;
 } 
 
+/* Buttons */
+
+.button1{
+	border: 1px solid #979797;
+	background-color: #FFFFFF;
+	color: #979797;
+	text-transform: uppercase;
+	} 
+ 
+ .button1:hover {
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #F8F7F7;
+	} 
+
+.button2{
+	border: 1px solid #979797;
+	background-color: #FFFFFF;
+	color: #979797;
+	text-transform: uppercase;
+	padding: 0.4rem 0.6rem 0.4rem;
+	} 
+ 
+ .button2:hover {
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #F8F7F7;
+	} 		
+
 /* Content menu */
 
 .section-title{
@@ -250,7 +313,15 @@ background-position: bottom left;
 	font-size: 1.4em;
 	margin-bottom: 30px;
 	font-family: "Ubuntu-Bold";
+} 
 
+.share-link{
+	margin-bottom: 30px;
+	font-family: "Ubuntu-Bold";
+} 
+
+a.share-link{
+	color: ;
 } 
 
 .white-box{
@@ -272,6 +343,10 @@ background-position: bottom left;
 .vertical-sep{
 	border-right: 1px solid #F1EFEF;
 	} 
+
+.v-divider { 
+	border-left: 1px solid red;
+	 }
 
 .key-title{
 	font-family: "Ubuntu-Bold";
@@ -386,6 +461,14 @@ padding: 20px 0 20px 40px;
 .explanation p{
 	font-size: 0.9em
 } 
+
+.item-title{
+	font-family: "Ubuntu-Bold";
+	} 
+
+.item-data{
+	font-family: "Ubuntu-Light";
+	} 
  
  /* Buttons */
 

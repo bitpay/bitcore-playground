@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="playApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="playApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="playApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="playApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bitcore Playground</title>
+  <meta name="description" content="A bitcoin playground">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+  <link rel="stylesheet" href="bower_components/highlight.js/src/styles/default.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script src="bower_components/highlight.js/src/highlight.js"></script>
+  <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
+  <script src="bower_components/foundation/js/vendor/jquery.js"></script>
+  <script src="bower_components/foundation/js/foundation.js"></script>
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.tooltip.js"></script>
+
+</head>
+
+<div class="row" data-equalizer>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+  </div>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+</div>
+
+
+
+<body class="bg-color-gray1">
+
+  <div class="row content-title">
+    <div class="small-12 columns">
+      <h1>Multisig Addresses Demo</h1>
+    </div>
+  </div>
+
+    <div class="row" data-equalizer>
+      <div class="small-9 columns bg-color-white radius" data-equalizer-watch>
+        
+        <div class="row">
+          <div class="small-2 columns">
+            <div class="row">
+              <div class="small-4 columns">
+                <a href="" ng-click="remove($index)"><i class="fi-x"></i></a>
+              </div>  
+              <div class="small-8 columns">
+                <img src="../img/user-icon.svg" class="">
+              </div>  
+            </div>
+          </div> 
+          <div class="small-4 columns">
+            <div class="row">
+              <div class="small-3 columns">
+                <img src="../img/private-key-icon.svg">
+              </div>
+              <div class="small-9 columns">
+                <h3 class="key-title">Private Key</h3>
+                  <div class="row">
+                    <div class="small-12 columns">
+                      <div class="row collapse">
+                        <div class="small-10 columns">
+                          <input ng-model="key.privKey" ng-change="updatePriv($index)" type="text" class="radius">
+                        </div>
+                        <div class="small-2 columns">
+                          <a href="#" class="button random-button postfix"></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="small-1 columns">
+            <img src="../img/arrow-right.svg">
+          </div> 
+          <div class="small-4 columns parent">
+            <div class="row child">
+              <div class="small-3 columns">
+                <img src="../img/public-key-icon.svg">
+              </div>
+              <div class="small-9 columns">
+                <h3 class="key-title">Public Key</h3>
+                <input ng-model="key.pubKey" ng-change="updatePub($index)" type="text" class="radius">
+              </div>
+            </div>
+          </div>
+          <div class="small-1 columns">
+            <img src="../img/arrow-right.svg">
+          </div> 
+        </div> 
+
+        </div>
+      <div class="small-3 columns" data-equalizer-watch>
+        <div class="row">
+          <div class="small-11 large-offset-1 columns">
+            <div class="row bg-color-white radius">
+              <div class="small-2 columns">
+                <img src="../img/btc-icon-address.svg">
+              </div>
+              <div class="small-10 columns">
+                <h3 class="key-title">Bitcoin Address</h3>
+                <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <script src="bower_components/foundation/js/vendor/jquery.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+</div>
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/bitcore/browser/bitcore.js"></script>
+  <script src="app.js"></script>
+  <script src="units/units.js"></script>
+  <script src="keys/keys.js"></script>
+  <script src="multisig/multisig.js"></script>
+  <script src="hdkeys/hdkeys.js"></script>
+  <script src="transaction/transaction.js"></script>
+
+</body>
+</html>
