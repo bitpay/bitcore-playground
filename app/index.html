@@ -45,7 +45,7 @@
       </div>
     </div>
   </section>
-  <!--Header Ends-->   
+<!--Header Ends-->
 
 <div class="main-sidebar">
       <!--Sidebar starts--> 
@@ -72,16 +72,37 @@
     <!--Content starts--> 
     <div class="no-pr small-12 columns">
       <div ng-view class="bg-color-gray1 p60"></div>
-      <div id="terminal" class="bg-color-gray1">
-        <div id="terminaltab" class="bg-color-black2 rdt3">
-        </div>
-        <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
-          <ng-include src="'components/console/console.html'"/>
-        </div>
-      </div>
     </div>
     <!--Content ends--> 
 </div>
+<div style="clear: both;"></div>
+
+<!--Footer Starts-->
+<section id="footer" class="bg-color-black2">
+
+  <div id="terminal" class="bg-color-gray1">
+    <div id="terminaltab" class="bg-color-black2 rdt3"></div>
+    <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
+      <ng-include src="'components/console/console.html'"/>
+    </div>
+  </div>
+
+  <div class="row p10t">
+    <div class="medium-4 columns">
+      <a href="#"><img src="../img/bitcore-logo-hd.svg" width="99" height="28" alt="bitcore"/>
+        <span class="playground-logo 15em">playground</span>
+      </a>
+    </div>
+    <div class="medium-8 columns text-right">
+      <ul id="nav-hd">
+        <li class="docs"><a href="http://bitcore.io/guide/" target="_blank">Docs</a></li>
+        <li class="api"><a href="http://bitcore.io/api/" target="_blank">API</a></li>
+        <li class="github"><a href="https://github.com/bitpay/bitcore" target="_blank">Github</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!--Footer Ends-->
 
 
   <!--[if lt IE 7]>

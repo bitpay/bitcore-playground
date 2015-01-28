@@ -583,6 +583,8 @@ padding: 20px 0 20px 40px;
 	background-image: url("../img/terminal-icon.svg");
 	background-repeat: no-repeat;
 	background-position: center center;
+  float: left;
+  margin-top: -50px;
 	} 
 
 #terminal-content{
