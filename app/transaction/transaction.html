@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" require-modal>
   <div class="small-8 columns content-title">
     <h1>Bitcore Transaction Demo</h1>
   </div>
@@ -13,7 +13,7 @@
       <div class="small-12 columns">
         <h2 class="text-center">Unspent Outputs</h2>    
         <!-- Fetch unspent form -->
-        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address> 
+        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
         <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1 mt5">Fetch</button>
         
           <div class="row" ng-repeat="utxo in utxos">
@@ -81,7 +81,7 @@
                   <span class="prefix-clean prefix">Sign all input</span>
                 </div>
                 <div class="small-8 columns">
-                  <input type="text" placeholder="enter a private key" ng-model="privkey" private-key>
+                  <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select>
                 </div>
               </div>
               <div class="row collapse">
@@ -138,17 +138,16 @@
 
 
                   <div class="small-4 small-push-1 columns" ng-show="displayAddAddress">
-                    <input type="text" ng-model="toAddress" placeholder="enter an address" address>
-                    <input type="number" ng-model="amount" placeholder="enter an amount">
+                    <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
+                    <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
                     <button type="button" ng-click="addAddressOutput(toAddress, amount)">Send to Address</button>
                   </div>
                 </div>
                 <div class="small-6 columns">
-                  <button type="button" ng-click="displayAddData = true" class="expand button tiny radius button1" ng-hide="displayAddData"><span><i class="fi-plus"></i> Add Data</span></button>
-                  <div class="small-12 columns" ng-show="displayAddData">
-                    <input type="text" ng-model="info" placeholder="enter an hexa or normal string">
-                    <button type="button" ng-click="addDataOutput(info)" class="expand button tiny radius button1"> OK</button>
-                    <button type="button" ng-click="displayAddData = false" class="expand button tiny radius button1"> Cancel</button>
+                  <button type="button" ng-click="displayAddData = !displayAddData" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
+                  <div class="small-4 small-push-1 columns" ng-show="displayAddData">
+                    <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
+                    <button type="button" ng-click="addDataOutput(info)">+ Add Data</button>
                   </div>
                 </div>
               </div>

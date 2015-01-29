@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" require-equalizer>
   <div class="small-8 columns content-title">
     <h1>Keys Demo</h1>
   </div>
@@ -29,12 +29,12 @@
         <div class="inline"><img src="../img/user-icon.svg"></div>
     </div>
     <div class="large-4 columns">
-      Private Key: <input ng-model="key.privKey" ng-change="updatePriv($index)" private-key>
+      Private Key: <input ng-model="key.privKey" ng-change="updatePriv($index)" private-key auto-select>
 
         <button ng-click="randPriv($index)">Rand</button>
     </div>
     <div class="large-4 columns">
-      Public Key: <input ng-model="key.pubKey" ng-change="updatePub($index)" public-key>
+      Public Key: <input ng-model="key.pubKey" ng-change="updatePub($index)" public-key auto-select>
     </div>
   </div>
   <!--White box ends--> 
@@ -52,7 +52,7 @@
   <div class="large-6 columns bg-color-white" data-equalizer-watch>
     <div>
       Bitcoin Address
-      <input ng-model="address" type="text" placeholder="Bitcoin address" readonly/>
+      <input ng-model="address" type="text" placeholder="Bitcoin address" readonly auto-select/>
     </div>
   </div>
 </div>

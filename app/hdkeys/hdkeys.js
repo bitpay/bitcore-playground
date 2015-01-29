@@ -71,8 +71,14 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     if (!bitcore.HDPrivateKey.isValidPath(path)) return;
 
     var indexes = bitcore.HDPrivateKey._getDerivationIndexes(path);
+    var MAX = 2147483647;
     var paths = indexes.map(function(m, i) {
-      return 'm/' + indexes.slice(0, i+1).join('/');
+      return 'm/' + indexes.slice(0, i+1).map(function(index) {
+        if (index >= MAX) {
+          return (index - MAX) + "'";
+        }
+        return '' + index;
+      }).join('/');
     });
     paths = ['m'].concat(paths);
 
@@ -81,12 +87,13 @@ angular.module('playApp.hdkeys', ['ngRoute'])
         path: p,
         xpriv: xpriv && key.derive(p),
         xpub: key.derive(p).hdPublicKey
-      }
+      };
     });
 
     nodes[nodes.length-1].visible = true;
+    nodes.reverse();
     return nodes;
-  }
+  };
 
   function setExampleCode(hdKey, path, isNew) {
     var template = "";

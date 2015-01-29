@@ -38,6 +38,31 @@ app.directive('exampleCode', function() {
       });
     }
   };
+})
+.directive('autoSelect', function() {
+  return {
+    link: function(scope, element, attrs) {
+      $(element).focus(function(){
+        $(this).select();
+      });
+    }
+  };
+})
+.directive('requireEqualizer', function() {
+  return {
+    link: function(scope, element, attrs) {
+     $(document).foundation();
+     $(document).foundation('equalizer', 'reflow');
+    }
+  };
+})
+.directive('requireModal', function() {
+  return {
+    link: function(scope, element, attrs) {
+     $(document).foundation();
+     $(document).foundation('reveal', 'reflow');
+    }
+  };
 });
 
 // Filters
@@ -77,10 +102,17 @@ registerValidator(app, 'address', function(value) {
 });
 
 // Sidebar
-app.controller('SideBar', function($scope, $rootScope){
+app.controller('SideBar', function($scope, $rootScope, $timeout){
+  $timeout(function(){
+    $rootScope.showFooter = true;
+    $rootScope.$apply();
+  }, 100);
+
+  var networks = bitcore.Networks;
+  networks.defaultNetwork = networks.testnet;
+
   $scope.setTestnet = function(value) {
-    var networks = bitcore.Networks;
-    networks.defaultNetwork = value ? networks.testnet : networks.livenet;
+    networks.defaultNetwork = value ? networks.livenet : networks.testnet;
     $rootScope.$broadcast('networkUpdate');
   };
 });

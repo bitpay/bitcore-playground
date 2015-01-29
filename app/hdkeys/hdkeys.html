@@ -14,27 +14,25 @@
       <div class="small-12 columns">
         <h2 class="text-center">Master</h2>
       </div>
-    </div>
+  </div>
+  <div class="small-12 columns input-title">
     <div class="row collapse">
-    <div class="small-12 columns input-title">
-      <div class="row collapse">
-        <div class="small-2 columns input-title text-left mb5">
-          <span class="prefix-clean prefix fnt1">Root HD Private Key</span>
-        </div>
-        <div class="small-9 columns">
-          <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key>
-        </div>
-        <div class="small-1 columns">
-          <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
-        </div>
-      </div> 
-      <div class="row collapse">
-        <div class="small-2 columns input-title text-left">
-          <span class="prefix-clean prefix fnt1">Root HD Public Key</span>
-        </div>
-        <div class="small-10 columns">
-          <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key>
-        </div>
+      <div class="small-2 columns input-title text-left mb5">
+        <span class="prefix prefix-clean fnt1">Root HD Private Key</span>
+      </div>
+      <div class="small-9 columns">
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key auto-select>
+      </div>
+      <div class="small-1 columns">
+        <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
+      </div>
+    </div> 
+    <div class="row collapse">
+      <div class="small-2 columns input-title text-left">
+        <span class="prefix prefix-clean fnt1">Root HD Public Key</span>
+      </div>
+      <div class="small-10 columns">
+        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key auto-select>
       </div>
     </div>
    </div> 
@@ -57,22 +55,24 @@
           <span class="fnt1 prefix-clean prefix">Path</span>
         </div>
         <div class="small-7 large-10 columns">
-          <input type="text" ng-model="path" ng-change="updatePath(path)" path>
+          <input type="text" ng-model="path" ng-change="updatePath(path)" path auto-select>
         </div>
       </div>
 
       <div class="row" ng-repeat="node in keys">
 
         <div class="row capsule-inside radius p5 mt5"> <!-- Repeat key -->
-          <div class="small-7 columns">
-            <span class="fnt09"><b>Path:</b></span> <span class="fnt09 fntgrey1"><b>{{node.path}}</b></span>
-          </div>
-          <div class="small-5 columns text-right">
-            <div class="fnt06 more-info">
-              <a ng-hide="node.visible" ng-click="node.visible = true" class=""><i class="fi-arrow-down"></i> More Info</a>
+          <div ng-click="node.visible = !node.visible">
+            <div class="small-7 columns">
+              <span class="fnt09"><b>Path:</b> <span class="fnt09 fntgrey1"><b>{{node.path}}</b></span>
             </div>
-            <div class="fnt06 less-info">
-              <a ng-show="node.visible" ng-click="node.visible = false" class=""><i class="fi-arrow-up"></i> Less Info</a>
+            <div class="small-5 columns text-right">
+              <div class="more-info fnt0">
+                <a ng-hide="node.visible" class="fnt06"><i class="fi-arrow-down"></i> More Info</a>
+              </div>
+              <div class="less-info">
+                <a ng-show="node.visible" class="fnt06"><i class="fi-arrow-up"></i> Less Info</a>
+              </div>
             </div>
 
           </div>
@@ -83,7 +83,7 @@
                 <div class="data-more-info prefix-clean prefix">HD Private Key:</div>
               </div>
               <div class="small-10 columns">
-                <input type="text" value="{{node.xpriv.toString()}}" readonly/>
+                <input type="text" value="{{node.xpriv.toString()}}" readonly auto-select/>
               </div>  
             </div>
             <div class="row collapse pt10">
@@ -91,7 +91,7 @@
                 <div class="data-more-info prefix-clean prefix">Private Key</div> 
               </div>
               <div class="small-10 columns">
-                <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly/>
+                <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row collapse pt10">
@@ -99,15 +99,15 @@
                 <div class="data-more-info prefix-clean prefix">HD Public Key</div>
               </div>
               <div class="small-10 columns">
-                <input type="text" value="{{node.xpub.toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row collapse pt10">            
               <div class="small-2 columns"> 
                 <div class="prefix-clean prefix data-more-info">Public Key</div>
-              </div>     
+              </div> 
               <div class="small-10 columns">
-                <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly auto-select/>
               </div> 
             </div> 
             <div class="row collapse pt10">  
@@ -115,7 +115,7 @@
                 <div class="data-more-info prefix-clean prefix">Address</div>
               </div>     
               <div class="small-10 columns">
-                <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly auto-select/>
               </div>  
             </div>
           </div>

@@ -22,7 +22,7 @@
               <label class="inline text-left">BTC</label>
             </div>
             <div class="small-10 columns">
-              <input type="number" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius">
+              <input type="number" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius" auto-select>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
               <label class="inline text-left">mBTC</label>
             </div>
             <div class="small-10 columns">
-              <input type="number" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius">
+              <input type="number" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius" auto-select>
             </div>
           </div>
         </div>
@@ -49,7 +49,7 @@
               <label class="inline text-left">bits</label>
             </div>
             <div class="small-10 columns">
-              <input type="number" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius">
+              <input type="number" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius" auto-select>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
               <label class="inline text-left">satoshis</label>
             </div>
             <div class="small-10 columns">
-              <input type="number" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius">
+              <input type="number" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius" auto-select>
             </div>
           </div>
         </div>
@@ -100,7 +100,7 @@
               <label class="right inline">Amount</label>
             </div>
             <div class="small-10 columns">
-              <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius">
+              <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius" auto-select>
 
             </div>
           </div>
