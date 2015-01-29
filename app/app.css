@@ -148,7 +148,11 @@ border-top-right-radius: 3px;
 
 .main-content	{
  	margin-left: 220px;
- 	 	} 	
+ 	 	}
+
+.examples {
+  min-height: 600px;
+}
 
 
 /* Header */
@@ -529,6 +533,10 @@ padding: 20px 0 20px 40px;
     max-height: 500px;
     overflow: scroll;
     background-color: #3A3A3A;
+  }
+
+  #console div div {
+    position: relative !important;
   }
 
   #console div:first-child {

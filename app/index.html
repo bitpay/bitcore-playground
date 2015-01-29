@@ -71,16 +71,16 @@
 <div class="main-content">
     <!--Content starts--> 
     <div class="no-pr small-12 columns">
-      <div ng-view class="bg-color-gray1 p60"></div>
+      <div ng-view class="bg-color-gray1 p60 examples"></div>
     </div>
     <!--Content ends--> 
 </div>
 <div style="clear: both;"></div>
 
 <!--Footer Starts-->
-<section id="footer" class="bg-color-black2">
+<section id="footer" class="bg-color-black2" ng-controller="SideBar">
 
-  <div id="terminal" class="bg-color-gray1">
+  <div id="terminal" class="bg-color-gray1" ng-show="true">
     <div id="terminaltab" class="bg-color-black2 rdt3"></div>
     <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
       <ng-include src="'components/console/console.html'"/>
