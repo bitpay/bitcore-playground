@@ -47,6 +47,22 @@ app.directive('exampleCode', function() {
       });
     }
   };
+})
+.directive('requireEqualizer', function() {
+  return {
+    link: function(scope, element, attrs) {
+     $(document).foundation();
+     $(document).foundation('equalizer', 'reflow');
+    }
+  };
+})
+.directive('requireModal', function() {
+  return {
+    link: function(scope, element, attrs) {
+     $(document).foundation();
+     $(document).foundation('reveal', 'reflow');
+    }
+  };
 });
 
 // Filters
