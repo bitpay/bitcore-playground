@@ -6,7 +6,6 @@ function REPL() {
 
   var self = this;
   $(this.element).click(function(){
-    console.log('Click!');
     self.console.$input_source.focus();
   });
 
