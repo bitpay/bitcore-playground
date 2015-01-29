@@ -10,6 +10,13 @@ angular.module('playApp.hdkeys', ['ngRoute'])
 }])
 
 .controller('HDKeysCtrl', function($scope) {
+
+  var privateValidPath = function(path) {
+    return !!(/^[mM][']?(\/[0-9]+[']?)*[/]?$/.exec(path));
+  };
+  var publicValidPath = function(path) {
+    return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(path));
+  };
   $scope.path = 'm/817/6023';
   $scope.keys = [];
 
@@ -49,7 +56,11 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   };
 
   $scope.updatePath = function(value) {
-    if (!bitcore.HDPrivateKey.isValidPath(value)) return; // mark as invalid
+    if ($scope.xpriv) {
+      if (!privateValidPath(value)) return;
+    } else {
+      if (!publicValidPath(value)) return;
+    }
 
     $scope.keys = $scope.deriveKeys($scope.xpriv || $scope.xpub, value);
     setExampleCode($scope.xpriv || $scope.xpub, value);
@@ -66,16 +77,22 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     } else {
       return;
     }
+    if (path.endsWith('/')) {
+      path = path.substr(0, path.length - 1);
+    }
 
-    // TODO: Check validation path on public key as well
-    if (!bitcore.HDPrivateKey.isValidPath(path)) return;
+    if (xpriv) {
+      if (!privateValidPath(path)) return;
+    } else {
+      if (!publicValidPath(path)) return;
+    }
 
     var indexes = bitcore.HDPrivateKey._getDerivationIndexes(path);
     var MAX = 2147483647;
     var paths = indexes.map(function(m, i) {
       return 'm/' + indexes.slice(0, i+1).map(function(index) {
         if (index >= MAX) {
-          return (index - MAX) + "'";
+          return (index - MAX - 1) + "'";
         }
         return '' + index;
       }).join('/');
@@ -86,7 +103,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
       return {
         path: p,
         xpriv: xpriv && key.derive(p),
-        xpub: key.derive(p).hdPublicKey
+        xpub: (key instanceof bitcore.HDPublicKey) ? key.derive(p) : key.derive(p).hdPublicKey
       };
     });
 

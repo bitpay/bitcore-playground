@@ -78,8 +78,11 @@ registerValidator(app, 'xprivateKey', function(value) {
 registerValidator(app, 'xpublicKey', function(value) {
   return bitcore.HDPublicKey.isValidSerialized(value);
 });
-registerValidator(app, 'path', function(value, scope) {
-  return bitcore.HDPrivateKey.isValidPath(value);
+registerValidator(app, 'privateHdpath', function(value, scope) {
+  return !!(/^[mM][']?(\/[0-9]+[']?)*[/]?$/.exec(value));
+});
+registerValidator(app, 'publicHdpath', function(value, scope) {
+  return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(value));
 });
 registerValidator(app, 'address', function(value) {
   return bitcore.Address.isValid(value);
