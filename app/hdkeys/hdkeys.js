@@ -91,6 +91,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     });
 
     nodes[nodes.length-1].visible = true;
+    nodes.reverse();
     return nodes;
   };
 
