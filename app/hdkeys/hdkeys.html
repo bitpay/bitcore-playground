@@ -20,7 +20,7 @@
         <span class="prefix prefix-clean">Root HD Private Key</span>
       </div>
       <div class="small-9 columns">
-        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key>
+        <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key auto-select>
       </div>
       <div class="small-1 columns">
         <button type="button" ng-click="newKey()" class="random-button postfix radius tiny white m0"></button>
@@ -31,7 +31,7 @@
         <span class="prefix prefix-clean">Root HD Public Key</span>
       </div>
       <div class="small-10 columns">
-        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key>
+        <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key auto-select>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@
           <span class="prefix-clean prefix">Path</span>
         </div>
         <div class="small-7 large-10 columns">
-          <input type="text" ng-model="path" ng-change="updatePath(path)" path>
+          <input type="text" ng-model="path" ng-change="updatePath(path)" path auto-select>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
                 <p class="data-more-info">HDPrivateKey:</p>
               </div>
               <div class="small-6 columns">
-                <input type="text" value="{{node.xpriv.toString()}}" readonly/>
+                <input type="text" value="{{node.xpriv.toString()}}" readonly auto-select/>
               </div>  
             </div>
             <div class="row pt10">
@@ -88,7 +88,7 @@
                 <p class="data-more-info">Private Key</p> 
               </div>
               <div class="small-6 columns">
-                <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly/>
+                <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row pt10">
@@ -96,7 +96,7 @@
                 <p class="data-more-info">HDPublicKey</p>
               </div>
               <div class="small-6 columns">
-                <input type="text" value="{{node.xpub.toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row pt10">            
@@ -104,7 +104,7 @@
                 <p class="data-more-info">Public Key</p>
               </div>     
               <div class="small-6 columns">
-                <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly auto-select/>
               </div> 
             </div> 
             <div class="row pt10">  
@@ -112,7 +112,7 @@
                 <p class="data-more-info">Address</p>
               </div>     
               <div class="small-6 columns">
-                <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly/>
+                <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly auto-select/>
               </div>  
             </div>
           </div>

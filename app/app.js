@@ -38,6 +38,15 @@ app.directive('exampleCode', function() {
       });
     }
   };
+})
+.directive('autoSelect', function() {
+  return {
+    link: function(scope, element, attrs) {
+      $(element).focus(function(){
+        $(this).select();
+      });
+    }
+  };
 });
 
 // Filters
