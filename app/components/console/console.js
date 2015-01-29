@@ -1,7 +1,14 @@
 $(function () {
 
 function REPL() {
+  this.element = document.getElementById("console");
   this.console = $('#console').jqconsole(null, '>> ');
+
+  var self = this;
+  $(this.element).click(function(){
+    console.log('Click!');
+    self.console.$input_source.focus();
+  });
 
   // Autocomplete hack
   this.console._Indent = function() {
@@ -108,10 +115,15 @@ REPL.prototype.prompt = function() {
     }
     self.resultCallback(result);
   });
+  this.scrollToBottom();
 }
 
 REPL.prototype.outputCallback = function(output) {
   this.console.Write(output, 'jqconsole-output');
+}
+
+REPL.prototype.scrollToBottom = function() {
+  this.element.scrollTop = this.element.scrollHeight;
 }
 
 REPL.prototype.resultCallback = function(result) {
@@ -130,7 +142,6 @@ REPL.prototype.resultCallback = function(result) {
 
 REPL.prototype.errorCallback = function(error) {
   console.log(arguments)
-  this.console.Write(error + '\n', 'jqconsole-error');
   this.prompt();
 }
 
