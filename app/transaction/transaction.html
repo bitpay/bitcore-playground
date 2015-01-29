@@ -181,51 +181,12 @@
   </div>
 </div>
 
-<!-- UTXO fetch
-  <h3>Input management</h3>
-  <div>
-    <h4>From address:</h4>
-    <form ng-submit="fromAddress()">
-      <input ng-model="fromAddressData.address" placeholder="Address">
-      <button type="submit"></button>
-    </form>
-  </div>
--->
-<!-- UTXO fetch
-  <div>
-    <h4>Sign with:</h4>
-    <form ng-submit="signWith()">
-      <input ng-model="signWithData.privkey" placeholder="Private Key">
-      <button type="submit"></button>
-    </form>
-  </div>
- -->
- <!-- Add TO Output
-  <div>
-    <h4>To</h4>
-    <form name="form" ng-submit="addAddress()">
-      <input ng-model="addToAddress.address" placeholder="Address"></input>
-      <input ng-model="addToAddress.amount" type="number" placeholder="Amount (satoshis)"></input>
-      <button type="submit"></button>
-    </form>
-  </div>
--->
-<!-- Add OP_RETURN Output
-  <div>
-    <h4>Append data (OP_RETURN)</h4>
-    <form name="form_data" ng-submit="addData()">
-      <input ng-model="addData.data">
-      <input ng-model="addData.isHexa" type="checkbox">
-      <button type="submit"></button>
-    </form>
-  </div>
--->
-
 <div class="row">
   <div class="explanation">
     <h3 class="fnt1">This is how it works</h3>
     <div class="large-5 columns">
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+      <p>Bitcore provides a simple API for transaction creation - just specify outputs corresponding to an address that you control, a private key, and where do you want to spend your bitcoins (and optionally, whatever information would you like to record in the blockchain as an <tt>OP_RETURN</tt> output).</p>
+      <p><a href=”http://bitcore.io/guide/transaction.html”>Read more in the bitcore developer guide</a></p>
     </div>
     <div class="large-7 columns">
       <pre><code class="javascript" example-code="exampleCode">
