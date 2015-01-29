@@ -60,15 +60,17 @@
       <div class="row" ng-repeat="node in keys">
 
         <div class="row capsule-inside radius p5 mt5"> <!-- Repeat key -->
-          <div class="small-7 columns">
-            <span class="fnt08"><b>Path:</b> {{node.path}}</span>
-          </div>
-          <div class="small-5 columns text-right">
-            <div class="more-info fnt0">
-              <a ng-hide="node.visible" ng-click="node.visible = true" class="fnt06">More info</a>
+          <div ng-click="node.visible = !node.visible">
+            <div class="small-7 columns">
+              <span class="fnt08"><b>Path:</b> {{node.path}}</span>
             </div>
-            <div class="less-info">
-              <a ng-show="node.visible" ng-click="node.visible = false" class="fnt06">Less info</a>
+            <div class="small-5 columns text-right">
+              <div class="more-info fnt0">
+                <a ng-hide="node.visible" class="fnt06">More info</a>
+              </div>
+              <div class="less-info">
+                <a ng-show="node.visible" class="fnt06">Less info</a>
+              </div>
             </div>
           </div>
         <div class="row p20tb" ng-show="node.visible">
