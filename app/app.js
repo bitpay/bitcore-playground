@@ -83,9 +83,11 @@ app.controller('SideBar', function($scope, $rootScope, $timeout){
     $rootScope.$apply();
   }, 100);
 
+  var networks = bitcore.Networks;
+  networks.defaultNetwork = networks.testnet;
+
   $scope.setTestnet = function(value) {
-    var networks = bitcore.Networks;
-    networks.defaultNetwork = value ? networks.testnet : networks.livenet;
+    networks.defaultNetwork = value ? networks.livenet : networks.testnet;
     $rootScope.$broadcast('networkUpdate');
   };
 });
