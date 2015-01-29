@@ -27,6 +27,7 @@ input.ng-invalid {
   border: 1px dashed red;
 }
 
+.ng-cloak { display: none !important;}
 
  /* bg colors */
  .bg-color-black2 { background-color: #3A3A3A;}

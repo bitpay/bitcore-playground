@@ -77,7 +77,12 @@ registerValidator(app, 'address', function(value) {
 });
 
 // Sidebar
-app.controller('SideBar', function($scope, $rootScope){
+app.controller('SideBar', function($scope, $rootScope, $timeout){
+  $timeout(function(){
+    $rootScope.showFooter = true;
+    $rootScope.$apply();
+  }, 100);
+
   $scope.setTestnet = function(value) {
     var networks = bitcore.Networks;
     networks.defaultNetwork = value ? networks.testnet : networks.livenet;
