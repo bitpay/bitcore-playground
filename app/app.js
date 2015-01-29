@@ -13,7 +13,7 @@ config(['$routeProvider', function($routeProvider) {
 }]).
 filter('btc', function() {
   return function(satoshis) {
-    return bitcore.Unit.fromSatoshis(satoshis).toBTC() + ' BTC';
+    return bitcore.Unit.fromSatoshis(satoshis).toBTC();
   };
 }).
 filter('permalink', function() {

@@ -62,10 +62,11 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 /* Paddings and margins */
 .p0 {padding: 0rem 0rem 0rem;}
 .p5 {padding: 5px;}
+.p10 {padding: 10px;}
 .p20 {padding: 20px;}
 .p30 {padding: 30px;}
 .p60 {padding: 60px;}
-.pt5 {padding-top: 50px}
+.pt5 {padding-top: 5px}
 .pt10 {padding-top: 10px}
 .pt20 {padding-top: 20px}
 .pb10 {padding-bottom: 10px}
@@ -100,6 +101,9 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 }
 .fnt08{
 	font-size: 0.8em
+}
+.fnt09{
+	font-size: 0.9em
 }
 .fnt1{
 	font-size: 1em
@@ -291,6 +295,9 @@ background-position: bottom left;
 	color: #979797;
 	text-transform: uppercase;
 	padding: 0.4rem 0.6rem 0.4rem;
+	background-image: url("../img/arrow-right-small-single.svg");
+	background-position: right 5px center;
+	background-repeat: no-repeat;
 	} 
  
  .button2:hover {
@@ -410,17 +417,12 @@ a.share-link{
 
 .more-info a, .less-info a{ 
 	color: #979797;  
-	background-repeat: no-repeat;
-	background-position: top left;
-	padding-left: 20px;
 	} 
 
 .more-info a{ 
-	background-image: url("../img/arrow-down-info.svg");
 	} 
 
 .less-info a{ 
-	background-image: url("../img/arrow-up-info.svg");
 	} 	
 
 .more-info a:hover, .less-info a:hover{ 
@@ -434,6 +436,9 @@ a.share-link{
 		font-size: 0.7em;
 		} 	
 
+.more-info-content ul{
+	list-style: none;
+		} 	
 
 .inline{ 
 	display:inline-block;
@@ -462,14 +467,21 @@ padding: 20px 0 20px 40px;
 	font-size: 0.9em
 } 
 
-.item-title{
-	font-family: "Ubuntu-Bold";
+.item-title, .amount{
+	font-family: "Ubuntu-Bold" !important;
 	} 
 
-.item-data{
-	font-family: "Ubuntu-Light";
+
+
+.item-data, .btc{
+	font-family: "Ubuntu-Light" !important;
 	} 
  
+.check{
+	color: #7ED321 !important;
+	}  
+
+
  /* Buttons */
 
 .random-button {
