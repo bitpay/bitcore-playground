@@ -1,6 +1,6 @@
 <div class="row">
   <div class="small-8 columns content-title">
-    <h1>Keys Demo</h1>
+    <h1>Units Demo</h1>
   </div>
   <div class="small-4 columns text-right">
     <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
@@ -14,28 +14,26 @@
     <div class="small-6 columns vertical-sep p60rf">
       <h2 class="text-center">Bitcoin</h2>
 
-      <form id="lala">
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="inline text-left">BTC</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
               <input type="number" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius" auto-select>
             </div>
           </div>
         </div>
       </div>
-      </form>
 
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="inline text-left">mBTC</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
               <input type="number" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius" auto-select>
             </div>
           </div>
@@ -45,10 +43,10 @@
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="inline text-left">bits</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
               <input type="number" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius" auto-select>
             </div>
           </div>
@@ -58,10 +56,10 @@
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="inline text-left">satoshis</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
               <input type="number" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius" auto-select>
             </div>
           </div>
@@ -78,10 +76,10 @@
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="right inline">Currency</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
 
               <select
                 ng-model="currency"
@@ -96,10 +94,10 @@
       <div class="row">
         <div class="small-12 columns">
           <div class="row">
-            <div class="small-2 columns">
+            <div class="small-4 columns">
               <label class="right inline">Amount</label>
             </div>
-            <div class="small-10 columns">
+            <div class="small-8 columns">
               <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius" auto-select>
 
             </div>
@@ -108,9 +106,9 @@
       </div>
 
       <div class="row">
-        <div class="small-10 small-push-2 columns">
-          <div>1 BTC = {{currency.rate}} {{currency.code}}</div>
-          <span>Exchange rates are taken from <a href="https://bitpay.com/api/rates">https://bitpay.com/api/rates</a></span>
+        <div class="explanation text-center">
+          <p>1 BTC = {{currency.rate}} {{currency.code}}</p>
+          <p><span>Exchange rates from <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
         </div>
       </div>
     </div>
