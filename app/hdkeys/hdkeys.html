@@ -55,7 +55,8 @@
           <span class="fnt1 prefix-clean prefix">Path</span>
         </div>
         <div class="small-7 large-10 columns">
-          <input type="text" ng-model="path" ng-change="updatePath(path)" path auto-select>
+          <input type="text" ng-model="path" ng-show="xpriv" ng-change="updatePath(path)" private-hdpath>
+          <input type="text" ng-model="path" ng-hide="xpriv" ng-change="updatePath(path)" public-hdpath>
         </div>
       </div>
 
@@ -78,15 +79,15 @@
           </div>
         <div class="row p20tb" ng-show="node.visible">
           <div class="small-12 columns">
-            <div class="row collapse pt10">
+            <div class="row collapse pt10" ng-show="node.xpriv">
               <div class="small-2 columns">
-                <div class="data-more-info prefix-clean prefix">HD Private Key:</div>
+                <div class="data-more-info prefix-clean prefix">HD Private Key</div>
               </div>
               <div class="small-10 columns">
                 <input type="text" value="{{node.xpriv.toString()}}" readonly auto-select/>
               </div>  
             </div>
-            <div class="row collapse pt10">
+            <div class="row collapse pt10" ng-show="node.xpriv">
               <div class="small-2 columns">
                 <div class="data-more-info prefix-clean prefix">Private Key</div> 
               </div>
