@@ -564,10 +564,13 @@ padding: 20px 0 20px 40px;
   /* The console container element */
   #console {
     width: 100%;
-    min-height: 250px;
-    max-height: 500px;
-    overflow: scroll;
+    height: 250px;
+    overflow-y: scroll;
     background-color: #3A3A3A;
+  }
+
+  #console::-webkit-scrollbar {
+    display: none;
   }
 
   #console div div {
