@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row collapse">
   <div class="small-8 columns content-title">
     <h1>Units Demo</h1>
   </div>
@@ -14,52 +14,52 @@
     <div class="small-6 columns vertical-sep p60rf">
       <h2 class="text-center">Bitcoin</h2>
 
-      <div class="row">
+      <div class="row collapse">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="inline text-left">BTC</label>
+          <div class="row collapse mb5">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">BTC</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns">
               <input type="number" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius" auto-select>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row collapse">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="inline text-left">mBTC</label>
+          <div class="row collapse mb5">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">mBTC</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns">
               <input type="number" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius" auto-select>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row collapse">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="inline text-left">bits</label>
+          <div class="row mb5 collapse ">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">bits</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns">
               <input type="number" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius" auto-select>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row collapse">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="inline text-left">satoshis</label>
+          <div class="row mb5 collapse ">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">satoshis</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns">
               <input type="number" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius" auto-select>
             </div>
           </div>
@@ -73,31 +73,31 @@
     <div class="small-6 columns p60rf">
       <h2 class="text-center">Fiat</h2>
 
-      <div class="row">
+      <div class="row collapse ">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="right inline">Currency</label>
+          <div class="row collapse ">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">Currency</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns ">
 
               <select
                 ng-model="currency"
                 ng-options="opt as opt.name for opt in currencies"
-                ng-change="updateFiat(unit.fiat, currency)" class="radius medium"></select>
+                ng-change="updateFiat(unit.fiat, currency)" class="radius medium mb5"></select>
             </div>
           </div>
         </div>
       </div>
 
 
-      <div class="row">
+      <div class="row collapse">
         <div class="small-12 columns">
-          <div class="row">
-            <div class="small-4 columns">
-              <label class="right inline">Amount</label>
+          <div class="row collapse ">
+            <div class="small-2 columns">
+              <label class="prefix prefix-clean fnt1">Amount</label>
             </div>
-            <div class="small-8 columns">
+            <div class="small-10 columns">
               <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius" auto-select>
 
             </div>
@@ -105,10 +105,9 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="explanation text-center">
-          <p>1 BTC = {{currency.rate}} {{currency.code}}</p>
-          <p><span>Exchange rates from <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
+      <div class="row collapse">
+        <div class="mt20 text-center">
+          <p><span class="ubuntu-bold uppercase">1 BTC = {{currency.rate}} {{currency.code}}</span></br><span class="fnt07 uppercase">Exchange rates from</span><span class="fnt08"> <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
         </div>
       </div>
     </div>
@@ -116,16 +115,21 @@
   </div>
 </div>  <!--White box ends--> 
 
-<div class="row">
-  <div class="explanation">
-    <h3 class="fnt1">This is how it works</h3>
-    <div class="large-5 columns">
-      <p>BTC, millibitcoins, bits. Bitcore provides functionality to avoid problems caused by switching between different units. This interactive example will show how to use the <tt>bitcore.Unit</tt> class.</p>
-      <p><a href=”http://bitcore.io/guide/unit.html”>Read more in the bitcore developer guide</a>.</p>
+<div class="explanation">
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <h3 class="fnt1">This is how it works</h3>
     </div>
-    <div class="large-7 columns">
-      <pre><code class="javascript" example-code="exampleCode">
-      </code></pre>
-    </div>
+  </div>
+  <div class="row collapse">
+      <div class="small-4 columns">
+        <p>BTC, millibitcoins, bits. Bitcore provides functionality to avoid problems caused by switching between different units. This interactive example will show how to use the <tt>bitcore.Unit</tt> class.</p>
+        <p><a href=”http://bitcore.io/guide/unit.html”>Read more in the bitcore developer guide</a>.</p>
+      </div>
+      <div class="small-7 offset-1 columns">
+        <pre>
+          <code class="javascript" example-code="exampleCode"></code>
+        </pre>
+      </div>
   </div>
 </div>

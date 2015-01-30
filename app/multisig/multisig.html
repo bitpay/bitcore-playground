@@ -1,6 +1,6 @@
 <div class="row" require-equalizer>
   <div class="small-8 columns content-title">
-    <h1>Keys Demo</h1>
+    <h1>Multisig Addresses</h1>
   </div>
   <div class="small-4 columns text-right">
     <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
@@ -16,10 +16,82 @@
   </div>
 </div>
 
+    <div class="row" data-equalizer>
+      <div class="small-9 columns bg-color-white radius" data-equalizer-watch>
+        
+        <div class="row">
+          <div class="small-2 columns">
+            <div class="row">
+              <div class="small-4 columns">
+                <a href="" ng-click="remove($index)"><i class="fi-x"></i></a>
+              </div>  
+              <div class="small-8 columns">
+                <img src="../img/user-icon.svg" class="">
+              </div>  
+            </div>
+          </div> 
+          <div class="small-4 columns">
+            <div class="row">
+              <div class="small-3 columns">
+                <img src="../img/private-key-icon.svg">
+              </div>
+              <div class="small-9 columns">
+                <h3 class="key-title">Private Key</h3>
+                  <div class="row">
+                    <div class="small-12 columns">
+                      <div class="row collapse">
+                        <div class="small-10 columns">
+                          <input ng-model="key.privKey" ng-change="updatePriv($index)" type="text" class="radius">
+                        </div>
+                        <div class="small-2 columns">
+                          <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="small-1 columns">
+            <img src="../img/arrow-right.svg">
+          </div> 
+          <div class="small-4 columns parent">
+            <div class="row child">
+              <div class="small-3 columns">
+                <img src="../img/public-key-icon.svg">
+              </div>
+              <div class="small-9 columns">
+                <h3 class="key-title">Public Key</h3>
+                <input ng-model="key.pubKey" ng-change="updatePub($index)" type="text" class="radius">
+              </div>
+            </div>
+          </div>
+          <div class="small-1 columns">
+            <img src="../img/arrow-right.svg">
+          </div> 
+        </div> 
 
-<div class="row" data-equalizer>
-  <div class="large-6 columns" data-equalizer-watch>
-    <h2>Keys</h2>
+        </div>
+      <div class="small-3 columns" data-equalizer-watch>
+        <div class="row">
+          <div class="small-11 large-offset-1 columns">
+            <div class="row bg-color-white radius">
+              <div class="small-2 columns">
+                <img src="../img/btc-icon-address.svg">
+              </div>
+              <div class="small-10 columns">
+                <h3 class="key-title">Bitcoin Address</h3>
+                <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="row">
+  <div class="large-6 columns">
 
 
 <!--White box starts--> 
@@ -49,12 +121,6 @@
     </div>
   </div>
 
-  <div class="large-6 columns bg-color-white" data-equalizer-watch>
-    <div>
-      Bitcoin Address
-      <input ng-model="address" type="text" placeholder="Bitcoin address" readonly auto-select/>
-    </div>
-  </div>
 </div>
 
 <div class="row">

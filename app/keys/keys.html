@@ -16,7 +16,7 @@
       <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)" private-key auto-select/>
     </div>
     <div class="small-2 large-1 columns">
-      <button type="button" ng-click="newKey()" class="postfix radius tiny white m0"></button>
+      <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
     </div>
   </div>
   <!--White box ends--> 
@@ -84,17 +84,21 @@
   </div>
   <!--White box ends--> 
 
-
-<div class="row">
-  <div class="explanation">
-    <h3 class="fnt1">This is how it works</h3>
-    <div class="large-5 columns">
-      <p>Managing private keys is something your bitcoin app will almost certainly need to do. From a private key (which is merely a number between 1 and <tt>0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE BAAE DCE6 AF48 A03B BFD2 5E8C D036 4140</tt>) you can get an associated public key. A bitcoin address is merely the hash of that public key.</p>
-      <p><a href=”http://bitcore.io/guide/privatekey.html”>Read more in the bitcore developer guide</a>.</p>
+<div class="explanation">
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <h3 class="fnt1">This is how it works</h3>
     </div>
-    <div class="large-7 columns">
-      <pre><code class="javascript" example-code="exampleCode">
-      </code></pre>
-    </div>
+  </div>
+  <div class="row collapse">
+      <div class="small-4 columns">
+        <p>Managing private keys is something your bitcoin app will almost certainly need to do. From a private key (which is merely a number between 1 and <tt>0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE BAAE DCE6 AF48 A03B BFD2 5E8C D036 4140</tt>) you can get an associated public key. A bitcoin address is merely the hash of that public key.</p>
+        <p><a href=”http://bitcore.io/guide/privatekey.html”>Read more in the bitcore developer guide</a>.</p>
+      </div>
+      <div class="small-7 offset-1 columns">
+        <pre>
+          <code class="javascript" example-code="exampleCode"></code>
+        </pre>
+      </div>
   </div>
 </div>
