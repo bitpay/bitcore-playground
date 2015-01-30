@@ -90,33 +90,35 @@
                 </div>
               </div>
 
-              <div class="row capsule-inside p5 mt5 mb5" ng-repeat="input in transaction.inputs">
+              <div class="row collapse capsule-inside p5 mt5 mb5" ng-repeat="input in transaction.inputs">
                 <div class="small-12 columns">
                   <div class="row collapse">
                     <div class="small-10 columns">
                       <h1 class="amount fnt09">{{input.output.satoshis|btc}}<span class="btc"> BTC</span></h1>
                     </div> 
-                    <div class="small-1 columns">
-                      <div class="small-1 columns"><i class="fi-check check"></i></div>
+                    <div class="small-1 text-left columns">
+                      <i class="fi-check check"></i>
                     </div> 
-                    <div class="small-1 columns">
-                      <div class="small-1 columns"><a ng-click="removeInput(input)"><i class="fi-x"></i></a></div>
+                    <div class="small-1 columns text-right close">
+                      <a ng-click="removeInput(input)"><i class="fi-x"></i></a>
                     </div> 
                   </div>
                   <div class="row collapse">
-                    <div class="fnt06 text-center more-info pt5">
-                      <a ng-hide="input.visible" ng-click="input.visible = true">More Info</a>
+                    <div class="fnt06 text-center more-info">
+                      <a ng-hide="input.visible" ng-click="input.visible = true"><i class="fi-arrow-down"> More Info</i></a>
                     </div>
                     <div class="fnt06 text-center less-info">
-                      <a ng-show="input.visible" ng-click="input.visible = false">Less Info</a>
+                      <a ng-show="input.visible" ng-click="input.visible = false"><i class="fi-arrow-up"> Less Info</i></a>
                     </div>
                   </div>
                 </div>
 
                 <div class="row" ng-show="input.visible">
-                  TX ID: {{input.prevTxId.toString('hex')}}<br>
-                  OUT #: {{input.outputIndex}}<br>
-                  Script: {{input.output.script.toString()}}
+                  <div class="small-10 columns">
+                    <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{input.prevTxId.toString('hex')}}</span></div>
+                    <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{input.outputIndex}}</span></div>
+                    <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{input.output.script.toString()}}</span></div>
+                  </div>
                 </div>
                
               </div>
@@ -131,6 +133,10 @@
               <div class="row">
                 <div class="small-6 columns">
                   <button type="button" ng-click="displayAddAddress = !displayAddAddress" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
+
+<a href="#" data-reveal-id="myModal">Click Me For A Modal</a> <div id="myModal" class="reveal-modal" data-reveal> <h2>Awesome. I have it.</h2> <p class="lead">Your couch. It is mine.</p> <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p> <a class="close-reveal-modal">&#215;</a> </div>
+
+
                   <div class="small-4 small-push-1 columns" ng-show="displayAddAddress">
                     <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
                     <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>

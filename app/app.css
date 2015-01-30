@@ -115,6 +115,10 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 	font-size: 1em
 }
 
+.fnt12{
+	font-size: 1.2em
+}
+
 /* Font Color */
 .fntwhite{
 	color: #FFFFFF;
@@ -374,6 +378,7 @@ a.share-link{
 .prefix-clean	 {		
 		background-color: #FFFFFF !important;
 		border-color: #FFFFFF !important; 
+		text-align: left;
 		} 	
 
 .input-title-priv span, .input-title-pub span, .input-title-btcad span, .input-title {	
@@ -425,7 +430,7 @@ a.share-link{
 	text-transform: uppercase;
 	} 
 
-.more-info a, .less-info a{ 
+.more-info a, .less-info a, .close a{ 
 	color: #979797;  
 	} 
 
@@ -435,7 +440,7 @@ a.share-link{
 .less-info a{ 
 	} 	
 
-.more-info a:hover, .less-info a:hover{ 
+.more-info a:hover, .less-info a:hover, .close a:hover{ 
 	color: #1A1B1A;  
 	} 	
 
@@ -495,10 +500,6 @@ padding: 20px 0 20px 40px;
  /* Buttons */
 
 .random-button {
-
-  background-image: url("../img/dice-icon.svg");
-   background-repeat: no-repeat;
-   background-position: center center;
    background-color: #FFFFFF;
    border: solid 1px ;
    border-color: #E2DFDF;
