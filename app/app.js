@@ -6,6 +6,7 @@ var app = angular.module('playApp', [
   'playApp.keys',
   'playApp.hdkeys',
   'playApp.transaction',
+  'playApp.unspent',
   'playApp.multisig'
 ]);
 
