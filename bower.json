@@ -16,6 +16,7 @@
     "bitcore": "~0.8.6",
     "highlightjs": "~8.4.0",
     "lodash": "~3.0.0",
-    "foundation-icon-fonts": "zurb/foundation-icon-fonts"
+    "foundation-icon-fonts": "zurb/foundation-icon-fonts",
+    "jquery-appear": "~0.2.2"
   }
 }

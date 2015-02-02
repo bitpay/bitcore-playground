@@ -1,12 +1,45 @@
 $(function () {
 
 function REPL() {
+
   this.element = document.getElementById("console");
-  this.console = $('#console').jqconsole(null, '>> ');
+  this.console = $('#console').jqconsole("Let's play with bitcore!\n", '>> ');
+  this.console.$input_source.blur();
+
+  setInterval(function(){
+    $('.jqconsole-cursor').toggleClass("blink");
+  }, 1000);
+
+  $('#terminal-content').on('appear', function() {
+    $('#terminaltab-sticky').addClass('hide');
+  });
+
+  $('#terminal-content').on('disappear', function() {
+    $('#terminaltab-sticky').removeClass('hide');
+  });
+
+  $('.goto-repl').click(function() {
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+  });
 
   var self = this;
   $(this.element).click(function(){
     self.console.$input_source.focus();
+  });
+
+  this.console.RegisterShortcut('U', function() {
+    var col = self.console.GetColumn() - 3;
+    var text = self.console.GetPromptText();
+    self.console.SetPromptText(text.slice(col));
+    self.console.MoveToStart();
+  });
+
+  this.console.RegisterShortcut('A', function() {
+    self.console.MoveToStart();
+  });
+
+  this.console.RegisterShortcut('E', function() {
+    self.console.MoveToStart();
   });
 
   // Autocomplete hack
@@ -41,6 +74,7 @@ function REPL() {
 
     if (alternatives.length > 1) {
       this._PrintAlternatives(alternatives);
+      self.scrollToBottom();
     }
   };
 
@@ -130,7 +164,9 @@ REPL.prototype.resultCallback = function(result) {
     this.console.Write('undefined\n', 'jqconsole-undefined');
     return this.prompt();
   }
- 
+
+  window._ = result;
+
   if (result instanceof Object && result.inspect) {
     result = result.inspect();
   }
@@ -140,11 +176,12 @@ REPL.prototype.resultCallback = function(result) {
 }
 
 REPL.prototype.errorCallback = function(error) {
-  console.log(arguments)
+  this.console.Write('' + error + '\n', 'jqconsole-error');
   this.prompt();
 }
 
 window.REPL = new REPL();
 window.REPL.prompt();
+window.REPL.console.SetPromptText("priv = new bitcore.PrivateKey();");
 
 });

@@ -464,7 +464,7 @@ a.share-link{
 	} 
 
 .more-info a, .less-info a, .close a{ 
-	color: #979797;  
+	color: #979797;
 	} 
 
 .more-info a{ 
@@ -567,6 +567,7 @@ padding: 20px 0 20px 40px;
     height: 250px;
     overflow-y: scroll;
     background-color: #3A3A3A;
+    font-size: 1.2em;
   }
 
   #console::-webkit-scrollbar {
@@ -579,6 +580,7 @@ padding: 20px 0 20px 40px;
 
   #console div:first-child {
     position: inherit !important;
+    word-wrap: break-word;
   }
 
   /* The inner console element. */
@@ -587,11 +589,15 @@ padding: 20px 0 20px 40px;
   }
   /* The cursor. */
   .jqconsole-cursor {
-      background-color: blue;
+      background-color: #AAA;
   }
   /* The cursor color when the console looses focus. */
   .jqconsole-blurred .jqconsole-cursor {
       background-color: #666;
+  }
+
+  .jqconsole-blurred .jqconsole-cursor.blink {
+    background-color: #AAA;
   }
   /* The current prompt text color */
   .jqconsole-prompt {
@@ -624,7 +630,7 @@ padding: 20px 0 20px 40px;
       color: red;
   }
 
-#terminaltab{
+#terminaltab, #terminaltab-sticky {
 	display: block;
 	width: 80px;
 	height: 50px;
@@ -635,7 +641,16 @@ padding: 20px 0 20px 40px;
   margin-top: -50px;
 	} 
 
+#terminaltab-sticky {
+  position: fixed;
+  bottom: 0;
+}
+
 #terminal-content{
 font-family: Monaco, "Courier New", Courier, monospace !important;
 	} 	
 
+.footer {
+  border-top: solid 1px #555;
+  padding-top: 22px;
+}
