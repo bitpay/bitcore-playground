@@ -78,16 +78,8 @@
 
               <!-- Sign inputs form -->
               <div class="row collapse">
-                <div class="small-3 columns input-title">
-                  <span class="prefix-clean prefix">Sign all input</span>
-                </div>
-                <div class="small-8 columns">
-                  <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select>
-                </div>
-              </div>
-              <div class="row collapse">
-                <div class="small-8 small-offset-4 columns">
-                  <button type="button" ng-click="signWith(privkey)" class="expand radius tiny button1 mt5">Sign</button>
+                <div class="small-6 small-offset-3 columns">
+                  <button type="button" data-reveal-id="addSignatureModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Sign</button>
                 </div>
               </div>
 
@@ -97,7 +89,7 @@
                     <div class="small-10 columns">
                       <h1 class="amount fnt09">{{input.output.satoshis|btc}}<span class="btc"> BTC</span></h1>
                     </div> 
-                    <div class="small-1 text-left columns">
+                    <div class="small-1 text-left columns" ng-show="input.isFullySigned()">
                       <i class="fi-check check"></i>
                     </div> 
                     <div class="small-1 columns text-right close">
@@ -133,23 +125,10 @@
 
               <div class="row collapse">
                 <div class="small-6 columns">
-                  <button type="button" ng-click="displayAddAddress = !displayAddAddress" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
-
-<a href="#" data-reveal-id="myModal">Click Me For A Modal</a> <div id="myModal" class="reveal-modal" data-reveal> <h2>Awesome. I have it.</h2> <p class="lead">Your couch. It is mine.</p> <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p> <a class="close-reveal-modal">&#215;</a> </div>
-
-
-                  <div class="small-4 small-push-1 columns" ng-show="displayAddAddress">
-                    <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
-                    <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
-                    <button type="button" ng-click="addAddressOutput(toAddress, amount)">Send to Address</button>
-                  </div>
+                  <button type="button" data-reveal-id="addAddressModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
                 </div>
                 <div class="small-6 columns">
-                  <button type="button" ng-click="displayAddData = !displayAddData" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
-                  <div class="small-4 small-push-1 columns" ng-show="displayAddData">
-                    <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
-                    <button type="button" ng-click="addDataOutput(info)">+ Add Data</button>
-                  </div>
+                  <button type="button" data-reveal-id="addDataModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
                 </div>
               </div>
 
@@ -199,5 +178,65 @@
       <code class="javascript" example-code="exampleCode"></code>
     </pre>
     <p><a href="http://bitcore.io/guide/transaction.html">Read more in the bitcore developer guide</a></p>
+  </div>
+</div>
+
+<div id="addAddressModal" class="reveal-modal container fixed-position" data-reveal>
+  <h2>Add a Pay to Public Key Hash Output</h2>
+  <div class="row collapse">
+    <div class="small-8 columns">
+      <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
+    </div>
+    <div class="small-4 columns">
+      <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <button type="button" data-reveal-id="addDataModal">Cancel</button>
+    </div>
+    <div class="small-3 columns">
+      <button type="button" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal">Send to Address</button>
+    </div>
+  </div>
+</div>
+<div id="addDataModal" class="reveal-modal fixed-position" data-reveal>
+  <h2>Add a OP_RETURN Output</h2>
+  <div class="row collapse">
+    <div class="small-8 columns">
+      <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
+    </div>
+    <div class="small-4 columns">
+      <div class="row collapse">
+        <div class="small-4 columns">
+          <input type="checkbox" ng-model="isHexa" checked>
+        </div>
+        <div class="small-8 columns">
+          <p>Data is hexa-encoded</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <button type="button" data-reveal-id="addDataModal">Cancel</button>
+    </div>
+    <div class="small-3 columns">
+      <button type="button" ng-click="addDataOutput(info)" data-reveal-id="addDataModal">Add Data</button>
+    </div>
+  </div>
+</div>
+<div id="addSignatureModal" class="reveal-modal fixed-position" data-reveal>
+  <h2>Sign transaction with public key</h2>
+  <div class="row collapse">
+    <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select>
+  </div>
+  <div class="row">
+    <div class="small-3 columns">
+      <button type="button" data-reveal-id="addSignatureModal">Cancel</button>
+    </div>
+    <div class="small-3 columns">
+      <button type="button" ng-click="signWithKey(privkey)" data-reveal-id="addSignatureModal">Sign</button>
+    </div>
   </div>
 </div>
