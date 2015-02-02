@@ -1,8 +1,9 @@
 $(function () {
 
 function REPL() {
+
   this.element = document.getElementById("console");
-  this.console = $('#console').jqconsole(null, '>> ');
+  this.console = $('#console').jqconsole("Let's play with bitcore!\n", '>> ');
   this.console.$input_source.blur();
 
   setInterval(function(){
@@ -151,5 +152,6 @@ REPL.prototype.errorCallback = function(error) {
 
 window.REPL = new REPL();
 window.REPL.prompt();
+window.REPL.console.SetPromptText("priv = new bitcore.PrivateKey();");
 
 });
