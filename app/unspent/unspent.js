@@ -24,6 +24,10 @@ angular.module('playApp.unspent', ['ngRoute'])
       if (err) throw err;
 
       $scope.utxos = utxos;
+      for (var utxo in utxos) {
+        utxos[utxo].url = client.url + '/tx/' + utxos[utxo].txId;
+        utxos[utxo].txUrl = 'transaction/';
+      }
       $scope.$apply();
       console.log(utxos);
     }

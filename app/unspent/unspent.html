@@ -19,15 +19,12 @@
   </div>
 </div>
 <div ng-show="utxos">
-  <div class="row" ng-repeat="utxo in utxos">
-    <div class="small-12 columns">
-        <div class="text-center">
-          <span class="item-title">Amount:</span> <span class="amount item-data">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-        </div>
-        <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
-        <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
-        <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
-      </div>
+  <div class="row unspentitem" ng-repeat="utxo in utxos">
+    <div> <span class="item-title">Amount:</span> <span class="amount item-data">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1> </div>
+    <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
+    <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
+    <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
+    <a href="{{utxo.url}}">See transaction on Insight</a>
   </div>
 </div>
 

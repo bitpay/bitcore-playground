@@ -86,6 +86,17 @@ font-weight: 700;
 src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
 }
 
+.unspentitem {
+  margin: 20px;
+  padding: 20px;
+
+  background-color: white;
+  border: #333 1px;
+ 	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
 /* Paddings and margins */
 .p0 {padding: 0rem 0rem 0rem;}
 .p5 {padding: 5px;}
