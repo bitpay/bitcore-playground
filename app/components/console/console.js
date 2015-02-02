@@ -164,7 +164,9 @@ REPL.prototype.resultCallback = function(result) {
     this.console.Write('undefined\n', 'jqconsole-undefined');
     return this.prompt();
   }
- 
+
+  window._ = result;
+
   if (result instanceof Object && result.inspect) {
     result = result.inspect();
   }
