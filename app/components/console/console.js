@@ -47,6 +47,7 @@ function REPL() {
 
     if (alternatives.length > 1) {
       this._PrintAlternatives(alternatives);
+      self.scrollToBottom();
     }
   };
 

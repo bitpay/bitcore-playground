@@ -464,7 +464,7 @@ a.share-link{
 	} 
 
 .more-info a, .less-info a, .close a{ 
-	color: #979797;  
+	color: #979797;
 	} 
 
 .more-info a{ 
@@ -580,6 +580,7 @@ padding: 20px 0 20px 40px;
 
   #console div:first-child {
     position: inherit !important;
+    word-wrap: break-word;
   }
 
   /* The inner console element. */
