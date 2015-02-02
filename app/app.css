@@ -630,7 +630,7 @@ padding: 20px 0 20px 40px;
       color: red;
   }
 
-#terminaltab{
+#terminaltab, #terminaltab-sticky {
 	display: block;
 	width: 80px;
 	height: 50px;
@@ -640,6 +640,11 @@ padding: 20px 0 20px 40px;
   float: left;
   margin-top: -50px;
 	} 
+
+#terminaltab-sticky {
+  position: fixed;
+  bottom: 0;
+}
 
 #terminal-content{
 font-family: Monaco, "Courier New", Courier, monospace !important;

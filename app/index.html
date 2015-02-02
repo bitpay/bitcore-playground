@@ -19,6 +19,7 @@
   <script src="bower_components/highlightjs/highlight.pack.js"></script>
   <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jquery-appear/src/jquery.appear.js"></script>
   <script src="bower_components/lodash/lodash.min.js"></script>
   <script src="bower_components/foundation/js/foundation.min.js"></script>
   <script src="bower_components/foundation/js/foundation/foundation.tooltip.js"></script>
@@ -81,7 +82,8 @@
 <section id="footer" class="bg-color-black2 ng-cloak" ng-show="showFooter">
 
   <div id="terminal" class="bg-color-gray1">
-    <div id="terminaltab" class="bg-color-black2 rdt3"></div>
+    <div id="terminaltab-sticky" class="bg-color-black2 rdt3 goto-repl"></div>
+    <div id="terminaltab" class="bg-color-black2 rdt3 goto-repl"></div>
     <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
       <ng-include src="'components/console/console.html'"/>
     </div>

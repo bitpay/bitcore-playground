@@ -10,6 +10,19 @@ function REPL() {
     $('.jqconsole-cursor').toggleClass("blink");
   }, 1000);
 
+
+  $('#terminal-content').on('appear', function() {
+    $('#terminaltab-sticky').addClass('hide');
+  });
+
+  $('#terminal-content').on('disappear', function() {
+    $('#terminaltab-sticky').removeClass('hide');
+  });
+
+  $('.goto-repl').click(function() {
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+  });
+
   var self = this;
   $(this.element).click(function(){
     self.console.$input_source.focus();
