@@ -3,6 +3,11 @@ $(function () {
 function REPL() {
   this.element = document.getElementById("console");
   this.console = $('#console').jqconsole(null, '>> ');
+  this.console.$input_source.blur();
+
+  setInterval(function(){
+    $('.jqconsole-cursor').toggleClass("blink");
+  }, 1000);
 
   var self = this;
   $(this.element).click(function(){
