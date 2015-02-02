@@ -1,6 +1,7 @@
 <div class="row" require-modal>
   <div class="small-8 columns content-title">
-    <h1>Bitcore Transaction Demo</h1>
+    <h1>Transaction</h1>
+    <p>Build, sign and broadcast a transaction.</p>
   </div>
   <div class="small-4 columns text-right">
     <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
@@ -194,14 +195,9 @@
     </div>
   </div>
   <div class="row collapse">
-      <div class="small-4 columns">
-        <p>Bitcore provides a simple API for transaction creation - just specify outputs corresponding to an address that you control, a private key, and where do you want to spend your bitcoins (and optionally, whatever information would you like to record in the blockchain as an <tt>OP_RETURN</tt> output).</p>
-        <p><a href="http://bitcore.io/guide/transaction.html">Read more in the bitcore developer guide</a></p>
-      </div>
-      <div class="small-7 offset-1 columns">
-        <pre>
-          <code class="javascript" example-code="exampleCode"></code>
-        </pre>
-      </div>
+    <pre>
+      <code class="javascript" example-code="exampleCode"></code>
+    </pre>
+    <p><a href="http://bitcore.io/guide/transaction.html">Read more in the bitcore developer guide</a></p>
   </div>
 </div>

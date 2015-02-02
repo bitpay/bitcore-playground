@@ -1,6 +1,7 @@
 <div class="row">
   <div class="small-8 columns content-title">
-    <h1>Keys Demo</h1>
+    <h1>Address</h1>
+    <p>Address generation from a private or public key.</p>
   </div>
   <div class="small-4 columns text-right">
     <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
@@ -71,14 +72,9 @@
     </div>
   </div>
   <div class="row collapse">
-      <div class="small-4 columns">
-        <p>Managing private keys is something your bitcoin app will almost certainly need to do. From a private key (which is merely a number between 1 and <tt>0xFFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFE BAAE DCE6 AF48 A03B BFD2 5E8C D036 4140</tt>) you can get an associated public key. A bitcoin address is merely the hash of that public key.</p>
-        <p><a href="http://bitcore.io/guide/privatekey.html">Read more in the bitcore developer guide</a>.</p>
-      </div>
-      <div class="small-7 offset-1 columns">
-        <pre>
-          <code class="javascript" example-code="exampleCode"></code>
-        </pre>
-      </div>
+    <pre>
+      <code class="javascript" example-code="exampleCode"></code>
+    </pre>
+    <p><a href="http://bitcore.io/guide/privatekey.html">Read more in the bitcore developer guide</a>.</p>
   </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="row" require-equalizer>
   <div class="small-8 columns content-title">
-    <h1>Multisig Addresses</h1>
+    <h1>Multisig Address</h1>
+    <p>Derive a bitcoin address that requires several signatures to spend it's funds.</p>
   </div>
   <div class="small-4 columns text-right">
     <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
@@ -101,16 +102,16 @@
 
 </div>
 
-<div class="row">
-  <div class="explanation">
-    <h3 class="fnt1">This is how it works</h3>
-    <div class="large-5 columns">
-      <p>“2014 is the year of multisig” said Gavin Andresen at Bitcoin2014 in Amsterdam. Bitcore provides an easy to use interface to create an address for which funds can only be redeemed if signed by the owners of the private keys corresponding to a subset of public keys. This interactive example allows you to create an address from a set of public or private keys.</p>
-      <p><a href="http://bitcore.io/guide/transaction.html#Multisig_Transactions">Read more in the bitcore developer guide</a>.</p>
+<div class="explanation">
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <h3 class="fnt1">This is how it works</h3>
     </div>
-    <div class="large-7 columns">
-      <pre><code class="javascript" example-code="exampleCode">
-      </code></pre>
-    </div>
+  </div>
+  <div class="row collapse">
+    <pre>
+      <code class="javascript" example-code="exampleCode"></code>
+    </pre>
+    <p><a href="http://bitcore.io/guide/transaction.html#Multisig_Transactions">Read more in the bitcore developer guide</a>.</p>
   </div>
 </div>
