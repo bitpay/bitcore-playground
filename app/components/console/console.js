@@ -140,7 +140,7 @@ REPL.prototype.resultCallback = function(result) {
 }
 
 REPL.prototype.errorCallback = function(error) {
-  console.log(arguments)
+  this.console.Write('' + error + '\n', 'jqconsole-error');
   this.prompt();
 }
 
