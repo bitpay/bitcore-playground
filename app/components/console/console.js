@@ -10,7 +10,6 @@ function REPL() {
     $('.jqconsole-cursor').toggleClass("blink");
   }, 1000);
 
-
   $('#terminal-content').on('appear', function() {
     $('#terminaltab-sticky').addClass('hide');
   });
@@ -26,6 +25,21 @@ function REPL() {
   var self = this;
   $(this.element).click(function(){
     self.console.$input_source.focus();
+  });
+
+  this.console.RegisterShortcut('U', function() {
+    var col = self.console.GetColumn() - 3;
+    var text = self.console.GetPromptText();
+    self.console.SetPromptText(text.slice(col));
+    self.console.MoveToStart();
+  });
+
+  this.console.RegisterShortcut('A', function() {
+    self.console.MoveToStart();
+  });
+
+  this.console.RegisterShortcut('E', function() {
+    self.console.MoveToStart();
   });
 
   // Autocomplete hack
