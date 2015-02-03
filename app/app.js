@@ -86,7 +86,7 @@ function registerValidator(app, name, validator) {
 registerValidator(app, 'privateKey', function(value) {
   return bitcore.PrivateKey.isValid(value);
 });
-registerValidator(app, 'privateKey', function(value) {
+registerValidator(app, 'publicKey', function(value) {
   return bitcore.PublicKey.isValid(value);
 });
 registerValidator(app, 'xprivateKey', function(value) {

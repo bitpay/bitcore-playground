@@ -22,18 +22,22 @@
         <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1 mt5">Fetch</button>
       </div>
     </div>
-    <div class="row" ng-repeat="utxo in utxos">
-      <div class="small-12 columns bg-color-white">
+    <div class="row bg-color-white">
+      <div class="small-12 large-4 columns" ng-repeat="utxo in utxos">
         <div class="capsule-inside p5 mt5 mb5">
           <div class="text-center">
             <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
           </div>
           <button type="button" ng-click="addUTXO(utxo)" class="button expand radius button2 fnt06">Move to inputs</button>
           <div ng-show="utxo.visible">
-            <div class="more-info-data">
-                <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
-                <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
-                <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
+            <div class="more-info-data row">
+              <div class="fnt08 mt5 small-4 columns"><span class="item-title">TX ID:</span></div> <div class="small-8 columns"><input class="input" readonly value="{{utxo.txId}}"></div>
+            </div>
+            <div class="more-info-data row">
+              <div class="fnt08 mt5 small-4 columns"><span class="item-title">OUT #:</span></div>  <div class="small-8 columns"><input readonly class="input" value="{{utxo.outputIndex}}"></div>
+            </div>
+            <div class="more-info-data row">
+              <div class="fnt08 mt5 small-4 columns"><span class="item-title">Script:</span></div>  <div class="small-8 columns"><input readonly class="input" value="{{utxo.script.toString()}}"></div>
             </div>
           </div>
           <div class="fnt06 text-center more-info pt5">
@@ -162,6 +166,17 @@
     </div>
   </div>
 </div>
+<div class="row bg-color-white white-box radius p20">
+  <div>
+    Serialized transaction:
+  </div>
+  <div>
+    <textarea readonly>{{transaction.serialize(true)}}</textarea>
+  </div>
+  <div>
+    <a ng-click="broadcast()">Broadcast Transaction</a>
+  </div>
+</div>
 
 <div class="explanation">
   <div class="row collapse">
@@ -232,7 +247,7 @@
       <button type="button" data-reveal-id="addSignatureModal">Cancel</button>
     </div>
     <div class="small-3 columns">
-      <button type="button" ng-click="signWithKey(privkey)" data-reveal-id="addSignatureModal">Sign</button>
+      <button type="button" ng-click="signWith(privkey)" data-reveal-id="addSignatureModal">Sign</button>
     </div>
   </div>
 </div>
