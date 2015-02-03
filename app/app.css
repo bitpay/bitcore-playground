@@ -120,6 +120,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .pt20 {padding-top: 20px}
 .pt30 {padding-top: 30px}
 .pr5 {padding-right: 5px}
+.pr10 {padding-right: 10px}
 .plr10 {padding-right: 10px; padding-left: 10px;}
 .pb10 {padding-bottom: 10px}
 .pb20 {padding-bottom: 20px}
@@ -180,6 +181,10 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 
 .fnt20{
 	font-size: 2em
+}
+
+.fnt24{
+	font-size: 2.4em
 }
 
 /* Font Color */
