@@ -9,161 +9,157 @@
 </div>
 
 <div class="row">
-  <div class="small-4 columns bg-color-white white-box radius p20">
-    <div class="row">
-      <div class="small-12 columns">
-        <h2 class="text-center">Unspent Outputs</h2>    
-        <!-- Fetch unspent form -->
+  <div class="small-12 columns">
+    <h2 class="text-center">Output Selection</h2>    
+    <!-- Fetch unspent form -->
+    <div class="row bg-color-white">
+      <div class="small-6 small-offset-3">
         <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
+      </div>
+    </div>
+    <div class="row bg-color-white">
+      <div class="small-2 small-offset-5 columns">
         <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1 mt5">Fetch</button>
-        
-          <div class="row" ng-repeat="utxo in utxos">
-            <div class="small-12 columns">
-              <div class="capsule-inside p5 mt5 mb5">
-                <div class="text-center">
-                  <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-                </div>
-                <button type="button" ng-click="addUTXO(utxo)" class="button expand radius button2 fnt06">Move to inputs</button>
-                <div ng-show="utxo.visible">
-                  <div class="more-info-data">
-                      <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
-                      <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
-                      <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
-                  </div>
-                </div>
-                <div class="fnt06 text-center more-info pt5">
-                  <a ng-hide="utxo.visible" ng-click="utxo.visible = true">More info</a>
-                </div>
-                <div class="fnt06 text-center less-info">
-                  <a ng-show="utxo.visible" ng-click="utxo.visible = false">Less info</a>
-                </div>
-              </div>
+      </div>
+    </div>
+    <div class="row" ng-repeat="utxo in utxos">
+      <div class="small-12 columns bg-color-white">
+        <div class="capsule-inside p5 mt5 mb5">
+          <div class="text-center">
+            <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+          </div>
+          <button type="button" ng-click="addUTXO(utxo)" class="button expand radius button2 fnt06">Move to inputs</button>
+          <div ng-show="utxo.visible">
+            <div class="more-info-data">
+                <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
+                <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
+                <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
             </div>
           </div>
+          <div class="fnt06 text-center more-info pt5">
+            <a ng-hide="utxo.visible" ng-click="utxo.visible = true">More info</a>
+          </div>
+          <div class="fnt06 text-center less-info">
+            <a ng-show="utxo.visible" ng-click="utxo.visible = false">Less info</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="small-8 columns">
-    <div class="row">
-      <div class="small-11 small-offset-1 columns bg-color-white white-box radius p20">
-        <h2 class="text-center">Transaction</h2>
-          <div class="row border-bottom">
-            <div class="small-6 columns  pt10 pb10">
-              <span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{transaction.id}}</span>
-            </div>
-            <div class="small-6 columns text-right pt10 pb10">
-              <span class="item-title">nLockTime:</span> <span class="item-data fntgrey1">{{transaction.nLockTime}}</span>
-            </div>
-          </div>
-          <div class="row border-bottom">
-            <div class="small-6 columns pt10 pb10">
-              <span class="item-title">Total Inputs:</span> <span class="item-data fntgrey1">{{transaction._inputAmount | btc}}</span>
-            </div>
-            <div class="small-6 columns pt10 pb10">
-              <div class="row">
-                <div class="small-6 columns">
-                  <span class="item-title">Total Outputs: </span> <span class="item-data fntgrey1">{{transaction._outputAmount | btc}}</span>
-                </div>
-                <div class="small-6 columns text-right">
-                  <span class="item-title">Fee:</span> <span class="item-data fntgrey1"> {{transaction.getFee() | btc}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="small-6 columns vertical-sep mt20">
-              <h2 class="text-center">Inputs</h2>
-
-              <!-- Sign inputs form -->
-              <div class="row collapse">
-                <div class="small-6 small-offset-3 columns">
-                  <button type="button" data-reveal-id="addSignatureModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Sign</button>
-                </div>
-              </div>
-
-              <div class="row collapse capsule-inside p5 mt5 mb5" ng-repeat="input in transaction.inputs">
-                <div class="small-12 columns">
-                  <div class="row collapse">
-                    <div class="small-10 columns">
-                      <h1 class="amount fnt09">{{input.output.satoshis|btc}}<span class="btc"> BTC</span></h1>
-                    </div> 
-                    <div class="small-1 text-left columns" ng-show="input.isFullySigned()">
-                      <i class="fi-check check"></i>
-                    </div> 
-                    <div class="small-1 columns text-right close">
-                      <a ng-click="removeInput(input)"><i class="fi-x"></i></a>
-                    </div> 
-                  </div>
-                  <div class="row collapse">
-                    <div class="fnt06 text-center more-info">
-                      <a ng-hide="input.visible" ng-click="input.visible = true"><i class="fi-arrow-down"> More Info</i></a>
-                    </div>
-                    <div class="fnt06 text-center less-info">
-                      <a ng-show="input.visible" ng-click="input.visible = false"><i class="fi-arrow-up"> Less Info</i></a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row collapse" ng-show="input.visible">
-                  <div class="small-10 columns">
-                    <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{input.prevTxId.toString('hex')}}</span></div>
-                    <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{input.outputIndex}}</span></div>
-                    <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{input.output.script.toString()}}</span></div>
-                  </div>
-                </div>
-               
-              </div>
-
-
-
-            </div>
-
-            <div class="small-6 columns mt20">
-              <h2 class="text-center">Outputs</h2>
-
-              <div class="row collapse">
-                <div class="small-6 columns">
-                  <button type="button" data-reveal-id="addAddressModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
-                </div>
-                <div class="small-6 columns">
-                  <button type="button" data-reveal-id="addDataModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
-                </div>
-              </div>
-
-              <div class="row collapse" ng-repeat="output in transaction.outputs">
-                <div class="row">
-                  <div class="small-4 columns" ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                    {{output.satoshis|btc}} to {{output.script.toAddress().toString()}}
-                  </div>
-                  <div class="small-4 columns" ng-show="output.script.isDataOut()">
-                    OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
-                  </div>
-                  <div class="small-4 columns" ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
-                    {{output.satoshis|btc}} to an unrecognized script
-                  </div>
-                  <div class="small-2 columns">
-                    <a ng-hide="output.visible" ng-click="output.visible = true">More Info</a>
-                    <a ng-show="output.visible" ng-click="output.visible = false">Less Info</a>
-                  </div>
-                  <div class="small-1 columns"><a ng-click="removeOutput($index)">X</a></div>
-                </div>
-
-                <div class="row collapse" ng-show="output.visible">
-                  Script: {{output.script.toString()}}
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
-
-    <div class="small-11 small-offset-1 columns bg-color-white white-box radius plr25por mt5">
-        <div class="row collapse">
-          <textarea rows=5>Transaction</textarea>
-        </div>
 </div>
-  </div>
+
+<div class="row mt20">
+  <div class="small-12 columns bg-color-white white-box radius p20">
+    <h2 class="text-center">Transaction</h2>
+      <div class="row border-bottom">
+        <div class="small-6 columns  pt10 pb10">
+          <span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{transaction.id}}</span>
+        </div>
+        <div class="small-6 columns text-right pt10 pb10">
+          <span class="item-title">nLockTime:</span> <span class="item-data fntgrey1">{{transaction.nLockTime}}</span>
+        </div>
+      </div>
+      <div class="row border-bottom">
+        <div class="small-6 columns pt10 pb10">
+          <span class="item-title">Total Inputs:</span> <span class="item-data fntgrey1">{{transaction._inputAmount | btc}}</span>
+        </div>
+        <div class="small-6 columns pt10 pb10">
+          <div class="row">
+            <div class="small-6 columns">
+              <span class="item-title">Total Outputs: </span> <span class="item-data fntgrey1">{{transaction._outputAmount | btc}}</span>
+            </div>
+            <div class="small-6 columns text-right">
+              <span class="item-title">Fee:</span> <span class="item-data fntgrey1"> {{transaction.getFee() | btc}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-6 columns vertical-sep mt20">
+          <h2 class="text-center">Inputs</h2>
+
+          <!-- Sign inputs form -->
+          <div class="row collapse">
+            <div class="small-6 small-offset-3 columns">
+              <button type="button" data-reveal-id="addSignatureModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Sign</button>
+            </div>
+          </div>
+
+          <div class="row collapse capsule-inside p5 mt5 mb5" ng-repeat="input in transaction.inputs">
+            <div class="small-12 columns">
+              <div class="row collapse">
+                <div class="small-10 columns">
+                  <h1 class="amount fnt09">{{input.output.satoshis|btc}}<span class="btc"> BTC</span></h1>
+                </div> 
+                <div class="small-1 text-left columns" ng-show="input.isFullySigned()">
+                  <i class="fi-check check"></i>
+                </div> 
+                <div class="small-1 columns text-right close">
+                  <a ng-click="removeInput(input)"><i class="fi-x"></i></a>
+                </div> 
+              </div>
+              <div class="row collapse">
+                <div class="fnt06 text-center more-info">
+                  <a ng-hide="input.visible" ng-click="input.visible = true"><i class="fi-arrow-down"> More Info</i></a>
+                </div>
+                <div class="fnt06 text-center less-info">
+                  <a ng-show="input.visible" ng-click="input.visible = false"><i class="fi-arrow-up"> Less Info</i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="row collapse" ng-show="input.visible">
+              <div class="small-10 columns">
+                <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{input.prevTxId.toString('hex')}}</span></div>
+                <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{input.outputIndex}}</span></div>
+                <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{input.output.script.toString()}}</span></div>
+              </div>
+            </div>
+            
+          </div>
+
+
+
+        </div>
+
+        <div class="small-6 columns mt20">
+          <h2 class="text-center">Outputs</h2>
+
+          <div class="row collapse">
+            <div class="small-6 columns">
+              <button type="button" data-reveal-id="addAddressModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Address</button>
+            </div>
+            <div class="small-6 columns">
+              <button type="button" data-reveal-id="addDataModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
+            </div>
+          </div>
+
+          <div class="row collapse" ng-repeat="output in transaction.outputs">
+            <div class="row">
+              <div class="small-4 columns" ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
+                {{output.satoshis|btc}} to {{output.script.toAddress().toString()}}
+              </div>
+              <div class="small-4 columns" ng-show="output.script.isDataOut()">
+                OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
+              </div>
+              <div class="small-4 columns" ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
+                {{output.satoshis|btc}} to an unrecognized script
+              </div>
+              <div class="small-2 columns">
+                <a ng-hide="output.visible" ng-click="output.visible = true">More Info</a>
+                <a ng-show="output.visible" ng-click="output.visible = false">Less Info</a>
+              </div>
+              <div class="small-1 columns"><a ng-click="removeOutput($index)">X</a></div>
+            </div>
+
+            <div class="row collapse" ng-show="output.visible">
+              Script: {{output.script.toString()}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
