@@ -53,13 +53,11 @@
   </section>
 <!--Header Ends-->
 
-<div class="show-for-large-up">
-
-<div class="main-sidebar">
+<div class="main-sidebar show-for-large-up">
       <!--Sidebar starts--> 
     <div class="large-12 columns examples pt30" ng-controller="SideBar">
-
       <ul class="menu">
+
         <li class="curent"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span> Units</a></li>
         <li class=""><a href="#/keys"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
         <li class=""><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
@@ -71,11 +69,17 @@
     <!--Sidebar ends--> 
 </div>
 
+<div class="main-content show-for-large-up">
+    <!--Content starts--> 
+    <div class="no-p small-12 columns">
+      <div ng-view class="bg-color-gray1 p4060"></div>
+    </div>
+    <!--Content ends--> 
 </div>
 
-<div class="main-content">
+<div class="show-for-medium-down">
     <!--Content starts--> 
-    <div class="no-pr small-12 columns">
+    <div class="no-p small-12 columns">
       <div ng-view class="bg-color-gray1 p4060"></div>
     </div>
     <!--Content ends--> 
