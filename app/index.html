@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
   <link rel="stylesheet" href="bower_components/highlightjs/styles/monokai_sublime.css">
   <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="../fonts/icomoon/style.css">
   <link rel="stylesheet" href="bower_components/foundation-icon-fonts/foundation-icons.css" />
 
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -32,50 +33,55 @@
   <section id="header" class="bg-color-black2">
     <div class="row p10t">
       <div class="medium-4 columns">
-        <a href="#"><img src="../img/bitcore-logo-hd.svg" width="99" height="28" alt="bitcore"/>
-          <span class="playground-logo 15em">playground</span>
+        <a href="#" class="">
+          <div class="playground-logo">
+            <span class="fnt13"><img src="../img/bitcore-logo-hd.svg" width="90" alt="bitcore" class="">
+             playground</span>
+           </div>
+
         </a>
       </div>
       <div class="medium-8 columns text-right">
-        <ul id="nav-hd">
-          <li class="docs"><a href="http://bitcore.io/guide/" target="_blank">Docs</a></li>
-          <li class="api"><a href="http://bitcore.io/api/" target="_blank">API</a></li>
-          <li class="github"><a href="https://github.com/bitpay/bitcore" target="_blank">Github</a></li>
+        <ul id="nav-hd" class="">
+          <li class=""><a href="http://bitcore.io/guide/" target="_blank"><span class="icon-docs"></span> Docs</a></li>
+          <li class=""><a href="http://bitcore.io/api/" target="_blank"><span class="icon-api"></span> API</a></li>
+          <li class=""><a href="hhttp://bitpaylabs.com/c/bitcore" target="_blank"><span class="icon-lab-solid"></span> Bitpay Labs</a></li>
+          <li class=""><a href="https://github.com/bitpay/bitcore" target="_blank"><span class="icon-github"></span> Github</a></li>
         </ul>
       </div>
     </div>
   </section>
 <!--Header Ends-->
 
+<div class="show-for-large-up">
+
 <div class="main-sidebar">
       <!--Sidebar starts--> 
-    <div class="large-12 columns examples" ng-controller="SideBar">
-      <div class="switch-sidebar">
-        <fieldset class="switch round tiny fnt08 vertical-align" tabindex="0">
-          <span class="switch-txt-opt">Testnet</span>
-          <input id="testnet" type="checkbox" ng-model="network" ng-change="setTestnet(network)">
-          <label for="testnet"></label>
-          <span class="switch-txt-opt">Livenet</span>
-        </fieldset>
-      </div>
+    <div class="large-12 columns examples pt30" ng-controller="SideBar">
+
       <ul class="menu">
-        <li class="units"><a href="#/units">Units</a></li>
-        <li class="keys"><a href="#/keys">Address</a></li>
-        <li class="hdkeys"><a href="#/multisig">Multisig Address</a></li>
-        <li class="multisig"><a href="#/hdkeys">HD Keys</a></li>
-        <li class="unspent"><a href="#/unspent"><span class="icon-coin"></span> Unspent Outputs</a></li>
-        <li class="transaction"><a href="#/transaction">Transaction</a></li>
+        <li class="curent"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span> Units</a></li>
+        <li class=""><a href="#/keys"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
+        <li class=""><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
+        <li class=""><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
+        <li class=""><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span> Unspent Outputs</a></li>
+        <li class=""><a href="#/transaction"><span class="icon-double-arrow-solid fnt14 pr5"></span> Transaction</a></li>
       </ul>
     </div>
     <!--Sidebar ends--> 
 </div>
+
+</div>
+
 <div class="main-content">
     <!--Content starts--> 
     <div class="no-pr small-12 columns">
-      <div ng-view class="bg-color-gray1 p60"></div>
+      <div ng-view class="bg-color-gray1 p4060"></div>
     </div>
     <!--Content ends--> 
 </div>
+
+
 <div style="clear: both;"></div>
 
 <!--Footer Starts-->
@@ -91,15 +97,16 @@
 
   <div class="row p10t footer">
     <div class="medium-4 columns">
-      <a href="#"><img src="../img/bitcore-logo-hd.svg" width="99" height="28" alt="bitcore"/>
-        <span class="playground-logo 15em">playground</span>
+      <a href="#"><img src="../img/bitcore-logo-hd.svg" width="55" alt="bitcore"/>
+        <span class="playground-logo">playground</span>
       </a>
     </div>
     <div class="medium-8 columns text-right">
-      <ul id="nav-hd">
-        <li class="docs"><a href="http://bitcore.io/guide/" target="_blank">Docs</a></li>
-        <li class="api"><a href="http://bitcore.io/api/" target="_blank">API</a></li>
-        <li class="github"><a href="https://github.com/bitpay/bitcore" target="_blank">Github</a></li>
+      <ul id="nav-ft" class="fnt08 m1020">
+        <li class=""><a href="http://bitcore.io/guide/" target="_blank"><span class="icon-docs"></span> Docs</a></li>
+        <li class=""><a href="http://bitcore.io/api/" target="_blank"><span class="icon-api"></span> API</a></li>
+        <li class=""><a href="http://bitpaylabs.com/c/bitcore" target="_blank"><span class="icon-lab-solid"></span> Bitpay Labs</a></li>
+        <li class=""><a href="https://github.com/bitpay/bitcore" target="_blank"><span class="icon-github"></span> Github</a></li>
       </ul>
     </div>
   </div>

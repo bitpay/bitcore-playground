@@ -1,10 +1,29 @@
 <div class="row collapse">
-  <div class="small-8 columns content-title">
+  <div class="large-9 small-7 columns content-title">
     <h1>Bitcoin Units</h1>
-    <p>Conversion between most frequent bitcoin units and fiat currencies.</p>
   </div>
-  <div class="small-4 columns text-right">
-    <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
+
+  <div class="large-3 small-5 columns">
+      <div class="row right pt6">
+        <div class="large-4 small-4 columns">
+          <span class="fnt07">TESTNET</span>
+        </div>
+        <div class="large-4 small-4 columns">
+          <div class="switch tiny round">
+            <input id="testnet" type="checkbox" ng-model="network" ng-change="setTestnet(network)">
+            <label for="testnet"></label>
+          </div> 
+        </div>
+        <div class="large-4 small-4 columns">
+          <span class="fnt07">LIVENET</span>
+        </div>
+      </div>
+  </div>
+
+</div>
+<div class="row collapse pb20">
+  <div class="small-12 columns">
+    <p>Conversion between most frequent bitcoin units and fiat currencies.</p>
   </div>
 </div>
 
@@ -18,10 +37,10 @@
       <div class="row collapse">
         <div class="small-12 columns">
           <div class="row collapse mb5">
-            <div class="small-2 columns">
+            <div class="large-3 large-2 columns">
               <label class="prefix prefix-clean fnt1">BTC</label>
             </div>
-            <div class="small-10 columns">
+            <div class="large-9 columns">
               <input type="number" ng-model="unit.BTC" ng-change="updateUnit(unit.BTC, 'BTC')" class="radius" auto-select>
             </div>
           </div>
@@ -29,12 +48,12 @@
       </div>
 
       <div class="row collapse">
-        <div class="small-12 columns">
+        <div class="large-12 columns">
           <div class="row collapse mb5">
-            <div class="small-2 columns">
+            <div class="large-3 columns">
               <label class="prefix prefix-clean fnt1">mBTC</label>
             </div>
-            <div class="small-10 columns">
+            <div class="large-9 columns">
               <input type="number" ng-model="unit.mBTC" ng-change="updateUnit(unit.mBTC, 'mBTC')" class="radius" auto-select>
             </div>
           </div>
@@ -42,12 +61,12 @@
       </div>
 
       <div class="row collapse">
-        <div class="small-12 columns">
+        <div class="large-12 columns">
           <div class="row mb5 collapse ">
-            <div class="small-2 columns">
+            <div class="large-3 columns">
               <label class="prefix prefix-clean fnt1">bits</label>
             </div>
-            <div class="small-10 columns">
+            <div class="large-9 columns">
               <input type="number" ng-model="unit.bits" ng-change="updateUnit(unit.bits, 'bits')" class="radius" auto-select>
             </div>
           </div>
@@ -55,12 +74,12 @@
       </div>
 
       <div class="row collapse">
-        <div class="small-12 columns">
+        <div class="large-12 columns">
           <div class="row mb5 collapse ">
-            <div class="small-2 columns">
+            <div class="large-3 columns">
               <label class="prefix prefix-clean fnt1">satoshis</label>
             </div>
-            <div class="small-10 columns">
+            <div class="large-9 columns">
               <input type="number" ng-model="unit.satoshis" ng-change="updateUnit(unit.satoshis, 'satoshis')" class="radius" auto-select>
             </div>
           </div>
@@ -75,12 +94,12 @@
       <h2 class="text-center">Fiat</h2>
 
       <div class="row collapse ">
-        <div class="small-12 columns">
+        <div class="large-12 columns">
           <div class="row collapse ">
-            <div class="small-2 columns">
+            <div class="large-3 columns">
               <label class="prefix prefix-clean fnt1">Currency</label>
             </div>
-            <div class="small-10 columns ">
+            <div class="large-9 columns ">
 
               <select
                 ng-model="currency"
@@ -93,12 +112,12 @@
 
 
       <div class="row collapse">
-        <div class="small-12 columns">
+        <div class="large-12 columns">
           <div class="row collapse ">
-            <div class="small-2 columns">
+            <div class="large-3 columns">
               <label class="prefix prefix-clean fnt1">Amount</label>
             </div>
-            <div class="small-10 columns">
+            <div class="large-9 columns">
               <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius" auto-select>
 
             </div>
@@ -124,8 +143,9 @@
   </div>
   <div class="row collapse">
       <pre>
+        <a href="http://bitcore.io/guide/unit.html" target="_blank" class="button radius small fnt14"><span class="icon-terminal fnt20"></span></a>
         <code class="javascript" example-code="exampleCode"></code>
       </pre>
-      <p><a href="http://bitcore.io/guide/unit.html">Read more in the bitcore developer guide</a>.</p>
+      <a href="http://bitcore.io/guide/unit.html" target="_blank" class="button radius small"><span class="icon-docs"></span> Read more in the bitcore developer guide.</a>
   </div>
 </div>
