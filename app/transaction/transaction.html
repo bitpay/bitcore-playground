@@ -139,26 +139,37 @@
             </div>
           </div>
 
-          <div class="row collapse" ng-repeat="output in transaction.outputs">
-            <div class="row">
-              <div class="small-4 columns" ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                {{output.satoshis|btc}} to {{output.script.toAddress().toString() | ellipsify}}
+          <div class="row collapse capsule-inside p5 mt5 mb5" ng-repeat="output in transaction.outputs">
+            <div class="small-12 columns">
+              <div class="row collapse">
+                <div class="small-11 columns">
+                  <h1 class="amount fnt09">
+                  <span ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
+                    {{output.satoshis|btc}} BTC to {{output.script.toAddress().toString() | ellipsify}}
+                  </span>
+                  <span ng-show="output.script.isDataOut()">
+                    OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
+                  </span>
+                  <span ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
+                    {{output.satoshis|btc}} BTC to an unrecognized script
+                  </span>
+                </div> 
+                <div class="small-1 columns text-right close">
+                  <a ng-click="removeOutput(output)"><i class="fi-x"></i></a>
+                </div> 
               </div>
-              <div class="small-4 columns" ng-show="output.script.isDataOut()">
-                OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
+              <div class="row collapse">
+                <div class="fnt06 text-center more-info">
+                  <a ng-hide="output.visible" ng-click="output.visible = true"><i class="fi-arrow-down"> More Info</i></a>
+                </div>
+                <div class="fnt06 text-center less-info">
+                  <a ng-show="output.visible" ng-click="output.visible = false"><i class="fi-arrow-up"> Less Info</i></a>
+                </div>
               </div>
-              <div class="small-4 columns" ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
-                {{output.satoshis|btc}} to an unrecognized script
-              </div>
-              <div class="small-2 columns">
-                <a ng-hide="output.visible" ng-click="output.visible = true">More Info</a>
-                <a ng-show="output.visible" ng-click="output.visible = false">Less Info</a>
-              </div>
-              <div class="small-1 columns"><a ng-click="removeOutput($index)">X</a></div>
             </div>
 
             <div class="row collapse" ng-show="output.visible">
-              Script: {{output.script.toString()}}
+              <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{output.script.toString()}}</span></div>
             </div>
           </div>
         </div>
