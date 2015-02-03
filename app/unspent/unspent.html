@@ -8,24 +8,25 @@
   </div>
 </div>
 
-<div class="row">
-  <h2 class="text-center">Address</h2>    
-  <div class="columns small-8">
-    <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
+<div class="row bg-color-white p20">
+  <div class="row collapse">
+    <div class="columns small-10">
+      <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select>
+    </div>
+    <div class="columns small-2">
+      <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
+    </div>
   </div>
-  <div class="columns small-4">
-    <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1 mt5">Fetch</button>
-  </div>
-</div>
-<div ng-show="utxos">
-  <div class="row unspentitem" ng-repeat="utxo in utxos">
-    <div> <span class="item-title">Amount:</span> <span class="amount item-data">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1> </div>
+
+  <div class="row unspentitem" ng-repeat="utxo in utxos" ng-show="utxos">
+    <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
     <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
     <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
     <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
     <a href="{{utxo.url}}">See transaction on Insight</a>
   </div>
 </div>
+
 
 <div class="explanation">
   <div class="row collapse">

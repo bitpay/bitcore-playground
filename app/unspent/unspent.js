@@ -11,7 +11,7 @@ angular.module('playApp.unspent', ['ngRoute'])
 
 .controller('UnspentCtrl', function($scope, $http) {
 
-  $scope.utxoAddress = '';
+  $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
     
   $scope.utxos = [];
 
