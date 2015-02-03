@@ -131,6 +131,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .plr25por {padding: 2% 5%;}
 .plr2por {padding-top: 2%; padding-bottom: 2%;}
 .no-pr {padding-right: 0 !important;}
+.no-p {padding: 0 !important;}
 .m0 {margin: 0px 0px 0rem;}
 .mt5 {margin-top: 5px !important;}
 .mb5 {margin-bottom: 5px !important;}
@@ -655,7 +656,11 @@ padding: 20px 0 20px 40px;
 	background-position: center center;
   float: left;
   margin-top: -50px;
-	} 
+	}
+
+#terminaltab {
+  position: relative;
+}
 
 #terminaltab-sticky {
   position: fixed;
