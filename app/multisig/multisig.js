@@ -23,18 +23,37 @@ angular.module('playApp.multisig', ['ngRoute'])
     });
   };
 
-  $scope.Range = function(start, end) {
+  $scope.totalKeysRange = function() {
+    var size = Math.max($scope.keys.length, 7);
+    return Range(size);
+  };
+
+  $scope.signaturesRange = function() {
+    return Range($scope.keys.length);
+  };
+
+  function Range(size) {
     var result = [];
-    for (var i = 1; i <= $scope.keys.length; i++) {
+    for (var i = 1; i <= size; i++) {
       result.push(i);
     }
     return result;
-  };
+  }
 
   function setupKeys() {
     $scope.keys = [1,2,3].map(getRandomKey);
+    $scope.totalKeys = $scope.keys.length;
     $scope.threshold = 2;
   }
+
+  $scope.setKeyAmount = function(amount) {
+    var delta =  amount - $scope.keys.length;
+    if (delta > 0) {
+      for (var i = 0; i < delta; i++) $scope.add();
+    } else {
+      for (var i = 0; i > delta; i--) $scope.keys = $scope.keys.slice(0, -1);
+    }
+  };
 
   // Initial Setup
   setupKeys();
