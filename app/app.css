@@ -93,6 +93,8 @@ font-weight: 700;
 src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
 }
 
+
+
 .unspentitem {
   margin: 20px;
   padding: 20px;
@@ -110,10 +112,15 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .p10 {padding: 10px;}
 .p20 {padding: 20px;}
 .p30 {padding: 30px;}
+.p4060 {padding: 40px 60px;}
 .p60 {padding: 60px;}
 .pt5 {padding-top: 5px}
+.pt6 {padding-top: 6px}
 .pt10 {padding-top: 10px}
 .pt20 {padding-top: 20px}
+.pt30 {padding-top: 30px}
+.pr5 {padding-right: 5px}
+.plr10 {padding-right: 10px; padding-left: 10px;}
 .pb10 {padding-bottom: 10px}
 .pb20 {padding-bottom: 20px}
 .p3tb {padding: 3px 0px;}
@@ -160,6 +167,18 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 
 .fnt12{
 	font-size: 1.2em
+}
+
+.fnt13{
+	font-size: 1.3em
+}
+
+.fnt14{
+	font-size: 1.4em
+}
+
+.fnt20{
+	font-size: 2em
 }
 
 /* Font Color */
@@ -221,22 +240,30 @@ border-top-right-radius: 3px;
 	font-family: "Ubuntu-Light"!important;
 	font-style: italic;
 	color: #A0A1A0;
-	font-size: 1.3em;
 	margin: 0 0 0 2px;
 	vertical-align: middle;
 	}
+.playground-logo img{	
+	vertical-align:-4px;
+		}
 
-#nav-hd li {
+#nav-hd li, #nav-ft li {
 display: inline-block;
-font-size: 0.8em;
-margin: 10px 29px;
 }
 
-#nav-hd li a{
+#nav-hd li{
+margin: 10px 20px;
+}
+
+#nav-ft li{
+margin: 8px 16px;
+}
+
+#nav-hd li a, #nav-ft li a{
 color: #6B6B6A;
 }
 
-#nav-hd li a:hover{ color: #A39F9A;}
+#nav-hd li a:hover, #nav-ft li a:hover{ color: #A39F9A;}
 
  .docs a, .docs a:hover, .api a, .api a:hover, .github a, .github a:hover{
 background-repeat: no-repeat;
@@ -267,6 +294,11 @@ background-position: bottom left;
 }
 
 /* Sidebar menu */
+
+.switch-opt{
+
+	} 
+
 .switch-txt-opt{
 	font-family: "Ubuntu-Light"!important;
 	padding: 0 5px 15px 5px !important;
@@ -275,16 +307,15 @@ background-position: bottom left;
 
 .menu{ 
 	 font-family: "Ubuntu";
-	font-family: "Ubuntu-Light"!important;
 }
 
 ul.menu{ 
-	margin-left: 0rem;
+	
 	} 
 
 .menu li{ 
 	list-style-type:none;
-	margin: 10px 0;
+	margin: 15px 0;
 	} 
 
 .menu li a{ 
@@ -295,45 +326,11 @@ ul.menu{
 	color:#BD1900;
 	} 
 
- .units a, .units a:hover, .keys a, .keys a:hover, .hdkeys a, .hdkeys a:hover, .multisig a, .multisig a:hover, .transaction a, .transaction a:hover{
-background-repeat: no-repeat;
-padding: 4px 0 4px 40px;
-} 
 
-.units a{ background-image: url("../img/btc-nav.svg");
-background-position: top left;
-}
-.units a:hover{ background-image: url("../img/btc-nav.svg");
-background-position: bottom left;
-} 
+.menu li a{ 
+	color:#000000;
+	} 
 
-.keys a{ background-image: url("../img/key-nav.svg");
-background-position: top left;
-}
-.keys a:hover{ background-image: url("../img/key-nav.svg");
-background-position: bottom left;
-} 
-
-.hdkeys a{ background-image: url("../img/keyring-nav.svg");
-background-position: top left;
-}
-.hdkeys a:hover{ background-image: url("../img/keyring-nav.svg");
-background-position: bottom left;
-} 
-
-.multisig a{ background-image: url("../img/qr-nav.svg");
-background-position: top left;
-}
-.multisig a:hover{ background-image: url("../img/qr-nav.svg");
-background-position: bottom left;
-} 
-
-.transaction a{ background-image: url("../img/arrows-nav.svg");
-background-position: top left;
-}
-.transaction a:hover{ background-image: url("../img/arrows-nav.svg");
-background-position: bottom left;
-} 
 
 /* Buttons */
 
@@ -342,6 +339,7 @@ background-position: bottom left;
 	background-color: #FFFFFF;
 	color: #979797;
 	text-transform: uppercase;
+	padding: 0rem 0rem 0rem;
 	} 
  
  .button1:hover {
@@ -365,7 +363,36 @@ background-position: bottom left;
 	border: 1px solid #000000;
 	color: #000000;
 	background-color: #F8F7F7;
-	} 		
+	} 	
+
+.random-button {
+   background-color: #FFFFFF;
+   border: solid 1px ;
+   border-color: #E2DFDF;
+  }
+
+  .random-button:hover{ 
+   border: solid 1px ;
+   background-color: #F5F4F4;
+   border-color: #979797;
+  }
+
+  .remove-button{ 
+   background-image: url("../img/remove-icon.svg");
+   background-repeat: no-repeat;
+   background-position: top center;	
+ 	background-color: transparent;
+   display: block;
+   height: 10px;
+   width: 10px;
+  }
+
+   .remove-button:hover{ 
+   background-color: transparent;
+   background-position: bottom center;	
+  }
+
+
 
 /* Content menu */
 
@@ -383,7 +410,6 @@ background-position: bottom left;
 
 .content-title h1{
 	font-size: 1.4em;
-	margin-bottom: 30px;
 	font-family: "Ubuntu-Bold";
 } 
 
@@ -548,35 +574,6 @@ padding: 20px 0 20px 40px;
 	color: #7ED321 !important;
 	}  
 
-
- /* Buttons */
-
-.random-button {
-   background-color: #FFFFFF;
-   border: solid 1px ;
-   border-color: #E2DFDF;
-  }
-
-  .random-button:hover{ 
-   border: solid 1px ;
-   background-color: #F5F4F4;
-   border-color: #979797;
-  }
-
-  .remove-button{ 
-   background-image: url("../img/remove-icon.svg");
-   background-repeat: no-repeat;
-   background-position: top center;	
- 	background-color: transparent;
-   display: block;
-   height: 10px;
-   width: 10px;
-  }
-
-   .remove-button:hover{ 
-   background-color: transparent;
-   background-position: bottom center;	
-  }
 
  /* Terminal */
 
