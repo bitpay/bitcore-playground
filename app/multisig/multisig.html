@@ -8,99 +8,58 @@
   </div>
 </div>
 
+<!-- Bitcoin Address -->
+<div class="row bg-color-white plr25por collapse">
+  <div class="small-1 columns">LOGO</div>
+  <div class="small-2 columns">Bitcoin Address</div>
+  <div class="small-6 columns">
+    <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+  </div>
+</div>
 
-
-    <div class="row" data-equalizer>
-      <div class="small-9 columns bg-color-white radius" data-equalizer-watch  ng-repeat="key in keys">
-        
-        <div class="row">
-          <div class="small-2 columns">
-            <div class="row">
-              <div class="small-4 columns">
-                <a href="" ng-click="remove($index)"><i class="fi-x"></i></a>
-              </div>  
-              <div class="small-8 columns">
-                <img src="../img/user-icon.svg" class="">
-              </div>  
-            </div>
-          </div> 
-          <div class="small-4 columns">
-            <div class="row">
-              <div class="small-3 columns">
-                <img src="../img/private-key-icon.svg">
-              </div>
-              <div class="small-9 columns">
-                <h3 class="key-title">Private Key</h3>
-                  <div class="row">
-                    <div class="small-12 columns">
-                      <div class="row collapse">
-                        <div class="small-10 columns">
-                          <input ng-model="key.privKey" ng-change="updatePriv($index)" type="text" class="radius">
-                        </div>
-                        <div class="small-2 columns">
-                          <button ng-click="randPriv($index)" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="small-1 columns">
-            <img src="../img/arrow-right.svg">
-          </div> 
-          <div class="small-4 columns parent">
-            <div class="row child">
-              <div class="small-3 columns">
-                <img src="../img/public-key-icon.svg">
-              </div>
-              <div class="small-9 columns">
-                <h3 class="key-title">Public Key</h3>
-                <input ng-model="key.pubKey" ng-change="updatePub($index)" type="text" class="radius">
-              </div>
-            </div>
-          </div>
-          <div class="small-1 columns">
-            <img src="../img/arrow-right.svg">
-          </div> 
-        </div> 
-
-        </div>
-      <div class="small-3 columns" data-equalizer-watch>
-        <div class="row">
-          <div class="small-11 large-offset-1 columns">
-            <div class="row bg-color-white radius">
-              <div class="small-2 columns">
-                <img src="../img/btc-icon-address.svg">
-              </div>
-              <div class="small-10 columns">
-                <h3 class="key-title">Bitcoin Address</h3>
-                <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+<!-- Total Keys and Required Signatures -->
 <div class="row">
-  <div class="large-6 columns">
+  <div class="small-6 columns">
+    Total Key: <select ng-model="totalKeys" ng-options="num for num in totalKeysRange()" ng-change="setKeyAmount(totalKeys)"></select>
+  </div>
+  <div class="small-6 columns">
+    Required Signatures: <select ng-model="threshold" ng-options="num for num in signaturesRange()"></select>
+  </div>
+</div>
 
+<!-- Repeat Keys -->
+<div class="row" ng-repeat="key in keys">
 
+  <!-- Remove Key -->
+  <div class="small-1 columns">
+    <a href="" ng-click="remove($index)"><i class="fi-x"></i></a>
+    <img src="../img/user-icon.svg" class="">
+  </div>
 
+  <!-- Private Key -->
+  <div class="small-5 columns">
+    <img src="../img/private-key-icon.svg">
+    <h3 class="key-title">Private Key</h3>
+    <input ng-model="key.privKey" ng-change="updatePriv($index)" type="text" class="radius">
+    <button ng-click="randPriv($index)" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
+  </div>
 
-    <div class="row">
-      <div class="large-3 columns">
-        <button id="new" ng-click="add()">Add</button>
-      </div>
-      <div class="large-9 columns">
-        Required Signatures: <select ng-model="threshold" ng-options="num for num in Range()"></select>
-      </div>
-    </div>
+  <!-- Arrow -->
+  <div class="small-1 columns">
+    <img src="../img/arrow-right.svg">
+  </div>
+
+  <!-- Private Key -->
+  <div class="small-5 columns">
+    <img src="../img/private-key-icon.svg">
+    <h3 class="key-title">Private Key</h3>
+    <input ng-model="key.privKey" ng-change="updatePriv($index)" type="text" class="radius">
   </div>
 
 </div>
+
+<button id="new" ng-click="add()">Add</button>
+
 
 <div class="explanation">
   <div class="row collapse">
