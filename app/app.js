@@ -27,6 +27,11 @@ app.filter('btc', function() {
     if (url.length > 2083) throw new Error('URL too long')
     return url;
   };
+})
+.filter('ellipsify', function() {
+  return function(data) {
+    return data.substr(0, 4) + '...' + data.substr(data.length - 4, data.length);
+  };
 });
 
 // Directives
