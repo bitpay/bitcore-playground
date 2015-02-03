@@ -11,7 +11,7 @@ angular.module('playApp.transaction', ['ngRoute'])
 
 .controller('TransactionCtrl', function($scope, $http) {
 
-  $scope.utxoAddress = '1u6MtJed3Py2JPZKAfhuNwLVSQbP7oEHU';
+  $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
   $scope.privateKey = '';
 
   $scope.fromAddresses = [];
