@@ -90,6 +90,18 @@ angular.module('playApp.transaction', ['ngRoute'])
     setExampleCode();
   };
 
+  $scope.broadcast = function() {
+    var serialized = $scope.transaction.serialize();
+    var client = new bitcore.transport.explorers.Insight();
+    client.broadcast(serialized, function(err, id) {
+      if (err) {
+        alert(err);
+      } else {
+        alert('Broadcasted');
+      }
+    });
+  };
+
   function setExampleCode() {
     var template = "";
     var i;

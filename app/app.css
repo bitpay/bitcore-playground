@@ -479,7 +479,10 @@ a.share-link{
 
 .more-info, .less-info{ 
 	text-transform: uppercase;
-	} 
+} 
+.row .row .more-info-data {
+  margin-left: 0px;
+}
 
 .more-info a, .less-info a, .close a{ 
 	color: #979797;
