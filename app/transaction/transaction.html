@@ -142,7 +142,7 @@
           <div class="row collapse" ng-repeat="output in transaction.outputs">
             <div class="row">
               <div class="small-4 columns" ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                {{output.satoshis|btc}} to {{output.script.toAddress().toString()}}
+                {{output.satoshis|btc}} to {{output.script.toAddress().toString() | ellipsify}}
               </div>
               <div class="small-4 columns" ng-show="output.script.isDataOut()">
                 OP_RETURN with data: 0x{{output.script.getData().toString('hex')}}
