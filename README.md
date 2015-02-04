@@ -1,3 +1,5 @@
-# Bitcore Playgrounds
+# Bitcore Playground
 
-Check it online [here](http://yemel.github.io/bitcore-playground).
+A browser-based sandbox for experimenting with the [Bitcore](https://github.com/bitpay/bitcore) library.
+
+Try it online [here](https://bitpay.github.io/bitcore-playground).
