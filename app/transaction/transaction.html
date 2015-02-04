@@ -1,4 +1,4 @@
-<div class="row collapse">
+<div class="row collapse" require-modal>
   <div class="large-9 small-7 columns content-title">
     <h1>Transaction</h1>
   </div>
@@ -199,10 +199,8 @@
     </div>
   </div>
   <div class="row collapse">
-    <pre>
-      <code class="javascript" example-code="exampleCode"></code>
-    </pre>
-    <p><a href="http://bitcore.io/guide/transaction.html">Read more in the bitcore developer guide</a></p>
+    <ng-include src="'components/code.html'"></ng-include>
+    <a href="http://bitcore.io/guide/transaction.html"><button type="button" class="button tiny radius button1"><span class="icon-docs"></span> Read more in the bitcore developer guide</button></a>
   </div>
 </div>
 
