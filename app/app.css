@@ -708,3 +708,24 @@ font-family: Monaco, "Courier New", Courier, monospace !important;
   border-top: solid 1px #555;
   padding-top: 22px;
 }
+
+.code-example {
+  position: relative;
+  margin-top: -40px;
+}
+
+.code-example .icon-terminal {
+  position: absolute;
+  right: 5px;
+  top: 45px;
+
+  padding: 10px;
+  background-color: #3A3A3A;
+  border-radius: 2px;
+  color: white;
+}
+
+.code-example .icon-terminal:hover {
+  background-color: #4A4A4A;
+  cursor: pointer;
+}
