@@ -1,26 +1,12 @@
-<div class="row collapse" require-equalizer>
+<div class="row collapse">
   <div class="large-9 small-7 columns content-title">
     <h1>Multisig Address</h1>
   </div>
-  <div class="large-3 small-5 columns">
-      <div class="row right pt6">
-        <div class="large-4 small-4 columns">
-          <span class="fnt07">TESTNET</span>
-        </div>
-        <div class="large-4 small-4 columns">
-          <div class="switch tiny round">
-            <input id="testnet" type="checkbox" ng-model="network" ng-change="setTestnet(network)">
-            <label for="testnet"></label>
-          </div> 
-        </div>
-        <div class="large-4 small-4 columns">
-          <span class="fnt07">LIVENET</span>
-        </div>
-      </div>
-  </div>
+  <ng-include src="'components/network.html'"/>
+
 </div>
-<div class="row collapse">
-  <div class="small-12 columns content-title">
+<div class="row collapse pb20">
+  <div class="small-12 columns">
     <p>Derive a bitcoin address that requires several signatures to spend it's funds.</p>
   </div>
 </div>
