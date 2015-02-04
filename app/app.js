@@ -111,12 +111,14 @@ registerValidator(app, 'address', function(value) {
 });
 
 // Sidebar
-app.controller('SideBar', function($scope, $rootScope, $timeout){
+app.controller('SideBar', function($scope, $rootScope, $timeout) {
   $timeout(function(){
     $rootScope.showFooter = true;
     $rootScope.$apply();
   }, 100);
 
+})
+.controller('Network', function($scope, $rootScope, $timeout) {
   var networks = bitcore.Networks;
   networks.defaultNetwork = networks.testnet;
 

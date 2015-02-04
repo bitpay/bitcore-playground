@@ -1,10 +1,13 @@
-<div class="row" require-modal>
-  <div class="small-8 columns content-title">
+<div class="row collapse">
+  <div class="large-9 small-7 columns content-title">
     <h1>Transaction</h1>
-    <p>Build, sign and broadcast a transaction.</p>
   </div>
-  <div class="small-4 columns text-right">
-    <a href="{{serialize()|permalink:'keys'}}" class="share-link fnt08"><i class="fi-share"></i> SHARE THIS</a>
+  <ng-include src="'components/network.html'"/>
+
+</div>
+<div class="row collapse pb20">
+  <div class="small-12 columns">
+    <p>Build, sign and broadcast a transaction.</p>
   </div>
 </div>
 
