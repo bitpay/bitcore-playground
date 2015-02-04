@@ -20,6 +20,7 @@ function REPL() {
 
   $('.goto-repl').click(function() {
     $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    self.console.$input_source.focus();
   });
 
   var self = this;

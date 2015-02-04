@@ -16,10 +16,16 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.exampleCode = "";
 
   function setExampleCode(value, code, fiat) {
-    var template = "var unit = new bitcore.Unit(@value, @code);"
+    var template = "var unit = new bitcore.Unit(@value, bitcore.Unit.@code);"
     template = template.replace('@value', $scope.unit.BTC);
     template = template.replace('@code', code);
     $scope.exampleCode = template;
+  };
+
+  $scope.jumpConsole = function() {
+    $('#terminaltab').click();
+    var template = 'unit = new bitcore.Unit(1.2, bitcore.Unit.BTC);';
+    window.REPL.console.SetPromptText(template);
   };
 
   $scope.serialize = function() {
