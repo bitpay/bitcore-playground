@@ -11,6 +11,7 @@ angular.module('playApp.unspent', ['ngRoute'])
 
 .controller('UnspentCtrl', function($scope, $http) {
 
+  var explorers = require('bitcore-explorers');
   $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
   $scope.utxos = [];
 
@@ -19,7 +20,7 @@ angular.module('playApp.unspent', ['ngRoute'])
   };
 
   $scope.fetchUTXO = function(address) {
-    var client = new bitcore.transport.explorers.Insight();
+    var client = new explorers.Insight();
     if (!bitcore.Address.isValid(address)) return; // mark as invalid
     client.getUnspentUtxos(address, onUTXOs);
 

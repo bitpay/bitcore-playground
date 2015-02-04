@@ -15,13 +15,17 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/units'});
 }]);
 
+app.service('bitcore', function() {
+  return require('bitcore');
+});
+
 // Filters
-app.filter('btc', function() {
+app.filter('btc', function(bitcore) {
   return function(satoshis) {
     return bitcore.Unit.fromSatoshis(satoshis).toBTC();
   };
 })
-.filter('permalink', function() {
+.filter('permalink', function(bitcore) {
   return function(data, section) {
     var url = './#/' + section + '?data=' + encodeURI(data);
     if (url.length > 2083) throw new Error('URL too long')
@@ -73,12 +77,12 @@ app.directive('exampleCode', function() {
 
 // Filters
 function registerValidator(app, name, validator) {
-  app.directive(name, function() {
+  app.directive(name, function(bitcore) {
     return {
       require: 'ngModel',
       link: function(scope, elem, attr, ngModel) {
         function validate(value) {
-          var valid = validator(value, scope, attr);
+          var valid = validator(bitcore, value, scope, attr);
           ngModel.$setValidity(null, valid);
           return value;
         }
@@ -88,25 +92,25 @@ function registerValidator(app, name, validator) {
   });
 }
 
-registerValidator(app, 'privateKey', function(value) {
+registerValidator(app, 'privateKey', function(bitcore, value) {
   return bitcore.PrivateKey.isValid(value);
 });
-registerValidator(app, 'publicKey', function(value) {
+registerValidator(app, 'publicKey', function(bitcore, value) {
   return bitcore.PublicKey.isValid(value);
 });
-registerValidator(app, 'xprivateKey', function(value) {
+registerValidator(app, 'xprivateKey', function(bitcore, value) {
   return bitcore.HDPrivateKey.isValidSerialized(value);
 });
-registerValidator(app, 'xpublicKey', function(value) {
+registerValidator(app, 'xpublicKey', function(bitcore, value) {
   return bitcore.HDPublicKey.isValidSerialized(value);
 });
-registerValidator(app, 'privateHdpath', function(value, scope) {
+registerValidator(app, 'privateHdpath', function(bitcore, value, scope) {
   return !!(/^[mM][']?(\/[0-9]+[']?)*[/]?$/.exec(value));
 });
-registerValidator(app, 'publicHdpath', function(value, scope) {
+registerValidator(app, 'publicHdpath', function(bitcore, value, scope) {
   return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(value));
 });
-registerValidator(app, 'address', function(value) {
+registerValidator(app, 'address', function(bitcore, value) {
   return bitcore.Address.isValid(value);
 });
 
@@ -118,7 +122,7 @@ app.controller('SideBar', function($scope, $rootScope, $timeout) {
   }, 100);
 
 })
-.controller('Network', function($scope, $rootScope, $timeout) {
+.controller('Network', function($scope, $rootScope, $timeout, bitcore) {
   var networks = bitcore.Networks;
   networks.defaultNetwork = networks.testnet;
 

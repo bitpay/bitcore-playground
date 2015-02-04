@@ -9,7 +9,7 @@ angular.module('playApp.multisig', ['ngRoute'])
   });
 }])
 
-.controller('MultisigCtrl', function($scope) {
+.controller('MultisigCtrl', function($scope, bitcore) {
 
   $scope.$on('networkUpdate', function() {
     setupKeys();

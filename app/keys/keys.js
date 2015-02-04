@@ -9,7 +9,7 @@ angular.module('playApp.keys', ['ngRoute'])
   });
 }])
 
-.controller('KeysCtrl', function($scope, $routeParams) {
+.controller('KeysCtrl', function($scope, $routeParams, bitcore) {
 
   $scope.$on('networkUpdate', function() {
     $scope.newKey();

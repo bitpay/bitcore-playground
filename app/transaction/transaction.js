@@ -9,8 +9,27 @@ angular.module('playApp.transaction', ['ngRoute'])
   });
 }])
 
-.controller('TransactionCtrl', function($scope, $http) {
+.controller('TransactionCtrl', function($scope, $http, bitcore) {
+  // Monkey patching until next bitcore version is released
+  bitcore.Transaction.prototype.removeInput = function(txId, outputIndex) {
+    var index;
+    if (!outputIndex && _.isNumber(txId)) {
+      index = txId;
+    } else {
+      index = _.findIndex(this.inputs, function(input) {
+        return input.prevTxId.toString('hex') === txId && input.outputIndex === outputIndex;
+      });
+    }
+    if (index < 0 || index >= this.inputs.length) {
+      throw new errors.Transaction.InvalidIndex(index, this.inputs.length);
+    }
+    var input = this.inputs[index];
+    this._inputAmount -= input.output.satoshis;
+    this.inputs = _.without(this.inputs, input);
+    this._updateChangeOutput();
+  };
 
+  var explorers = require('bitcore-explorers');
   $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
   $scope.privateKey = '';
 
@@ -25,7 +44,7 @@ angular.module('playApp.transaction', ['ngRoute'])
   window.T = $scope.transaction = new bitcore.Transaction();
 
   $scope.fetchUTXO = function(address) {
-    var client = new bitcore.transport.explorers.Insight();
+    var client = new explorers.Insight();
     if (!bitcore.Address.isValid(address)) return; // mark as invalid
     client.getUnspentUtxos(address, onUTXOs);
     $scope.fromAddresses.push(address);
@@ -66,9 +85,9 @@ angular.module('playApp.transaction', ['ngRoute'])
     setExampleCode();
   };
 
-  $scope.removeInput = function(input) {
-    console.log(input);
-    $scope.usingUTXOs.remove(input.output.txId + ':' + input.output.outputIndex);
+  $scope.removeUTXO = function(utxo) {
+    console.log(utxo);
+    $scope.transaction.removeInput(utxo);
     setExampleCode();
   };
   $scope.removeOutput = function(output) {
@@ -97,7 +116,7 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.broadcast = function() {
     var serialized = $scope.transaction.serialize();
-    var client = new bitcore.transport.explorers.Insight();
+    var client = new explorers.Insight();
     client.broadcast(serialized, function(err, id) {
       if (err) {
         alert(err);
