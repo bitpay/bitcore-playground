@@ -131,6 +131,12 @@ angular.module('playApp.transaction', ['ngRoute'])
     $scope.exampleCode = template;
   }
 
+  $scope.jumpConsole = function() {
+    $('#terminaltab').click();
+    window.REPL.console.SetPromptText($scope.exampleCode);
+    window.REPL.scrollToBottom();
+  };
+
   function initialExample() {
     var template = "";
 

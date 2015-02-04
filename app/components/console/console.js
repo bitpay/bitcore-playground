@@ -192,6 +192,6 @@ REPL.prototype.errorCallback = function(error) {
 
 window.REPL = new REPL();
 window.REPL.prompt();
-window.REPL.console.SetPromptText("priv = new bitcore.PrivateKey();");
+window.REPL.console.SetPromptText("var priv = new bitcore.PrivateKey();");
 
 });

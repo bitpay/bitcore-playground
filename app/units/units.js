@@ -24,8 +24,8 @@ angular.module('playApp.units', ['ngRoute'])
 
   $scope.jumpConsole = function() {
     $('#terminaltab').click();
-    var template = 'unit = new bitcore.Unit(1.2, bitcore.Unit.BTC);';
-    window.REPL.console.SetPromptText(template);
+    window.REPL.console.SetPromptText($scope.exampleCode);
+    window.REPL.scrollToBottom();
   };
 
   $scope.serialize = function() {
