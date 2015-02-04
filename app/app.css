@@ -22,6 +22,14 @@ a:hover {
     color: #E7280A;
 }
 
+.link1 {
+    color: #AAAAAA;
+}
+
+.link1:hover {
+    color: #BD1900;
+}
+
 button, .button{
 	margin: 0px 0px 0rem;
 
@@ -181,6 +189,10 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 
 .fnt20{
 	font-size: 2em
+}
+
+.fnt21{
+	font-size: 2.1em
 }
 
 .fnt24{
@@ -371,6 +383,18 @@ ul.menu{
 	background-color: #F8F7F7;
 	} 	
 
+.button3{
+	border: none;
+	background-color: #ABABAB;
+	color: #FFFFFE;
+	text-transform: uppercase;
+	padding: 0rem 0rem 0rem;
+	} 
+
+ .button3:hover {
+	background-color: #999999;
+	} 	
+
 .random-button {
    background-color: #FFFFFF;
    border: solid 1px ;
@@ -396,6 +420,10 @@ ul.menu{
    .remove-button:hover{ 
    background-color: transparent;
    background-position: bottom center;	
+  }
+
+     .center-text{ 
+   vertical-align:middle;
   }
 
 
