@@ -150,6 +150,7 @@ REPL.prototype.prompt = function() {
   this.console.Prompt(true, function(line) {
     try {
       window.console.log = self._consoleLog;
+      var line = line.replace(/(\n| |^|;)var /g, "$1"); // show assignment on console
       var result = window.eval(line);
     } catch (err) {
       return self.errorCallback(err);
