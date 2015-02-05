@@ -57,6 +57,12 @@ angular.module('playApp.unspent', ['ngRoute'])
     $scope.exampleCode = template;
   }
 
+  $scope.jumpConsole = function() {
+    $('#terminaltab').click();
+    window.REPL.console.SetPromptText($scope.exampleCode);
+    window.REPL.scrollToBottom();
+  };
+
   setExampleCode();
 
 });

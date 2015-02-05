@@ -66,6 +66,12 @@ angular.module('playApp.keys', ['ngRoute'])
     $scope.exampleCode = template;
   };
 
+  $scope.jumpConsole = function() {
+    $('#terminaltab').click();
+    window.REPL.console.SetPromptText($scope.exampleCode);
+    window.REPL.scrollToBottom();
+  };
+
   // Initialize
   if ($routeParams.data) {
     var data = JSON.parse($routeParams.data);

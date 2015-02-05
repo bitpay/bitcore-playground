@@ -123,6 +123,12 @@ angular.module('playApp.multisig', ['ngRoute'])
     $scope.exampleCode = template;
   };
 
+  $scope.jumpConsole = function() {
+    $('#terminaltab').click();
+    window.REPL.console.SetPromptText($scope.exampleCode);
+    window.REPL.scrollToBottom();
+  };
+
   setAddress();
   $scope.$watchCollection('keys', setAddress);
   $scope.$watch('threshold', setAddress);

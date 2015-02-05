@@ -23,6 +23,12 @@ function REPL() {
     self.console.$input_source.focus();
   });
 
+  this._originalLog = window.console.log;
+  this._consoleLog = function() {
+    var result = Array.prototype.slice.call(arguments).join(' ') + '\n';
+    self.console.Write(result, 'jqconsole-output');
+  };
+
   var self = this;
   $(this.element).click(function(){
     self.console.$input_source.focus();
@@ -143,10 +149,13 @@ REPL.prototype.prompt = function() {
   var self = this;
   this.console.Prompt(true, function(line) {
     try {
+      window.console.log = self._consoleLog;
+      var line = line.replace(/(\n| |^|;)var /g, "$1"); // show assignment on console
       var result = window.eval(line);
     } catch (err) {
       return self.errorCallback(err);
     }
+    window.console.log = self._originalLog;
     self.resultCallback(result);
   });
   this.scrollToBottom();
@@ -183,6 +192,6 @@ REPL.prototype.errorCallback = function(error) {
 
 window.REPL = new REPL();
 window.REPL.prompt();
-window.REPL.console.SetPromptText("priv = new bitcore.PrivateKey();");
+window.REPL.console.SetPromptText("var priv = new bitcore.PrivateKey();");
 
 });
