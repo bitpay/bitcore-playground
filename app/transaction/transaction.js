@@ -77,18 +77,23 @@ angular.module('playApp.transaction', ['ngRoute'])
   };
 
   $scope.addUTXO = function(utxo) {
-    $scope.utxos = $scope.utxos.filter(function(u){
-      return u !== utxo;
-    });
-    $scope.utxos.push(utxo);
+    utxo.used = true;
     $scope.transaction.from(utxo);
     setExampleCode();
   };
 
-  $scope.removeUTXO = function(utxo) {
-    console.log(utxo);
-    $scope.transaction.removeInput(utxo);
+  $scope.removeUtxo = function(utxo) {
+    var txId = utxo.txId.toString('hex');
+    $scope.transaction.removeInput(txId, utxo.outputIndex);
+    for (var i in $scope.utxos) {
+      if ($scope.utxos[i].txId.toString('hex') === txId && $scope.utxos[i].outputIndex === utxo.outputIndex) {
+        $scope.utxos[i].used = false;
+      }
+    }
     setExampleCode();
+  };
+  $scope.removeInput = function(input) {
+    $scope.removeUtxo({txId: input.prevTxId, outputIndex: input.outputIndex});
   };
   $scope.removeOutput = function(output) {
     console.log(output);
@@ -137,7 +142,9 @@ angular.module('playApp.transaction', ['ngRoute'])
 
     template += "var transaction = new bitcore.Transaction()\n";
     for (i in $scope.utxos) {
-      template += "    .from(" + $scope.utxos[i].toJSON() + ")\n";
+      if ($scope.utxos[i].used) {
+        template += "    .from(" + $scope.utxos[i].toJSON() + ")\n";
+      }
     }
     for (i in $scope.toAddresses) {
       template += "    .to('" + i + "', " + $scope.toAddresses[i] + ")\n";
