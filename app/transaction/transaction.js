@@ -95,6 +95,11 @@ angular.module('playApp.transaction', ['ngRoute'])
     $scope.usingUTXOs.remove(input.output.txId + ':' + input.output.outputIndex);
     setExampleCode();
   };
+  $scope.removeOutput = function(output) {
+    console.log(output);
+    $scope.usingUTXOs.remove(input.output.txId + ':' + input.output.outputIndex);
+    setExampleCode();
+  };
 
   $scope.addAddressOutput = function(address, amount) {
     console.log(address, amount);
