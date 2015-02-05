@@ -9,7 +9,7 @@ angular.module('playApp.units', ['ngRoute'])
   });
 }])
 
-.controller('UnitsCtrl', function($scope, $http) {
+.controller('UnitsCtrl', function($scope, $http, bitcore) {
   $scope.unit = {};
   $scope.currencies = [];
   $scope.currency = null;

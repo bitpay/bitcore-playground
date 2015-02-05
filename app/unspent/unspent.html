@@ -17,16 +17,27 @@
       <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select ng-change="addressUpdated(utxoAddress)">
     </div>
     <div class="columns small-2">
-      <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
+      <div class="row collapse">
+        <div class="small-11 small-offset-1">
+          <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="row unspentitem" ng-repeat="utxo in utxos" ng-show="utxos">
-    <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-    <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
-    <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
-    <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
-    <a href="{{utxo.url}}">See transaction on Insight</a>
+  <div class="row collapse" ng-repeat="utxo in utxos" ng-show="utxos">
+    <div class="small-12 columns capsule-inside mt10 plr10 p10 radius">
+      <div class="coin-in-box">
+        <div class="icon-coin v-align fnt20 pr5"></div>
+      </div>
+      <h1 class="amount fnt09 ml10">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+      <div class="fnt07 mt2 ml10"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
+      <div class="fnt07 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
+      <div class="fnt07 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
+      <div class="border-top pt10 mt10 text-center">
+        <button type="button" class="radius button4">See transaction on <span class="insight fnt14">Insight</span></button>
+      </div>
+    </div>
   </div>
 </div>
 

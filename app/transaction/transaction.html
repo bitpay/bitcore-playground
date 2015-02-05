@@ -11,47 +11,64 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row collapse bg-color-white white-box radius p20">
   <div class="small-12 columns">
     <h2 class="text-center">Output Selection</h2>    
     <!-- Fetch unspent form -->
-    <div class="row bg-color-white">
-      <div class="small-6 small-offset-3">
-        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
-      </div>
+
+  <div class="row collapse">
+    <div class="columns small-10">
+      <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
     </div>
-    <div class="row bg-color-white">
-      <div class="small-2 small-offset-5 columns">
-        <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1 mt5">Fetch</button>
-      </div>
-    </div>
-    <div class="row bg-color-white">
-      <div class="small-12 large-4 columns" ng-repeat="utxo in utxos">
-        <div class="capsule-inside p5 mt5 mb5">
-          <div class="text-center">
-            <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-          </div>
-          <button type="button" ng-click="addUTXO(utxo)" class="button expand radius button2 fnt06">Move to inputs</button>
-          <div ng-show="utxo.visible">
-            <div class="more-info-data row">
-              <div class="fnt08 mt5 small-4 columns"><span class="item-title">TX ID:</span></div> <div class="small-8 columns"><input class="input" readonly value="{{utxo.txId}}"></div>
-            </div>
-            <div class="more-info-data row">
-              <div class="fnt08 mt5 small-4 columns"><span class="item-title">OUT #:</span></div>  <div class="small-8 columns"><input readonly class="input" value="{{utxo.outputIndex}}"></div>
-            </div>
-            <div class="more-info-data row">
-              <div class="fnt08 mt5 small-4 columns"><span class="item-title">Script:</span></div>  <div class="small-8 columns"><input readonly class="input" value="{{utxo.script.toString()}}"></div>
-            </div>
-          </div>
-          <div class="fnt06 text-center more-info pt5">
-            <a ng-hide="utxo.visible" ng-click="utxo.visible = true">More info</a>
-          </div>
-          <div class="fnt06 text-center less-info">
-            <a ng-show="utxo.visible" ng-click="utxo.visible = false">Less info</a>
-          </div>
+    <div class="columns small-2">
+      <div class="row collapse">
+        <div class="small-11 small-offset-1">
+          <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
         </div>
       </div>
     </div>
+  </div>
+
+
+      <div class="row collapse mt5 mb5">
+        <div class="small-12 large-4 columns" ng-repeat="utxo in utxos">
+          <div class="capsule-inside rad2 p5 m2 ml20" ng-hide="utxo.used">
+            <div class="coin-in-box">
+              <div class="icon-coin v-align fnt20 pr5"></div>
+            </div>
+            <div class="row collapse">
+              <div class="columns small-9 pl20 pt6">
+                <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+              </div>
+              <div class="columns small-3">
+                <div class="row collapse">
+                  <button type="button" ng-click="addUTXO(utxo)" class="button expand tiny radius button1">USE IT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Capsule USED starts--> 
+          <div class="capsule-inside-blue rad2 p5 m2 ml20" ng-show="utxo.used">
+            <div class="coin-in-box blue-elements">
+              <div class="icon-coin v-align fnt20 pr5"></div>
+            </div>
+            <div class="row collapse">
+              <div class="columns small-9 pl20 pt6">
+                <h1 class="amount fnt09 blue-elements">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+              </div>
+              <div class="columns small-3">
+                <div class="row collapse">
+                  <button type="button" ng-click="removeUTXO(utxo)" class="button expand tiny radius button1-blue">USED</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Capsule USED ENDS--> 
+        </div>
+      </div>
+
+
+
   </div>
 </div>
 

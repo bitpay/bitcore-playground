@@ -54,6 +54,12 @@ input.ng-invalid {
 	border-radius: 3px;
  }
 
+  .rad2 { 
+ 	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+ }
+
 .reveal-modal {
   position: fixed;
 }
@@ -128,8 +134,12 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .pt20 {padding-top: 20px}
 .pt30 {padding-top: 30px}
 .pr5 {padding-right: 5px}
+.pl10 {padding-left: 10px}
+.pl20 {padding-left: 20px !important;}
+.pl30 {padding-left: 30px !important;}
 .pr10 {padding-right: 10px}
-.plr10 {padding-right: 10px; padding-left: 10px;}
+.plr10 {padding-right: 10px !important; padding-left: 10px !important;}
+.plr20 {padding-right: 20px !important; padding-left: 20px !important;}
 .pb10 {padding-bottom: 10px}
 .pb20 {padding-bottom: 20px}
 .p3tb {padding: 3px 0px;}
@@ -142,14 +152,22 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .no-pr {padding-right: 0 !important;}
 .no-p {padding: 0 !important;}
 .m0 {margin: 0px 0px 0rem;}
+.m2 {margin: 2px;}
+.m5 {margin: 5px;}
+.mt2 {margin-top: 5px;}
 .mt5 {margin-top: 5px !important;}
+.mt10 {margin-top: 10px;}
+.mlr2 {margin-left: 2px; margin-right: 2px;}
+.ml10 {margin-left: 10px;}
+.ml20 {margin-left: 20px;}
 .mb5 {margin-bottom: 5px !important;}
 .mt20 {margin-top: 20px;}
-.mb20 {margin-bottom: 20px;}
+.mb20 {margin-bottom: 20px !important;}
+.ml20 {margin-left: 20px !important;}
 .ml10por {margin-left: 10%;}
 .mr10por {margin-right: 10%;}
 .m50 {margin: 50px;}
-.m5 {margin: 5px;}
+
 
 .100pr {
 	display: block;
@@ -360,11 +378,24 @@ ul.menu{
 	padding: 0rem 0rem 0rem;
 	} 
  
- .button1:hover {
+ .button1:hover{
 	border: 1px solid #000000;
 	color: #000000;
 	background-color: #F8F7F7;
 	} 
+
+	.button1-blue{
+	border: 1px solid #4A90E2;
+	background-color: #4A90E2;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	padding: 0rem 0rem 0rem;
+	} 	
+
+ .button1-blue:hover {
+	border: 1px solid #225DA3;
+	background-color: #225DA3;
+	} 	
 
 .button2{
 	border: 1px solid #979797;
@@ -393,6 +424,21 @@ ul.menu{
 
  .button3:hover {
 	background-color: #999999;
+	} 	
+
+.button4{
+	border: 1px solid #979797;
+	background-color: #FFFFFF;
+	color: #979797;
+	text-transform: uppercase;
+	padding: 0.3rem 0.5rem;
+	font-size: 0.6em;
+	} 
+ 
+ .button4:hover {
+	border: 1px solid #000000;
+	color: #000000;
+	background-color: #F8F7F7;
 	} 	
 
 .random-button {
@@ -425,7 +471,6 @@ ul.menu{
      .center-text{ 
    vertical-align:middle;
   }
-
 
 
 /* Content menu */
@@ -533,6 +578,12 @@ a.share-link{
 
 .capsule-inside{ 
 	border: 1px solid #ECECEF; 
+	position: relative;
+} 
+
+.capsule-inside-blue{ 
+	border: 1px solid #4A90E2; 
+	position: relative;
 } 
 
 .more-info, .less-info{ 
@@ -607,6 +658,22 @@ padding: 20px 0 20px 40px;
 .check{
 	color: #7ED321 !important;
 	}  
+
+.blue-elements{
+	color: #4A90E2;
+		} 
+
+.insight{
+	font-family: 'Ubuntu-BoldItalic';
+	text-transform: capitalize;
+	}  
+
+.coin-in-box{
+	position: absolute;
+	top: 8px;
+	left: -16px;
+	background-color: #FFFFFF;
+	}  	
 
 
  /* Terminal */
