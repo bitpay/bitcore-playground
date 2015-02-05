@@ -12,16 +12,21 @@
 </div>
 
 <!--White box starts--> 
-  <div class="row collapse bg-color-white white-box radius plr25por">
-    <div class="small-3 large-2 columns input-title-priv">
-      <span class="prefix">PRIVATE KEY</span>
+  <div class="row collapse bg-color-white white-box radius p20">
+    <div class="small-5 large-2 columns input-title">
+      <span class="prefix prefix-clean fnt1"><span class="icon-private-key fnt16 center-text"></span> PRIVATE KEY</span>
     </div>
-    <div class="small-7 large-9 columns">
+    <div class="small-6 large-9 columns">
       <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)" private-key auto-select/>
     </div>
-    <div class="small-2 large-1 columns">
-      <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
+    <div class="small-1 large-1 columns">
+      <div class="row collapse">
+        <div class="small-11 small-offset-1 columns">
+          <button type="button" ng-click="newKey()" class="postfix radius button3 fnt12"> <i class="fi-die-five fnt12"></i></button>
+        </div>
+      </div>
     </div>
+
   </div>
   <!--White box ends--> 
 
@@ -29,58 +34,38 @@
 
 
 <!--Flow down starts--> 
-  <div class="row">
+  <div class="row text-center mb20 mt20">
     <div class="small-12 columns">
-      <div class="code-spot mt20">
-         <span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!"><a href="#"><img src="../img/transp-box.svg"></a></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="row text-center">
-    <div class="small-12 columns">
-      <div class="mb20">
-        <img src="../img/arrow-down.svg">
-      </div>
+      <span class="icon-arrow-down fnt20 center-text"></span>
     </div>
   </div>
   <!--Flow down ends--> 
 
 
 <!--White box starts--> 
-  <div class="row collapse bg-color-white white-box radius plr25por">
-    <div class="small-3 large-2 columns input-title-pub">
-      <span class="prefix">PUBLIC KEY</span>
+  <div class="row collapse bg-color-white white-box radius p20">
+    <div class="small-5 large-2 columns input-title">
+      <span class="prefix prefix-clean fnt1"><span class="icon-public-key fnt16 center-text"></span> PUBLIC KEY</span>
     </div>
-    <div class="small-9 large-10 columns">
+    <div class="small-7 large-10 columns">
       <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)" public-key auto-select/>
     </div>
   </div>
   <!--White box ends--> 
 
 <!--Flow down starts--> 
-  <div class="row">
+  <div class="row text-center mb20 mt20">
     <div class="small-12 columns">
-      <div class="code-spot mt20">
-         <span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!"><a href="#"><img src="../img/transp-box.svg"></a></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="row text-center">
-    <div class="small-12 columns">
-      <div class="mb20">
-        <img src="../img/arrow-down.svg">
-      </div>
+      <span class="icon-arrow-down fnt20 center-text"></span>
     </div>
   </div>
   <!--Flow down ends--> 
 
 
   <!--White box starts--> 
- <div class="row collapse bg-color-white white-box radius plr25por">
-    <div class="small-3 large-2 columns input-title-btcad">
-      <span class="prefix">ADDRESS</span>
+ <div class="row collapse bg-color-white white-box radius p20">
+    <div class="small-5 large-2 columns input-title">
+      <span class="prefix prefix-clean fnt1"><span class="icon-qr-solid fnt16 center-text"></span> ADDRESS</span>
     </div>
     <div class="small-9 large-10 columns">
       <input id="address" type="text" placeholder="Bitcoin address" value="{{publicKey.toAddress().toString()}}" readonly auto-select/>

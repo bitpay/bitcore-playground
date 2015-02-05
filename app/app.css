@@ -205,6 +205,10 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 	font-size: 1.4em
 }
 
+.fnt16{
+	font-size: 1.6em
+}
+
 .fnt20{
 	font-size: 2em
 }
@@ -535,7 +539,7 @@ a.share-link{
 		text-align: left;
 		} 	
 
-.input-title-priv span, .input-title-pub span, .input-title-btcad span, .input-title {	
+.input-title-priv, .input-title-pub span, .input-title-btcad span, .input-title {	
 	background-repeat: no-repeat;
 	background-position: center left;
 	font-family: "Ubuntu-Bold";
@@ -544,9 +548,6 @@ a.share-link{
 	background-color: #FFFFFF;
 		} 	
 
-.input-title-priv span{	
-	background-image: url("../img/private-key-icon.svg");
-		} 
 
 .input-title-pub span{	
 	background-image: url("../img/public-key-icon.svg");
