@@ -23,8 +23,7 @@ function REPL() {
     self.console.$input_source.focus();
   });
 
-  this._originalLog = window.console.log;
-  this._consoleLog = function() {
+  window.console._log = function() {
     var result = Array.prototype.slice.call(arguments).join(' ') + '\n';
     self.console.Write(result, 'jqconsole-output');
   };
@@ -101,16 +100,23 @@ function getContext(token) {
 
   var context = token.split('.').slice(0, -1).join('.');
 
-  var dic;
+  var element;
   try {
-    dic = window.eval(context);
+    element = window.eval(context);
   } catch (err) {
     return [];
   }
-  var options = $.map(dic, function(value, key) {
-    return key;
-  }).filter(function(key) {
-    return key.indexOf('_') !== 0;
+
+  var options;
+  if (Array.isArray(element)) {
+    options = Object.getOwnPropertyNames(Array.prototype);
+  } else {
+    options = $.map(element, function(value, key) { return key; });
+  }
+
+  // filter and sort
+  options = options.filter(function(key) {
+    return key && key.indexOf('_') !== 0;
   }).sort(function(a, b) {
     if(a < b) return -1;
     if(a > b) return 1;
@@ -149,13 +155,13 @@ REPL.prototype.prompt = function() {
   var self = this;
   this.console.Prompt(true, function(line) {
     try {
-      window.console.log = self._consoleLog;
       var line = line.replace(/(\n| |^|;)var /g, "$1"); // show assignment on console
+      var line = line.replace(/(\n| |^|;)console.log\(/g, "$1console._log("); // show assignment on console
+
       var result = window.eval(line);
     } catch (err) {
       return self.errorCallback(err);
     }
-    window.console.log = self._originalLog;
     self.resultCallback(result);
   });
   this.scrollToBottom();
@@ -193,5 +199,6 @@ REPL.prototype.errorCallback = function(error) {
 window.REPL = new REPL();
 window.REPL.prompt();
 window.REPL.console.SetPromptText("var priv = new bitcore.PrivateKey();");
+window.bitcore = require('bitcore');
 
 });

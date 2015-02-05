@@ -53,9 +53,10 @@ angular.module('playApp.unspent', ['ngRoute'])
     var address = $scope.utxoAddress || '1BitcoinEaterAddressDontSendf59kuE';
 
     template += "var explorers = require('bitcore-explorers');\n";
-    template += "var insight = new explorers.Insight();\n";
-    template += "insight.getUnspentOutputs('" + address + "', function(err, utxos) {\n";
-    template += "    // Check for errors or use the UTXOs...\n";
+    template += "var client = new explorers.Insight();\n";
+    template += "client.getUnspentUtxos('" + address + "', function(err, utxos) {\n";
+    template += "    UTXOs = utxos;\n";
+    template += "    console.log('UTXOs:', utxos);\n";
     template += "});";
 
     $scope.exampleCode = template;

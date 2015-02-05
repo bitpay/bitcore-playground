@@ -38,7 +38,8 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.addData = [];
   $scope.privateKeys = [];
   $scope.change = '';
-    
+  $scope.loading = false;
+
   $scope.utxos = [];
 
   window.T = $scope.transaction = new bitcore.Transaction();
@@ -46,10 +47,13 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
     if (!bitcore.Address.isValid(address)) return; // mark as invalid
+    
+    $scope.loading = true;
     client.getUnspentUtxos(address, onUTXOs);
     $scope.fromAddresses.push(address);
 
     function onUTXOs(err, utxos) {
+      $scope.loading = false;
       if (err) throw err;
 
       utxos = utxos.filter(function(u1) {
