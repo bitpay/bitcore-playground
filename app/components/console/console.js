@@ -27,6 +27,7 @@ function REPL() {
     var result = Array.prototype.slice.call(arguments);
     result = result.map(toConsoleString).join(' ') + '\n';
     self.console.Write(result, 'jqconsole-output');
+    self.scrollToBottom();
   };
 
   var self = this;
