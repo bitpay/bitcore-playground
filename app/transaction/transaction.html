@@ -34,7 +34,7 @@
 
 
       <div class="row collapse mt5 mb5">
-        <div class="small-12 large-4 columns" ng-repeat="utxo in utxos">
+        <div class="small-12 large-4 columns {{$last ? 'end' : ''}}" ng-repeat="utxo in utxos">
           <div class="capsule-inside rad2 p5 m2 ml20" ng-hide="utxo.used">
             <div class="coin-in-box">
               <div class="icon-coin v-align fnt20 pr5"></div>
