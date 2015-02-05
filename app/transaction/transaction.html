@@ -221,62 +221,77 @@
   </div>
 </div>
 
-<div id="addAddressModal" class="reveal-modal container fixed-position" data-reveal>
+<!--MODAL starts--> 
+<div id="addAddressModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Add a Pay to Public Key Hash Output</h2>
   <div class="row collapse">
-    <div class="small-8 columns">
+    <div class="small-4 columns">
       <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
     </div>
     <div class="small-4 columns">
-      <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
-    </div>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <button type="button" data-reveal-id="addDataModal">Cancel</button>
-    </div>
-    <div class="small-3 columns">
-      <button type="button" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal">Send to Address</button>
-    </div>
-  </div>
-</div>
-<div id="addDataModal" class="reveal-modal fixed-position" data-reveal>
-  <h2>Add a OP_RETURN Output</h2>
-  <div class="row collapse">
-    <div class="small-8 columns">
-      <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
+      <div class="row collapse">
+        <div class="small-11 small-offset-1">
+          <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
+        </div>
+      </div>     
     </div>
     <div class="small-4 columns">
       <div class="row collapse">
-        <div class="small-4 columns">
-          <input type="checkbox" ng-model="isHexa" checked>
-        </div>
-        <div class="small-8 columns">
-          <p>Data is hexa-encoded</p>
+        <div class="small-11 small-offset-1">
+          <button type="button" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal" class="button expand tiny radius button1">Send to Address</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <button type="button" data-reveal-id="addDataModal">Cancel</button>
+  <a href="" ng-click="remove($index)" class="close-reveal-modal">
+    <i class="fi-x center-text link1 fnt04"></i>
+  </a>
+</div>
+<!--MODAL ends--> 
+
+<!--MODAL starts--> 
+<div id="addDataModal" class="reveal-modal fixed-position white-box" data-reveal>
+  <h2>Add a OP_RETURN Output</h2>
+  <div class="row collapse">
+    <div class="small-10 columns">
+      <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
     </div>
-    <div class="small-3 columns">
-      <button type="button" ng-click="addDataOutput(info)" data-reveal-id="addDataModal">Add Data</button>
+    <div class="columns small-2">
+      <div class="row collapse">
+        <div class="small-11 small-offset-1">
+          <button type="button" ng-click="addDataOutput(info)" data-reveal-id="addDataModal" class="button expand tiny radius button1">Add Data</button>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="row collapse">
+    <div class="small-12 columns">
+      <p class="fnt07 mt5 v-align"><input type="checkbox" ng-model="isHexa" checked class="fnt06"> DATA IS HEXA-ENCODED</p>
+    </div>
+  </div>
+  <a href="" ng-click="remove($index)" class="close-reveal-modal">
+    <i class="fi-x center-text link1 fnt04"></i>
+  </a>
 </div>
-<div id="addSignatureModal" class="reveal-modal fixed-position" data-reveal>
+<!--MODAL ends--> 
+
+<!--MODAL starts--> 
+<div id="addSignatureModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Sign transaction with public key</h2>
   <div class="row collapse">
-    <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select>
-  </div>
-  <div class="row">
-    <div class="small-3 columns">
-      <button type="button" data-reveal-id="addSignatureModal">Cancel</button>
+    <div class="columns small-10">
+      <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select class="radius">
     </div>
-    <div class="small-3 columns">
-      <button type="button" ng-click="signWith(privkey)" data-reveal-id="addSignatureModal">Sign</button>
+    <div class="columns small-2">
+      <div class="row collapse">
+        <div class="small-11 small-offset-1">
+          <button type="button" ng-click="signWith(privkey)" data-reveal-id="addSignatureModal" class="button expand tiny radius button1">Sign</button>
+        </div>
+      </div>
     </div>
   </div>
+  <a href="" ng-click="remove($index)" class="close-reveal-modal">
+    <i class="fi-x center-text link1 fnt04"></i>
+  </a>
 </div>
+<!--MODAL ends--> 
