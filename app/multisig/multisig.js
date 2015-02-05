@@ -53,6 +53,10 @@ angular.module('playApp.multisig', ['ngRoute'])
     } else {
       for (var i = 0; i > delta; i--) $scope.keys = $scope.keys.slice(0, -1);
     }
+
+    if ($scope.threshold > amount) {
+      $scope.threshold = amount;
+    }
   };
 
   // Initial Setup

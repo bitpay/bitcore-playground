@@ -9,11 +9,12 @@ angular.module('playApp.unspent', ['ngRoute'])
   });
 }])
 
-.controller('UnspentCtrl', function($scope, $http) {
+.controller('UnspentCtrl', function($scope, $http, bitcore) {
 
   var explorers = require('bitcore-explorers');
   $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
   $scope.utxos = [];
+  $scope.loading = false;
 
   $scope.addressUpdated = function(address) {
     setExampleCode();
@@ -22,9 +23,12 @@ angular.module('playApp.unspent', ['ngRoute'])
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
     if (!bitcore.Address.isValid(address)) return; // mark as invalid
+
+    $scope.loading = true;
     client.getUnspentUtxos(address, onUTXOs);
 
     function onUTXOs(err, utxos) {
+      $scope.loading = false;
       if (err) throw err;
 
       $scope.utxos = utxos;
