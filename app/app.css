@@ -154,7 +154,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .m0 {margin: 0px 0px 0rem;}
 .m2 {margin: 2px;}
 .m5 {margin: 5px;}
-.mt2 {margin-top: 5px;}
+.mt2 {margin-top: 2px;}
 .mt5 {margin-top: 5px !important;}
 .mt10 {margin-top: 10px;}
 .mlr2 {margin-left: 2px; margin-right: 2px;}
@@ -175,6 +175,14 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 }
 
 /* Font Size */
+
+.fnt04{
+	font-size: 0.4em
+}
+
+.fnt05{
+	font-size: 0.5em
+}
 
 .fnt06{
 	font-size: 0.6em
