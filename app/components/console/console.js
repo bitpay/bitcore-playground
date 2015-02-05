@@ -24,7 +24,8 @@ function REPL() {
   });
 
   window.console._log = function() {
-    var result = Array.prototype.slice.call(arguments).join(' ') + '\n';
+    var result = Array.prototype.slice.call(arguments);
+    result = result.map(toConsoleString).join(' ') + '\n';
     self.console.Write(result, 'jqconsole-output');
   };
 
@@ -183,12 +184,20 @@ REPL.prototype.resultCallback = function(result) {
 
   window._ = result;
 
-  if (result instanceof Object && result.inspect) {
-    result = result.inspect();
+  this.console.Write('' + toConsoleString(result) + '\n', 'jqconsole-output');
+  this.prompt();
+}
+
+function toConsoleString(obj) {
+  if (obj instanceof Array) {
+    return obj = '[' + obj.map(toConsoleString).join(', ') + ']';
   }
 
-  this.console.Write('' + result + '\n', 'jqconsole-output');
-  this.prompt();
+  if (obj instanceof Object && obj.inspect) {
+    return obj.inspect();
+  }
+
+  return String(obj);
 }
 
 REPL.prototype.errorCallback = function(error) {
