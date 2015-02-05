@@ -46,6 +46,7 @@ input.ng-invalid {
 
 .ng-cloak { display: none !important;}
 
+
  /* reset hljs */
  .hljs { 
  	padding: 30px;
@@ -156,6 +157,7 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 .m5 {margin: 5px;}
 .mt2 {margin-top: 2px;}
 .mt5 {margin-top: 5px !important;}
+.mt7 {margin-top: 7px !important;}
 .mt10 {margin-top: 10px;}
 .mlr2 {margin-left: 2px; margin-right: 2px;}
 .ml10 {margin-left: 10px;}
