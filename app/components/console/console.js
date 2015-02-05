@@ -3,7 +3,7 @@ $(function () {
 function REPL() {
 
   this.element = document.getElementById("console");
-  this.console = $('#console').jqconsole("Let's play with bitcore!\n", '>> ');
+  this.console = $('#console').jqconsole(null, '>> ');
   this.console.$input_source.blur();
 
   setInterval(function(){

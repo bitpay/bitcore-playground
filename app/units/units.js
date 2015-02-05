@@ -16,9 +16,23 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.exampleCode = "";
 
   function setExampleCode(value, code, fiat) {
-    var template = "var unit = new bitcore.Unit(@value, bitcore.Unit.@code);"
-    template = template.replace('@value', $scope.unit.BTC);
-    template = template.replace('@code', code);
+    var template, templates = {
+      BTC: 'var unit = new bitcore.Unit.fromBTC(@value);',
+      mBTC: 'var unit = new bitcore.Unit.fromMilis(@value);',
+      bits: 'var unit = new bitcore.Unit.fromBits(@value);',
+      satoshis: 'var unit = new bitcore.Unit.fromSatoshis(@value);',
+    }
+
+    if (templates[code]) {
+      template = templates[code].replace('@value', value);
+    } else {
+      template = 'var unit = new bitcore.Unit.fromFiat(@value, @rate);'
+      template = template.replace('@value', value);
+      template = template.replace('@rate', code);
+    }
+
+    var rate = $scope.currency ? $scope.currency.rate : 0;
+    template += "\nconsole.log('Units', unit.BTC, unit.mBTC, unit.bits, unit.satoshis, unit.atRate(" + rate + "));";
     $scope.exampleCode = template;
   };
 
@@ -60,7 +74,7 @@ angular.module('playApp.units', ['ngRoute'])
     $scope.updateUnit(value, rate.rate);
   };
 
-  $scope.updateUnit(0, 'BTC');
+  $scope.updateUnit(1, 'BTC');
 
   $http.get('https://bitpay.com/api/rates').
     success(function(rates) {
@@ -76,6 +90,7 @@ angular.module('playApp.units', ['ngRoute'])
 
       });
       $scope.currency = rates[0];
+      $scope.updateUnit(1, 'BTC');
     }).
     error(function() {
       console.log('Error while fetching exchange rates');
