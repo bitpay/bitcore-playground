@@ -809,3 +809,13 @@ font-family: Monaco, "Courier New", Courier, monospace !important;
 }
 
 .loader rect { fill: #DDDDDD; }
+
+button:hover, button:focus, .button:hover, .button:focus {
+  background-color: initial;
+}
+
+button:hover, button:focus, .button:hover, .button:focus {
+  color: initial;
+}
+
+
