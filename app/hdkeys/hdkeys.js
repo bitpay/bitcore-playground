@@ -9,7 +9,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   });
 }])
 
-.controller('HDKeysCtrl', function($scope) {
+.controller('HDKeysCtrl', function($scope, bitcore) {
 
   var privateValidPath = function(path) {
     return !!(/^[mM][']?(\/[0-9]+[']?)*[/]?$/.exec(path));
@@ -132,7 +132,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
     }
 
     template += "var derivedPublicKey = derivedHdPublicKey.publicKey;\n"
-    template += "var address = derivedPublicKey.toAddress();\n"
+    template += "var address = derivedPublicKey.toAddress();"
 
     $scope.exampleCode = template;
   };

@@ -805,3 +805,5 @@ font-family: Monaco, "Courier New", Courier, monospace !important;
   background-color: #4A4A4A;
   cursor: pointer;
 }
+
+.loader rect { fill: #DDDDDD; }

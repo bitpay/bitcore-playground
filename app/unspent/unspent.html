@@ -10,7 +10,7 @@
     <p>Retrieve all the UTXOs associated with a bitcoin address</p>
   </div>
 </div>
-
+<div class="preloader"></div>
 <div class="row bg-color-white p20">
   <div class="row collapse">
     <div class="columns small-10">
@@ -19,7 +19,10 @@
     <div class="columns small-2">
       <div class="row collapse">
         <div class="small-11 small-offset-1">
-          <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">Fetch</button>
+          <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
+            <span ng-hide="loading">Fetch</span>
+            <ng-include ng-show="loading" src="'components/loader.html'"></ng-include>
+          </button>
         </div>
       </div>
     </div>
@@ -35,7 +38,7 @@
       <div class="fnt07 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
       <div class="fnt07 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
       <div class="border-top pt10 mt10 text-center">
-        <button type="button" class="radius button4">See transaction on <span class="insight fnt14">Insight</span></button>
+        <a ng-href="{{utxo.url}}" target="_blank" class="radius button4">See transaction on <span class="insight fnt14">Insight</span></a>
       </div>
     </div>
   </div>

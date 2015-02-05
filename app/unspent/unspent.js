@@ -9,11 +9,12 @@ angular.module('playApp.unspent', ['ngRoute'])
   });
 }])
 
-.controller('UnspentCtrl', function($scope, $http) {
+.controller('UnspentCtrl', function($scope, $http, bitcore) {
 
   var explorers = require('bitcore-explorers');
   $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
   $scope.utxos = [];
+  $scope.loading = false;
 
   $scope.addressUpdated = function(address) {
     setExampleCode();
@@ -22,9 +23,12 @@ angular.module('playApp.unspent', ['ngRoute'])
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
     if (!bitcore.Address.isValid(address)) return; // mark as invalid
+
+    $scope.loading = true;
     client.getUnspentUtxos(address, onUTXOs);
 
     function onUTXOs(err, utxos) {
+      $scope.loading = false;
       if (err) throw err;
 
       $scope.utxos = utxos;
@@ -49,9 +53,10 @@ angular.module('playApp.unspent', ['ngRoute'])
     var address = $scope.utxoAddress || '1BitcoinEaterAddressDontSendf59kuE';
 
     template += "var explorers = require('bitcore-explorers');\n";
-    template += "var insight = new explorers.Insight();\n";
-    template += "insight.getUnspentOutputs('" + address + "', function(err, utxos) {\n";
-    template += "    // Check for errors or use the UTXOs...\n";
+    template += "var client = new explorers.Insight();\n";
+    template += "client.getUnspentUtxos('" + address + "', function(err, utxos) {\n";
+    template += "    UTXOs = utxos;\n";
+    template += "    console.log('UTXOs:', utxos);\n";
     template += "});";
 
     $scope.exampleCode = template;
