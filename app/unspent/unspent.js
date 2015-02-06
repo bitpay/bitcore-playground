@@ -12,9 +12,26 @@ angular.module('playApp.unspent', ['ngRoute'])
 .controller('UnspentCtrl', function($scope, $http, bitcore) {
 
   var explorers = require('bitcore-explorers');
-  $scope.utxoAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
-  $scope.utxos = [];
-  $scope.loading = false;
+
+  var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
+  var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
+
+  $scope.$on('networkUpdate', function() {
+    reset();
+  });
+
+  var reset = function() {
+    if (bitcore.Networks.defaultNetwork.name === 'testnet') {
+      $scope.utxoAddress = defaultTestnetAddress;
+    } else {
+      $scope.utxoAddress = defaultLivenetAddress;
+    }
+    $scope.utxos = [];
+    $scope.loading = false;
+    $scope.currentAddress = '';
+    setExampleCode();
+  };
+  reset();
 
   $scope.addressUpdated = function(address) {
     setExampleCode();
@@ -26,7 +43,10 @@ angular.module('playApp.unspent', ['ngRoute'])
 
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
-    if (!bitcore.Address.isValid(address)) return; // mark as invalid
+
+    if (!bitcore.Address.isValid(address)) {
+      return; // mark as invalid
+    }
 
     $scope.loading = true;
     client.getUnspentUtxos(address, onUTXOs);

@@ -20,23 +20,24 @@
       <div class="row collapse">
         <div class="small-11 small-offset-1">
           <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
-            <span ng-hide="true || loading">Fetch</span>
+            <span ng-hide="loading">Fetch</span>
             <div class="loading-container">
-              <ng-include ng-show="true || loading" src="'components/loader.html'"></ng-include>
+              <ng-include ng-show="loading" src="'components/loader.html'"></ng-include>
             </div>
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="row collapse" ng-show="notFound">
-    <div class="columns small-12 small-centered">
-      <span class="label round secondary">No outputs found associated with {{notFound}}</span>
+  <div class="mt20 row collapse" ng-show="currentAddress">
+    <div class="columns small-12 content-title small-centered">
+      <h1>Outputs for Address: {{currentAddress}}</h1>
     </div>
   </div>
-  <div class="mt20 row collapse" ng-show="currentAddress">
+
+  <div class="row collapse" ng-show="utxos.length === 0 && currentAddress">
     <div class="columns small-12 small-centered">
-      <h3>Outputs for address: {{currentAddress}}</h3>
+      <h4>No outputs found</h4>
     </div>
   </div>
 
@@ -45,10 +46,10 @@
       <div class="coin-in-box">
         <div class="icon-coin v-align fnt20 pr5"></div>
       </div>
-      <h1 class="amount fnt09 ml10">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-      <div class="fnt07 mt2 ml10"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
-      <div class="fnt07 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
-      <div class="fnt07 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
+      <h1 class="amount fnt1 ml10">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+      <div class="fnt09 mt2 ml10"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{utxo.txId}}</span></div>
+      <div class="fnt09 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
+      <div class="fnt09 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
       <div class="border-top pt10 mt10 text-center">
         <a ng-href="{{utxo.url}}" target="_blank" class="radius3 button4">See transaction on <span class="insight fnt14">Insight</span></a>
       </div>
