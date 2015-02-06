@@ -281,7 +281,7 @@
     <div class="small-4 columns">
       <div class="row collapse">
         <div class="small-11 small-offset-1">
-          <input type="number" ng-model="amount" placeholder="enter an amount in BTC" auto-select>
+          <input type="number" ng-min="0" ng-required ng-max="2100000000000000" ng-model="amount" placeholder="enter an amount in BTC" auto-select>
         </div>
       </div>     
     </div>

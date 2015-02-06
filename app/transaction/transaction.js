@@ -142,6 +142,9 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.addAddressOutput = function(address, amount) {
     console.log(address, amount);
     $('#addAddressModal').foundation('reveal', 'close');
+    if (!amount && amount !== 0) {
+      return;
+    }
     amount = bitcore.Unit.fromBTC(amount).toSatoshis();
     $scope.toAddresses[address] = amount
     $scope.transaction.to(address, amount);
