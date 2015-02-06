@@ -130,7 +130,6 @@ app.controller('SideBar', function($scope, $rootScope, $timeout, $location) {
   var networks = bitcore.Networks;
   networks.defaultNetwork = networks.testnet;
   $rootScope.$broadcast('networkUpdate');
-  console.log(networks.defaultNetwork);
 
   $scope.setTestnet = function(value) {
     networks.defaultNetwork = value ? networks.livenet : networks.testnet;
