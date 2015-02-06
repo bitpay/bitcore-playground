@@ -72,6 +72,7 @@ angular.module('playApp.multisig', ['ngRoute'])
 
   $scope.add = function() {
     $scope.keys.push(getRandomKey());
+    $scope.totalKeys = $scope.keys.length;
   };
 
   $scope.remove = function(index) {
@@ -82,6 +83,8 @@ angular.module('playApp.multisig', ['ngRoute'])
       }
     }
     $scope.keys = newKeys;
+    $scope.totalKeys = $scope.keys.length;
+    $scope.threshold = Math.min($scope.threshold, $scope.totalKeys);
   };
 
   $scope.updatePriv = function(index) {
