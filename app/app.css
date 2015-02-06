@@ -368,17 +368,12 @@ ul.menu{
 	margin: 15px 0;
 	} 
 
-.menu li a{ 
+.menu li a, .dropdown-menu li a{ 
 	color:#000000;
 	} 
 
-.menu li a:hover{ 
+.menu li a:hover, .dropdown-menu li a:hover{ 
 	color:#BD1900;
-	} 
-
-
-.menu li a{ 
-	color:#000000;
 	} 
 
 
