@@ -113,11 +113,16 @@ registerValidator(app, 'address', function(bitcore, value) {
 });
 
 // Sidebar
-app.controller('SideBar', function($scope, $rootScope, $timeout) {
+app.controller('SideBar', function($scope, $rootScope, $timeout, $location) {
   $timeout(function(){
     $rootScope.showFooter = true;
     $rootScope.$apply();
   }, 100);
+
+  $scope.getClass = function(path) {
+    console.log('PATH', $location.path().substr(0, path.length));
+    return $location.path().substr(0, path.length) === path ? "current" : "";
+  }
 
 })
 .controller('Network', function($scope, $rootScope, $timeout, bitcore) {
