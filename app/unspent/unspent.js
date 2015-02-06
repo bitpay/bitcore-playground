@@ -49,6 +49,7 @@ angular.module('playApp.unspent', ['ngRoute'])
     }
 
     $scope.loading = true;
+    $scope.notFound = false;
     client.getUnspentUtxos(address, onUTXOs);
 
     function onUTXOs(err, utxos) {
@@ -57,8 +58,9 @@ angular.module('playApp.unspent', ['ngRoute'])
 
       if (!utxos.length) {
         $scope.utxos = [];
-        $scope.notFound = address;
+        $scope.notFound = true;
         $scope.currentAddress = '';
+        $scope.$apply();
         return;
       }
 
@@ -69,7 +71,6 @@ angular.module('playApp.unspent', ['ngRoute'])
         utxos[utxo].txUrl = 'transaction/';
       }
       $scope.$apply();
-      console.log(utxos);
     }
   };
 

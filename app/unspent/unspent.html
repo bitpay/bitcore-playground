@@ -31,13 +31,13 @@
   </div>
   <div class="mt20 row collapse" ng-show="currentAddress">
     <div class="columns small-12 content-title small-centered">
-      <h1>Outputs for Address: {{currentAddress}}</h1>
+      <h1>Outputs for <i>{{currentAddress}}</i></h1>
     </div>
   </div>
 
-  <div class="row collapse" ng-show="utxos.length === 0 && currentAddress">
+  <div class="row collapse" ng-show="notFound">
     <div class="columns small-12 small-centered">
-      <h4>No outputs found</h4>
+      <h4 class="not-found">No UTXOs found</h4>
     </div>
   </div>
 
