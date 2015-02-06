@@ -93,8 +93,11 @@
         <div class="small-8 columns  pt10 pb10">
           <span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{transaction.id}}</span>
         </div>
-        <div class="small-4 columns text-right pt10 pb10">
-          <span class="item-title">nLockTime:</span> <span class="item-data fntgrey1">{{transaction.nLockTime}}</span>
+        <div class="small-2 columns pt10 pb10">
+          <span class="item-title">nLockTime:</span>
+        </div>
+        <div class="small-2 columns text-right pt10 pb10">
+          <input class="nlocktime" type="number" ng-model="nLockTime" ng-max="2147483647"></input>
         </div>
       </div>
 

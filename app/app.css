@@ -114,6 +114,13 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 	border-radius: 3px;
 }
 
+input.nlocktime {
+  
+ 	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
 .loading-container {
   padding-top: 2px;
 }
