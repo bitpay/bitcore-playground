@@ -61,13 +61,6 @@ input.ng-invalid {
 	border-radius: 2px;
  }
 
-.reveal-modal {
-  position: fixed;
-}
-.reveal-modal-bg {
-  position: fixed;
-}
-
  code { 
  	border-width: 0px;
  	 }

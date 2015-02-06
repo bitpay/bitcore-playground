@@ -10,27 +10,37 @@ angular.module('playApp.transaction', ['ngRoute'])
 }])
 
 .controller('TransactionCtrl', function($scope, $http, bitcore) {
-  // Monkey patching until next bitcore version is released
-  bitcore.Transaction.prototype.removeInput = function(txId, outputIndex) {
-    var index;
-    if (!outputIndex && _.isNumber(txId)) {
-      index = txId;
-    } else {
-      index = _.findIndex(this.inputs, function(input) {
-        return input.prevTxId.toString('hex') === txId && input.outputIndex === outputIndex;
-      });
-    }
-    if (index < 0 || index >= this.inputs.length) {
-      throw new errors.Transaction.InvalidIndex(index, this.inputs.length);
-    }
-    var input = this.inputs[index];
-    this._inputAmount -= input.output.satoshis;
-    this.inputs = _.without(this.inputs, input);
-    this._updateChangeOutput();
-  };
 
   var explorers = require('bitcore-explorers');
-  $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
+  var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
+  var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
+
+  $scope.$on('networkUpdate', function() {
+    reset();
+  });
+
+  var reset = function() {
+    if (bitcore.Networks.defaultNetwork.name === 'testnet') {
+      $scope.utxoAddress = defaultTestnetAddress;
+    } else {
+      $scope.utxoAddress = defaultLivenetAddress;
+    }
+    $scope.utxos = [];
+    $scope.loading = false;
+    $scope.currentAddress = '';
+    $scope.transaction = new bitcore.Transaction();
+    $scope.privateKey = '';
+
+    $scope.fromAddresses = [];
+    $scope.toAddresses = {};
+    $scope.addData = [];
+    $scope.privateKeys = [];
+    $scope.change = '';
+    $scope.loading = false;
+    setExampleCode();
+  };
+  reset();
+
   $scope.privateKey = '';
 
   $scope.fromAddresses = [];
@@ -41,8 +51,6 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.loading = false;
 
   $scope.utxos = [];
-
-  window.T = $scope.transaction = new bitcore.Transaction();
 
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
@@ -71,9 +79,18 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.signWith = function(privKey) {
     try {
+      $('#addSignatureModal').foundation('reveal', 'open');
+      if (!privKey) {
+        return;
+      }
       var privateKey = new bitcore.PrivateKey(privKey);
       $scope.privateKeys.push(privateKey);
-      $scope.transaction.sign(privateKey);
+      var signatures = $scope.transaction.getSignatures(privateKey);
+      if (!signatures.length) {
+        $('#noSignatures').foundation('reveal', 'open');
+      } else {
+        $scope.transaction.sign(privateKey);
+      }
       setExampleCode();
     } catch (e) {
       console.log('Error', e);
@@ -112,12 +129,14 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.addAddressOutput = function(address, amount) {
     console.log(address, amount);
+    $('#addAddressModal').foundation('reveal', 'close');
     $scope.toAddresses[address] = amount;
     $scope.transaction.to(address, -(-amount));
     setExampleCode();
   };
 
   $scope.addDataOutput = function(info) {
+    $('#addDataModal').foundation('reveal', 'close');
     $scope.addData.push(info);
     $scope.transaction.addData(info);
     setExampleCode();
@@ -186,4 +205,22 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   initialExample();
 
+  // Monkey patching until next bitcore version is released
+  bitcore.Transaction.prototype.removeInput = function(txId, outputIndex) {
+    var index;
+    if (!outputIndex && _.isNumber(txId)) {
+      index = txId;
+    } else {
+      index = _.findIndex(this.inputs, function(input) {
+        return input.prevTxId.toString('hex') === txId && input.outputIndex === outputIndex;
+      });
+    }
+    if (index < 0 || index >= this.inputs.length) {
+      throw new errors.Transaction.InvalidIndex(index, this.inputs.length);
+    }
+    var input = this.inputs[index];
+    this._inputAmount -= input.output.satoshis;
+    this.inputs = _.without(this.inputs, input);
+    this._updateChangeOutput();
+  };
 });
