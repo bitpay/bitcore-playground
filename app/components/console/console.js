@@ -50,6 +50,10 @@ function REPL() {
     self.console.MoveToEnd();
   });
 
+  this.console.RegisterShortcut('L', function() {
+    self.console.Clear();
+  });
+
   // Autocomplete hack
   this.console._Indent = function() {
     var tokens = this.GetPromptText().split(' ');
