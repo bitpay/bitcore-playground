@@ -53,14 +53,15 @@ app.directive('exampleCode', function() {
       $(element).focus(function(){
         $(this).select();
       });
+      element.attr('spellcheck', false);
     }
   };
 })
-.directive('requireEqualizer', function() {
+.directive('requireTooltip', function() {
   return {
     link: function(scope, element, attrs) {
      $(document).foundation();
-     $(document).foundation('equalizer', 'reflow');
+     $(document).foundation('tooltip', 'reflow');
     }
   };
 })
@@ -85,6 +86,7 @@ function registerValidator(app, name, validator) {
           return value;
         }
         ngModel.$parsers.unshift(validate);
+        ngModel.$formatters.unshift(validate);
       }
     };
   });
@@ -113,11 +115,15 @@ registerValidator(app, 'address', function(bitcore, value) {
 });
 
 // Sidebar
-app.controller('SideBar', function($scope, $rootScope, $timeout) {
+app.controller('SideBar', function($scope, $rootScope, $timeout, $location) {
   $timeout(function(){
     $rootScope.showFooter = true;
     $rootScope.$apply();
   }, 100);
+
+  $scope.getClass = function(path) {
+    return $location.path().substr(0, path.length) === path ? "current" : "";
+  }
 
 })
 .controller('Network', function($scope, $rootScope, $timeout, bitcore) {

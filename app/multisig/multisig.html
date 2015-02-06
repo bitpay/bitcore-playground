@@ -1,6 +1,6 @@
 <div class="row collapse">
   <div class="large-9 small-7 columns content-title">
-    <h1>Multisig Address</h1>
+    <h1>Multi-signature Address</h1>
   </div>
   <ng-include src="'components/network.html'"/>
 
@@ -26,7 +26,7 @@
   <div class="large-6 columns">
     <div class="row collapse">
       <div class="large-11 columns">
-        <span class="key-title">Total Key:</span>
+        <span class="key-title">Number of Keys:</span>
         <select ng-model="totalKeys" ng-options="num for num in totalKeysRange()" ng-change="setKeyAmount(totalKeys)"></select>
       </div> 
     </div> 

@@ -35,6 +35,10 @@ function REPL() {
     self.console.$input_source.focus();
   });
 
+  this.console.$input_source.blur(function() {
+    self.scrollToBottom();
+  });
+
   this.console.RegisterShortcut('U', function() {
     var col = self.console.GetColumn() - 3;
     var text = self.console.GetPromptText();
@@ -47,7 +51,11 @@ function REPL() {
   });
 
   this.console.RegisterShortcut('E', function() {
-    self.console.MoveToStart();
+    self.console.MoveToEnd();
+  });
+
+  this.console.RegisterShortcut('L', function() {
+    self.console.Clear();
   });
 
   // Autocomplete hack

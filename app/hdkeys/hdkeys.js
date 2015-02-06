@@ -17,7 +17,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   var publicValidPath = function(path) {
     return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(path));
   };
-  $scope.path = 'm/817/6023';
+  $scope.path = "m/44'/0/1337";
   $scope.keys = [];
 
   $scope.$on('networkUpdate', function() {
@@ -124,7 +124,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
       template += "var hdPrivateKey = new bitcore.HDPrivateKey();\n";
 
       template += "\n// private key derivation\n";
-      template += "var derivedHdPrivateKey = hdPrivateKey.derive('" + path + "');\n"
+      template += "var derivedHdPrivateKey = hdPrivateKey.derive(\"" + path + "\");\n"
       template += "var derivedPrivateKey = hdPrivateKey.privateKey;\n"
 
       template += "\n// public key derivation\n";

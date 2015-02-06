@@ -2,12 +2,11 @@
   <div class="large-9 small-7 columns content-title">
     <h1>Bitcoin Units</h1>
   </div>
-  <ng-include src="'components/network.html'"/>
 
 </div>
 <div class="row collapse pb20">
   <div class="small-12 columns">
-    <p>Conversion between most frequent bitcoin units and fiat currencies.</p>
+    <p>Convert between the most frequent bitcoin units and fiat currencies.</p>
   </div>
 </div>
 
@@ -111,7 +110,7 @@
 
       <div class="row collapse">
         <div class="mt20 text-center">
-          <p><span class="ubuntu-bold uppercase">1 BTC = {{currency.rate}} {{currency.code}}</span></br><span class="fnt07 uppercase">Exchange rates from</span><span class="fnt08"> <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
+          <p><span class="ubuntu-bold uppercase">1 BTC = {{currency.rate.toFixed(2)}} {{currency.code}}</span></br><span class="fnt07 uppercase">Exchange rates from</span><span class="fnt08"> <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
         </div>
       </div>
     </div>
