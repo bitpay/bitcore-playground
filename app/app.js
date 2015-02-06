@@ -85,6 +85,7 @@ function registerValidator(app, name, validator) {
           return value;
         }
         ngModel.$parsers.unshift(validate);
+        ngModel.$formatters.unshift(validate);
       }
     };
   });
