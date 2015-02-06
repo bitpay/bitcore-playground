@@ -175,11 +175,15 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.broadcast = function() {
     var serialized = $scope.transaction.serialize();
     var client = new explorers.Insight();
+    $scope.broadcasting = true;
     client.broadcast(serialized, function(err, id) {
+      $scope.broadcasting = false;
       if (err) {
-        alert(err);
+        $('#broadcastError').foundation('reveal', 'open');
       } else {
-        alert('Broadcasted');
+        $scope.transactionUrl = client.url + '/tx/' + $scope.transaction.id;
+        $scope.$apply();
+        $('#broadcastSuccess').foundation('reveal', 'open');
       }
     });
   };
