@@ -199,7 +199,7 @@
                     <div class="small-6 columns">
                       <div class="row collapse">
                         <div class="small-11 small-offset-1 columns">
-                          <button type="button" data-reveal-id="addDataModal" class="expand button tiny radius button1" disabled><i class="fi-plus"></i> Add Data</button>
+                          <button type="button" data-reveal-id="addDataModal" class="expand button tiny radius button1"><i class="fi-plus"></i> Add Data</button>
                         </div>
                       </div>   
                     </div>    
@@ -213,7 +213,7 @@
                               {{output.satoshis|btc}} BTC to {{output.script.toAddress().toString() | ellipsify}}
                             </span>
                             <span ng-show="output.script.isDataOut()">
-                              <span class="btc">Data.</span>
+                              <span class="btc">Data</span>
                             </span>
                             <span ng-hide="output.script.isScriptHashOut() || output.script.isPayToPublicKeyHash() || output.script.isDataOut">
                               {{output.satoshis|btc}} BTC to an unrecognized script
@@ -238,12 +238,12 @@
                       </div>
                       <div class="row collapse" ng-show="output.visible">
                         <div class="fnt08 mt5">
-                          <span class="item-title">Script:</span>
-                          <span class="item-data fntgrey1">{{output.script.toString()}}</span>
+                          <span class="item-title">Data:</span>
+                          <span class="item-data fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
                         </div>
                         <div class="fnt08 mt5">
-                          <span class="item-title">OP_RETURN with data:</span>
-                          <span class="item-data fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
+                          <span class="item-title">Script:</span>
+                          <span class="item-data fntgrey1">{{output.script.toString()}}</span>
                         </div>
                       </div>
                     </div>
