@@ -3,7 +3,7 @@
 var app = angular.module('playApp', [
   'ngRoute',
   'playApp.units',
-  'playApp.keys',
+  'playApp.address',
   'playApp.hdkeys',
   'playApp.transaction',
   'playApp.unspent',

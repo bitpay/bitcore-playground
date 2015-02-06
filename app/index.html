@@ -72,7 +72,7 @@
         <a>Menu</a>
         <ul class="dropdown expand">
           <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span>Units</a></li>
-          <li ng-class="getClass('/keys')"><a href="#/keys"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
+          <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
           <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
           <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
           <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span>  Unspent Outputs</a></li>
@@ -95,7 +95,7 @@
     <div class="large-12 columns examples sidebar" ng-controller="SideBar">
       <ul class="menu">
         <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span> Units</a></li>
-        <li ng-class="getClass('/keys')"><a href="#/keys"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
+        <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
         <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
         <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
         <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span> Unspent Outputs</a></li>
@@ -168,7 +168,7 @@
   <script src="bower_components/bitcore-explorers/bitcore-explorers.js"></script>
   <script src="app.js"></script>
   <script src="units/units.js"></script>
-  <script src="keys/keys.js"></script>
+  <script src="address/address.js"></script>
   <script src="multisig/multisig.js"></script>
   <script src="hdkeys/hdkeys.js"></script>
   <script src="unspent/unspent.js"></script>
