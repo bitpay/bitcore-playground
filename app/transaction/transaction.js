@@ -48,7 +48,13 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.addData = [];
   $scope.privateKeys = [];
   $scope.change = '';
+  $scope.nLockTime = undefined;
   $scope.loading = false;
+
+  $scope.$watch('nLockTime', function(newValue) {
+    $scope.transaction.nLockTime = newValue;
+    setExampleCode();
+  });
 
   $scope.utxos = [];
 
@@ -180,6 +186,9 @@ angular.module('playApp.transaction', ['ngRoute'])
     }
     if ($scope.change) {
       template += "    .change('" + $scope.change + "')\n";
+    }
+    if (!_.isUndefined($scope.nLockTime)) {
+      template += "transaction.nLockTime = " + $scope.nLockTime + ";\n";
     }
 
     $scope.exampleCode = template;
