@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('playApp.keys', ['ngRoute'])
+angular.module('playApp.address', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/keys', {
-    templateUrl: 'keys/keys.html',
-    controller: 'KeysCtrl'
+  $routeProvider.when('/address', {
+    templateUrl: 'address/address.html',
+    controller: 'AddressCtrl'
   });
 }])
 
-.controller('KeysCtrl', function($scope, $routeParams, bitcore) {
+.controller('AddressCtrl', function($scope, $routeParams, bitcore) {
 
   $scope.$on('networkUpdate', function() {
     $scope.newKey();
