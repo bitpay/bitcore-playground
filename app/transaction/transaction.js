@@ -52,7 +52,11 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.loading = false;
 
   $scope.$watch('nLockTime', function(newValue) {
-    $scope.transaction.nLockTime = newValue;
+    if (!newValue) {
+      $scope.currentAddress = undefined;
+    } else {
+      $scope.transaction.nLockTime = newValue;
+    }
     setExampleCode();
   });
 
@@ -70,14 +74,16 @@ angular.module('playApp.transaction', ['ngRoute'])
       $scope.loading = false;
       if (err) throw err;
 
-      utxos = utxos.filter(function(u1) {
-        var repeated = $scope.utxos.filter(function(u2) {
-          return u2.txId === u1.txId && u1.outputIndex === u2.outputIndex;
-        });
-        return repeated.length === 0;
-      });
+      if (!utxos.length) {
+        $scope.utxos = [];
+        $scope.notFound = address;
+        $scope.currentAddress = '';
+        $scope.$apply();
+        return;
+      }
 
-      $scope.utxos = $scope.utxos.concat(utxos);
+      $scope.utxos = utxos;
+      $scope.currentAddress = address;
       $scope.$apply();
       console.log(utxos);
     }
@@ -85,7 +91,7 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.signWith = function(privKey) {
     try {
-      $('#addSignatureModal').foundation('reveal', 'open');
+      $('#addSignatureModal').foundation('reveal', 'close');
       if (!privKey) {
         return;
       }
