@@ -91,7 +91,7 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.signWith = function(privKey) {
     try {
-      $('#addSignatureModal').foundation('reveal', 'open');
+      $('#addSignatureModal').foundation('reveal', 'close');
       if (!privKey) {
         return;
       }
