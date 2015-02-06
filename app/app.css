@@ -451,7 +451,14 @@ ul.menu{
     -o-transition: background-color 300ms linear;
     -ms-transition: background-color 300ms linear;
     transition: background-color 300ms linear;
-	} 
+	}
+
+  .button1:focus  {
+ background-color: initial;
+  background-color: #A31600  !important; 
+    color: #FFFFFF  !important;
+    border-style: none;
+}
 
 	.button1-blue{
 	border: 1px solid #4A90E2;
