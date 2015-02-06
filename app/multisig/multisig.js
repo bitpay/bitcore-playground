@@ -125,7 +125,8 @@ angular.module('playApp.multisig', ['ngRoute'])
     });
 
     template += "];\n";
-    template += "var address = new bitcore.Address(publicKeys, " + threshold + ");";
+    template += "var requiredSignatures = " + threshold + ";\n";
+    template += "var address = new bitcore.Address(publicKeys, requiredSignatures);";
 
     $scope.exampleCode = template;
   };
