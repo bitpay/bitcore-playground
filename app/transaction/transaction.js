@@ -163,6 +163,15 @@ angular.module('playApp.transaction', ['ngRoute'])
     setExampleCode();
   };
 
+  $scope.canSerialize = function() {
+    try {
+      $scope.transaction.serialize();
+    } catch (err) {
+      return false;
+    }
+    return $scope.transaction.inputs.length > 0;
+  }
+
   $scope.broadcast = function() {
     var serialized = $scope.transaction.serialize();
     var client = new explorers.Insight();
