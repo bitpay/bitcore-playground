@@ -35,6 +35,10 @@ function REPL() {
     self.console.$input_source.focus();
   });
 
+  this.console.$input_source.blur(function() {
+    self.scrollToBottom();
+  });
+
   this.console.RegisterShortcut('U', function() {
     var col = self.console.GetColumn() - 3;
     var text = self.console.GetPromptText();
