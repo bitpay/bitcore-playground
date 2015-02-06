@@ -128,15 +128,10 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.removeInput = function(input) {
     $scope.removeUtxo({txId: input.prevTxId, outputIndex: input.outputIndex});
   };
-  $scope.removeOutput = function(output) {
-    console.log(output);
-    $scope.usingUTXOs.remove(input.output.txId + ':' + input.output.outputIndex);
+  $scope.removeOutput = function(index) {
+    $scope.transaction.removeOutput(index);
     setExampleCode();
-  };
-  $scope.removeOutput = function(output) {
-    console.log(output);
-    $scope.usingUTXOs.remove(input.output.txId + ':' + input.output.outputIndex);
-    setExampleCode();
+    $scope.$apply();
   };
 
   $scope.addAddressOutput = function(address, amount) {
@@ -146,7 +141,7 @@ angular.module('playApp.transaction', ['ngRoute'])
       return;
     }
     amount = bitcore.Unit.fromBTC(amount).toSatoshis();
-    $scope.toAddresses[address] = amount
+    $scope.toAddresses[address] = amount;
     $scope.transaction.to(address, amount);
     setExampleCode();
   };
