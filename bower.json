@@ -18,6 +18,7 @@
     "foundation-icon-fonts": "zurb/foundation-icon-fonts",
     "jquery-appear": "~0.2.2",
     "bitcore": "~0.9.5",
-    "bitcore-explorers": "~0.10.0"
+    "bitcore-explorers": "~0.10.0",
+    "angular-animate": "~1.3.12"
   }
 }
