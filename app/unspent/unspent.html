@@ -1,13 +1,13 @@
 <div class="row collapse" require-modal>
   <div class="large-9 small-7 columns content-title">
-    <h1>Unspent Outputs</h1>
+    <h1>Unspent Transaction Outputs</h1>
   </div>
   <ng-include src="'components/network.html'"/>
 
 </div>
 <div class="row collapse pb20">
   <div class="small-12 columns">
-    <p>Retrieve all the UTXOs associated with a bitcoin address</p>
+    <p>Retrieve all the UTXOs associated with a bitcoin address.</p>
   </div>
 </div>
 <div class="preloader"></div>
@@ -20,16 +20,28 @@
       <div class="row collapse">
         <div class="small-11 small-offset-1">
           <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
-            <span ng-hide="loading">Fetch</span>
-            <ng-include ng-show="loading" src="'components/loader.html'"></ng-include>
+            <span ng-hide="true || loading">Fetch</span>
+            <div class="loading-container">
+              <ng-include ng-show="true || loading" src="'components/loader.html'"></ng-include>
+            </div>
           </button>
         </div>
       </div>
     </div>
   </div>
+  <div class="row collapse" ng-show="notFound">
+    <div class="columns small-12 small-centered">
+      <span class="label round secondary">No outputs found associated with {{notFound}}</span>
+    </div>
+  </div>
+  <div class="mt20 row collapse" ng-show="currentAddress">
+    <div class="columns small-12 small-centered">
+      <h3>Outputs for address: {{currentAddress}}</h3>
+    </div>
+  </div>
 
   <div class="row collapse" ng-repeat="utxo in utxos" ng-show="utxos">
-    <div class="small-12 columns capsule-inside mt10 plr10 p10 radius">
+    <div class="small-12 columns capsule-inside mt10 plr10 p10 radius10">
       <div class="coin-in-box">
         <div class="icon-coin v-align fnt20 pr5"></div>
       </div>
@@ -38,7 +50,7 @@
       <div class="fnt07 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
       <div class="fnt07 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
       <div class="border-top pt10 mt10 text-center">
-        <a ng-href="{{utxo.url}}" target="_blank" class="radius button4">See transaction on <span class="insight fnt14">Insight</span></a>
+        <a ng-href="{{utxo.url}}" target="_blank" class="radius3 button4">See transaction on <span class="insight fnt14">Insight</span></a>
       </div>
     </div>
   </div>

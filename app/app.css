@@ -121,6 +121,10 @@ src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubunt
 	border-radius: 3px;
 }
 
+.loading-container {
+  padding-top: 2px;
+}
+
 /* Paddings and margins */
 .p0 {padding: 0rem 0rem 0rem;}
 .p5 {padding: 5px;}
@@ -260,6 +264,18 @@ text-transform: uppercase;
 -moz-border-radius-topright: 3px;
 border-top-left-radius: 3px;
 border-top-right-radius: 3px;
+}
+
+.radius3{
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+
+.radius10{
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
 }
 
 /* Main Layout */

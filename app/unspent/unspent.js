@@ -12,13 +12,17 @@ angular.module('playApp.unspent', ['ngRoute'])
 .controller('UnspentCtrl', function($scope, $http, bitcore) {
 
   var explorers = require('bitcore-explorers');
-  $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
+  $scope.utxoAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
   $scope.utxos = [];
   $scope.loading = false;
 
   $scope.addressUpdated = function(address) {
     setExampleCode();
   };
+
+  $scope.$watch('utxoAddress', function() {
+    $scope.notFound = '';
+  });
 
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
@@ -31,6 +35,14 @@ angular.module('playApp.unspent', ['ngRoute'])
       $scope.loading = false;
       if (err) throw err;
 
+      if (!utxos.length) {
+        $scope.utxos = [];
+        $scope.notFound = address;
+        $scope.currentAddress = '';
+        return;
+      }
+
+      $scope.currentAddress = address;
       $scope.utxos = utxos;
       for (var utxo in utxos) {
         utxos[utxo].url = client.url + '/tx/' + utxos[utxo].txId;
