@@ -47,7 +47,7 @@ function REPL() {
   });
 
   this.console.RegisterShortcut('E', function() {
-    self.console.MoveToStart();
+    self.console.MoveToEnd();
   });
 
   // Autocomplete hack
