@@ -7,17 +7,12 @@
 </div>
 <div class="row collapse pb20">
   <div class="small-12 columns">
-    <p>Derive a bitcoin address that requires several signatures to spend it's funds.</p>
-  </div>
-</div>
-
-<!-- Bitcoin Address -->
-<div class="row bg-color-white collapse radius p20">
-  <div class="large-3 small-4 columns">
-    <div class=""><span class="icon-qr-solid fnt24 pr10 v-align"></span>Bitcoin Address</div>
-  </div>
-  <div class="large-9 small-8 columns">
-    <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+    <p>
+      Derive a bitcoin address that requires several signatures to spend it's funds.
+      You can specify the <strong>total amount of keys involved</strong> (called n),
+      and the <strong>required amount of keys that need to sign transactions to move the funds</strong> (called m),
+      creating an m-of-n address.
+    </p>
   </div>
 </div>
 
@@ -45,7 +40,7 @@
 </div>
 
 <!-- Repeat Keys -->
-<div class="row collapse" ng-repeat="key in keys">
+<div class="row collapse" ng-animate=" 'animate' " ng-repeat="key in keys">
   <div class="large-12 columns">
   <div class="row bg-color-white collapse radius p20 mb5">
     <!-- Remove Key -->
@@ -94,8 +89,23 @@
 
 </div>
 
-<button type="button" id="new" ng-click="add()" class="expand button tiny radius button1"><i class="fi-plus"></i> add</button>
+<!--Flow down starts--> 
+  <div class="row text-center">
+    <div class="small-12 columns">
+      <span class="icon-arrow-down fnt24 center-text"></span>
+    </div>
+  </div>
+<!--Flow down ends--> 
 
+<!-- Bitcoin Address -->
+<div class="row bg-color-white collapse radius p20">
+  <div class="large-3 small-4 columns">
+    <div class=""><span class="icon-qr-solid fnt24 pr10 v-align"></span>{{threshold}}-of-{{totalKeys}} Bitcoin Address </div>
+  </div>
+  <div class="large-9 small-8 columns">
+    <input ng-model="address" type="text" placeholder="Bitcoin address" readonly="readonly"/>
+  </div>
+</div>
 
 
 

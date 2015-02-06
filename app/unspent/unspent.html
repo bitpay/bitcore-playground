@@ -37,7 +37,7 @@
 
   <div class="row collapse" ng-show="notFound">
     <div class="columns small-12 small-centered">
-      <div class="fnt09 mt2 pt20 pb20"><span class="item-title">No outputs found</span></div>
+      <div class="fnt09 mt2 pt20 pb20"><span class="item-title">No unspent transaction outputs found in address.</span></div>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
       <div class="fnt09 mt2 ml10"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{utxo.outputIndex}}</span></div>
       <div class="fnt09 mt2 ml10"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{utxo.script.toString()}}</span></div>
       <div class="border-top pt10 mt10 text-center">
-        <a ng-href="{{utxo.url}}" target="_blank" class="radius3 button4">See transaction on <span class="insight fnt14">Insight</span></a>
+        <a ng-href="{{utxo.url}}" target="_blank" class="p5 radius3 button4">See transaction</a>
       </div>
     </div>
   </div>
