@@ -120,7 +120,6 @@ app.controller('SideBar', function($scope, $rootScope, $timeout, $location) {
   }, 100);
 
   $scope.getClass = function(path) {
-    console.log('PATH', $location.path().substr(0, path.length));
     return $location.path().substr(0, path.length) === path ? "current" : "";
   }
 
