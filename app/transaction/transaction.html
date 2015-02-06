@@ -279,25 +279,27 @@
 <!--MODAL starts--> 
 <div id="addAddressModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Add a Pay to Address</h2>
-  <div class="row collapse">
-    <div class="small-4 columns">
-      <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
-    </div>
-    <div class="small-4 columns">
-      <div class="row collapse">
-        <div class="small-11 small-offset-1">
-          <input type="number" ng-min="0" ng-required ng-max="2100000000000000" ng-model="amount" placeholder="enter an amount in BTC" auto-select>
-        </div>
-      </div>     
-    </div>
-    <div class="small-4 columns">
-      <div class="row collapse">
-        <div class="small-11 small-offset-1">
-          <button type="button" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal" class="button expand tiny radius button1">Send to Address</button>
+  <form name="formAddress">
+    <div class="row collapse">
+      <div class="small-4 columns">
+        <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
+      </div>
+      <div class="small-4 columns">
+        <div class="row collapse">
+          <div class="small-11 small-offset-1">
+            <input type="number" ng-min="0.00000001" ng-max="2100000000000000" ng-model="amount" placeholder="enter an amount in BTC" auto-select required>
+          </div>
+        </div>     
+      </div>
+      <div class="small-4 columns">
+        <div class="row collapse">
+          <div class="small-11 small-offset-1">
+            <button type="button" ng-disabled="formAddress.$invalid" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal" class="button expand tiny radius button1">Send to Address</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <a href="" ng-click="remove($index)" class="close-reveal-modal">
     <i class="fi-x center-text link1 fnt04"></i>
   </a>
@@ -307,23 +309,20 @@
 <!--MODAL starts--> 
 <div id="addDataModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Add a OP_RETURN Output</h2>
-  <div class="row collapse">
-    <div class="small-10 columns">
-      <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select>
-    </div>
-    <div class="columns small-2">
-      <div class="row collapse">
-        <div class="small-11 small-offset-1">
-          <button type="button" ng-click="addDataOutput(info)" class="button expand tiny radius button1">Add Data</button>
+  <form name="formData">
+    <div class="row collapse">
+      <div class="small-10 columns">
+        <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select required>
+      </div>
+      <div class="columns small-2">
+        <div class="row collapse">
+          <div class="small-11 small-offset-1">
+            <button type="button" ng-disabled="formData.$invalid" ng-click="addDataOutput(info)" class="button expand tiny radius button1">Add Data</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row collapse">
-    <div class="small-12 columns">
-      <p class="fnt07 mt5 v-align"><input type="checkbox" ng-model="isHexa" checked class="fnt06"> DATA IS HEXA-ENCODED</p>
-    </div>
-  </div>
+  </form>
   <a href="" ng-click="remove($index)" class="close-reveal-modal">
     <i class="fi-x center-text link1 fnt04"></i>
   </a>
@@ -333,18 +332,20 @@
 <!--MODAL starts--> 
 <div id="addSignatureModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Sign transaction</h2>
-  <div class="row collapse">
-    <div class="columns small-10">
-      <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select class="radius">
-    </div>
-    <div class="columns small-2">
-      <div class="row collapse">
-        <div class="small-11 small-offset-1">
-          <button type="button" ng-click="signWith(privkey)" class="button expand tiny radius button1">Sign</button>
+  <form name="formSign">
+    <div class="row collapse">
+      <div class="columns small-10">
+        <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select class="radius" required>
+      </div>
+      <div class="columns small-2">
+        <div class="row collapse">
+          <div class="small-11 small-offset-1">
+            <button type="button" ng-disabled="formSign.$invalid"  ng-click="signWith(privkey)" class="button expand tiny radius button1">Sign</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <a href="" ng-click="remove($index)" class="close-reveal-modal">
     <i class="fi-x center-text link1 fnt04"></i>
   </a>

@@ -40,6 +40,12 @@ input.ng-invalid {
   border: 1px dashed red;
 }
 
+input.ng-pristine {
+  background-color: inherit !important;
+  border-color: #cccccc;
+  border-style: solid;
+}
+
 .row { 
 	  max-width: 100% !important; }
 	}
