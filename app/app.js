@@ -53,6 +53,7 @@ app.directive('exampleCode', function() {
       $(element).focus(function(){
         $(this).select();
       });
+      element.attr('spellcheck', false);
     }
   };
 })
