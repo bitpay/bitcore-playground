@@ -56,11 +56,11 @@ app.directive('exampleCode', function() {
     }
   };
 })
-.directive('requireEqualizer', function() {
+.directive('requireTooltip', function() {
   return {
     link: function(scope, element, attrs) {
      $(document).foundation();
-     $(document).foundation('equalizer', 'reflow');
+     $(document).foundation('tooltip', 'reflow');
     }
   };
 })
