@@ -13,7 +13,7 @@
 
 <div class="row collapse bg-color-white white-box radius p20">
   <div class="small-12 columns">
-    <h2 class="text-center">Output Selection</h2>    
+    <h2 class="text-center">Input Selection</h2>    
 
     <!-- Fetch unspent form -->
     <div class="row collapse">
@@ -273,7 +273,7 @@
 
 <!--MODAL starts--> 
 <div id="addAddressModal" class="reveal-modal fixed-position white-box" data-reveal>
-  <h2>Add a Pay to Public Key Hash Output</h2>
+  <h2>Add a Pay to Address</h2>
   <div class="row collapse">
     <div class="small-4 columns">
       <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
@@ -281,7 +281,7 @@
     <div class="small-4 columns">
       <div class="row collapse">
         <div class="small-11 small-offset-1">
-          <input type="number" ng-model="amount" placeholder="enter an amount" auto-select>
+          <input type="number" ng-min="0" ng-required ng-max="2100000000000000" ng-model="amount" placeholder="enter an amount in BTC" auto-select>
         </div>
       </div>     
     </div>
@@ -327,7 +327,7 @@
 
 <!--MODAL starts--> 
 <div id="addSignatureModal" class="reveal-modal fixed-position white-box" data-reveal>
-  <h2>Sign transaction with public key</h2>
+  <h2>Sign transaction</h2>
   <div class="row collapse">
     <div class="columns small-10">
       <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select class="radius">
