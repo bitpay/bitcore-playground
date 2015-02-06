@@ -47,7 +47,7 @@
 
     <div class="row collapse mt5 mb5">
       <div class="small-12 large-4 columns {{$last ? 'end' : ''}}" ng-repeat="utxo in utxos">
-        <div class="capsule-inside rad2 p5 m2 ml20" ng-hide="utxo.used">
+        <div class="capsule-inside rad2 p5 m2 ml20" ng-click="addUTXO(utxo)" ng-hide="utxo.used">
           <div class="coin-in-box">
             <div class="icon-coin v-align fnt20 pr5"></div>
           </div>
@@ -57,13 +57,13 @@
             </div>
             <div class="columns small-3">
               <div class="row collapse">
-                <button type="button" ng-click="addUTXO(utxo)" class="button expand tiny radius button1">USE IT</button>
+                <button type="button" class="button expand tiny radius button1">USE</button>
               </div>
             </div>
           </div>
         </div>
         <!--Capsule USED starts--> 
-        <div class="capsule-inside-blue rad2 p5 m2 ml20" ng-show="utxo.used">
+        <div class="capsule-inside-blue rad2 p5 m2 ml20" ng-click="removeUtxo(utxo)" ng-show="utxo.used">
           <div class="coin-in-box blue-elements">
             <div class="icon-coin v-align fnt20 pr5"></div>
           </div>
@@ -73,7 +73,7 @@
             </div>
             <div class="columns small-3">
               <div class="row collapse">
-                <button type="button" ng-click="removeUtxo(utxo)" class="button expand tiny radius button1-blue">USED</button>
+                <button type="button" class="button expand tiny radius button1-blue">USING</button>
               </div>
             </div>
           </div>
