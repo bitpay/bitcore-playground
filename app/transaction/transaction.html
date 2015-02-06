@@ -118,7 +118,7 @@
               <span class="item-title">Total Outputs: </span> <span class="item-data fntgrey1">{{transaction._outputAmount | btc}}</span>
             </div>
             <div class="small-6 columns text-right">
-              <span class="item-title">Fee:</span> <span class="item-data fntgrey1"> {{transaction.getFee() | btc}}</span>
+              <span class="item-title">Fee:</span> <span class="item-data fntgrey1"> {{transaction._getUnspentValue() | btc}}</span>
             </div>
           </div>
         </div>
@@ -251,7 +251,12 @@
     </div>
     <div class="row collapse">
       <div class="large-12 columns mt5">
-        <button type="button" ng-click="broadcast()" ng-disabled="!canSerialize()" class="button expand tiny radius button1">Broadcast Transaction</button>
+        <button type="button" ng-click="broadcast()" ng-disabled="!canSerialize() || broadcasting" class="button expand tiny radius button1">
+          <span ng-hide="broadcasting">Broadcast Transaction</span>
+          <span ng-show="broadcasting">
+            <ng-include src="'components/loader.html'"></ng-include>
+          </span>
+        </button>
       </div>        
     </div>
   </div>
@@ -349,5 +354,16 @@
 <div id="noSignatures" class="reveal-modal fixed-position" data-reveal>
   <h2>Could not sign any inputs.</h2>
   <p>Please check that the private key provided corresponds to a input of this transaction.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="broadcastError" class="reveal-modal fixed-position" data-reveal>
+  <h2>Transaction Rejected by Insight</h2>
+  <p>Make sure the outputs where not spent already, that all inputs where signed, and no outputs are dust amounts (less than 5600 satoshis).</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="broadcastSuccess" class="reveal-modal fixed-position" data-reveal>
+  <h2>Transaction Broadcasted</h2>
+  <p>See the transaction on insight: <a href="{{transactionUrl}}">{{transaction.id}}</a>
   <a class="close-reveal-modal">&#215;</a>
 </div>
