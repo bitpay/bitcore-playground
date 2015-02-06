@@ -15,9 +15,7 @@ app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/units'});
 }]);
 
-app.service('bitcore', function() {
-  return require('bitcore');
-});
+app.constant('bitcore', require('bitcore'));
 
 // Filters
 app.filter('btc', function(bitcore) {
@@ -126,6 +124,7 @@ app.controller('SideBar', function($scope, $rootScope, $timeout) {
   var networks = bitcore.Networks;
   networks.defaultNetwork = networks.testnet;
   $rootScope.$broadcast('networkUpdate');
+  console.log(networks.defaultNetwork);
 
   $scope.setTestnet = function(value) {
     networks.defaultNetwork = value ? networks.livenet : networks.testnet;

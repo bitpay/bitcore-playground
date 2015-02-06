@@ -12,17 +12,41 @@ angular.module('playApp.unspent', ['ngRoute'])
 .controller('UnspentCtrl', function($scope, $http, bitcore) {
 
   var explorers = require('bitcore-explorers');
-  $scope.utxoAddress = 'muemjaFAtbMWssA5hHgQoNP2utb1HtNbkd';
-  $scope.utxos = [];
-  $scope.loading = false;
+
+  var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
+  var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
+
+  $scope.$on('networkUpdate', function() {
+    reset();
+  });
+
+  var reset = function() {
+    if (bitcore.Networks.defaultNetwork.name === 'testnet') {
+      $scope.utxoAddress = defaultTestnetAddress;
+    } else {
+      $scope.utxoAddress = defaultLivenetAddress;
+    }
+    $scope.utxos = [];
+    $scope.loading = false;
+    $scope.currentAddress = '';
+    setExampleCode();
+  };
+  reset();
 
   $scope.addressUpdated = function(address) {
     setExampleCode();
   };
 
+  $scope.$watch('utxoAddress', function() {
+    $scope.notFound = '';
+  });
+
   $scope.fetchUTXO = function(address) {
     var client = new explorers.Insight();
-    if (!bitcore.Address.isValid(address)) return; // mark as invalid
+
+    if (!bitcore.Address.isValid(address)) {
+      return; // mark as invalid
+    }
 
     $scope.loading = true;
     client.getUnspentUtxos(address, onUTXOs);
@@ -31,6 +55,14 @@ angular.module('playApp.unspent', ['ngRoute'])
       $scope.loading = false;
       if (err) throw err;
 
+      if (!utxos.length) {
+        $scope.utxos = [];
+        $scope.notFound = address;
+        $scope.currentAddress = '';
+        return;
+      }
+
+      $scope.currentAddress = address;
       $scope.utxos = utxos;
       for (var utxo in utxos) {
         utxos[utxo].url = client.url + '/tx/' + utxos[utxo].txId;
