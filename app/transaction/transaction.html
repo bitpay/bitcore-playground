@@ -14,66 +14,74 @@
 <div class="row collapse bg-color-white white-box radius p20">
   <div class="small-12 columns">
     <h2 class="text-center">Output Selection</h2>    
+
     <!-- Fetch unspent form -->
-
-
-
-
-  <div class="row collapse">
-    <div class="columns small-10">
-      <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select> 
-    </div>
-    <div class="columns small-2">
-      <div class="row collapse">
-        <div class="small-11 small-offset-1">
-          <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
-            <span ng-hide="loading">Fetch</span>
-            <ng-include ng-show="loading" src="'components/loader.html'"></ng-include>
-          </button>
+    <div class="row collapse">
+      <div class="columns small-10">
+        <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select ng-change="addressUpdated(utxoAddress)">
+      </div>
+      <div class="columns small-2">
+        <div class="row collapse">
+          <div class="small-11 small-offset-1">
+            <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
+              <span ng-hide="loading">Fetch</span>
+              <div class="loading-container">
+                <ng-include ng-show="loading" src="'components/loader.html'"></ng-include>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-      <div class="row collapse mt5 mb5">
-        <div class="small-12 large-4 columns {{$last ? 'end' : ''}}" ng-repeat="utxo in utxos">
-          <div class="capsule-inside rad2 p5 m2 ml20" ng-hide="utxo.used">
-            <div class="coin-in-box">
-              <div class="icon-coin v-align fnt20 pr5"></div>
-            </div>
-            <div class="row collapse">
-              <div class="columns small-9 pl20 pt6">
-                <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-              </div>
-              <div class="columns small-3">
-                <div class="row collapse">
-                  <button type="button" ng-click="addUTXO(utxo)" class="button expand tiny radius button1">USE IT</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Capsule USED starts--> 
-          <div class="capsule-inside-blue rad2 p5 m2 ml20" ng-show="utxo.used">
-            <div class="coin-in-box blue-elements">
-              <div class="icon-coin v-align fnt20 pr5"></div>
-            </div>
-            <div class="row collapse">
-              <div class="columns small-9 pl20 pt6">
-                <h1 class="amount fnt09 blue-elements">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
-              </div>
-              <div class="columns small-3">
-                <div class="row collapse">
-                  <button type="button" ng-click="removeUtxo(utxo)" class="button expand tiny radius button1-blue">USED</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--Capsule USED ENDS--> 
-        </div>
+    <div class="mt20 row collapse" ng-show="currentAddress">
+      <div class="columns small-12 content-title small-centered">
+        <h1>Outputs for Address: {{currentAddress}}</h1>
       </div>
+    </div>
 
+    <div class="row collapse" ng-show="utxos.length === 0 && currentAddress">
+      <div class="columns small-12 small-centered">
+        <h4>No outputs found</h4>
+      </div>
+    </div>
 
+    <div class="row collapse mt5 mb5">
+      <div class="small-12 large-4 columns {{$last ? 'end' : ''}}" ng-repeat="utxo in utxos">
+        <div class="capsule-inside rad2 p5 m2 ml20" ng-hide="utxo.used">
+          <div class="coin-in-box">
+            <div class="icon-coin v-align fnt20 pr5"></div>
+          </div>
+          <div class="row collapse">
+            <div class="columns small-9 pl20 pt6">
+              <h1 class="amount fnt09">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+            </div>
+            <div class="columns small-3">
+              <div class="row collapse">
+                <button type="button" ng-click="addUTXO(utxo)" class="button expand tiny radius button1">USE IT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Capsule USED starts--> 
+        <div class="capsule-inside-blue rad2 p5 m2 ml20" ng-show="utxo.used">
+          <div class="coin-in-box blue-elements">
+            <div class="icon-coin v-align fnt20 pr5"></div>
+          </div>
+          <div class="row collapse">
+            <div class="columns small-9 pl20 pt6">
+              <h1 class="amount fnt09 blue-elements">{{utxo.satoshis|btc}}<span class="btc"> BTC</span></h1>
+            </div>
+            <div class="columns small-3">
+              <div class="row collapse">
+                <button type="button" ng-click="removeUtxo(utxo)" class="button expand tiny radius button1-blue">USED</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Capsule USED ENDS--> 
+      </div>
+    </div>
+    <!-- End fetch -->
 
   </div>
 </div>
@@ -322,8 +330,7 @@
     <div class="columns small-2">
       <div class="row collapse">
         <div class="small-11 small-offset-1">
-          <button type="button" ng-click="signWith(privkey)" data-reveal-id="addSignatureModal" class="button expand tiny radius button1">Sign</button>
-          <p><a data-reveal-id="secondModal" class="">Modal de que no es address correcto</a></p>
+          <button type="button" ng-click="signWith(privkey)" class="button expand tiny radius button1">Sign</button>
         </div>
       </div>
     </div>
@@ -334,8 +341,8 @@
 </div>
 <!--MODAL ends--> 
 
-<div id="secondModal" class="reveal-modal fixed-position" data-reveal>
-  <h2>This is a second modal.</h2>
-  <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+<div id="noSignatures" class="reveal-modal fixed-position" data-reveal>
+  <h2>Could not sign any inputs.</h2>
+  <p>Please check that the private key provided corresponds to a input of this transaction.</p>
   <a class="close-reveal-modal">&#215;</a>
 </div>
