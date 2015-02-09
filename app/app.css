@@ -505,7 +505,8 @@ ul.menu{
 	} 
 
  .button3:hover {
-	background-color: #999999;
+	background-color: #838282 !important;
+	color: #FFFFFE !important;
 	} 	
 
 .button4{
@@ -720,13 +721,23 @@ padding:20px 0;
 border-top: 1px solid #EDEEF1;
 } 
 
-.explanation h3{
-background-image: url("../img/gear-icon-title.svg");
+.console-title, .learn-more-title{
 background-repeat: no-repeat;
 background-position: center left;
 font-family: "Ubuntu-Bold";
 text-transform: uppercase;
+
+} 
+
+.console-title{
+background-image: url("../img/gear-icon-title.svg");
 padding: 20px 0 20px 40px;
+} 
+
+
+.learn-more-title{
+background-image: url("../img/learn-title.svg");
+padding: 8px 0 8px 40px;
 } 
 
 .explanation h4 {
