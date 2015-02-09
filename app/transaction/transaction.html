@@ -210,7 +210,7 @@
                         <div class="row collapse">
                           <div class="small-8 columns">
                             <span ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                              {{output.satoshis|btc}} BTC to {{output.script.toAddress().toString() | ellipsify}}
+                              {{output.satoshis|btc}} BTC to {{getAddress(output) | ellipsify}}
                             </span>
                             <span ng-show="output.script.isDataOut()">
                               <span class="btc">Data</span>
@@ -237,13 +237,13 @@
                         </div>
                       </div>
                       <div class="row collapse" ng-show="output.visible">
-                        <div class="fnt08 mt5">
-                          <span class="item-title">Data:</span>
-                          <span class="item-data fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
+                        <div class="fnt08 mt5 row collapse">
+                          <span class="item-title large-2 small-3 columns center">Data:</span>
+                          <span class="item-data large-10 small-9 columns fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
                         </div>
-                        <div class="fnt08 mt5">
-                          <span class="item-title">Script:</span>
-                          <span class="item-data fntgrey1">{{output.script.toString()}}</span>
+                        <div class="fnt08 mt5 row collapse">
+                          <span class="item-title large-2 small-3 columns center">Script:</span>
+                          <span class="item-data large-10 small-9 columns fntgrey1">{{output.script.toString()}}</span>
                         </div>
                       </div>
                     </div>
