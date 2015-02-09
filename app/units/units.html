@@ -10,7 +10,8 @@
   </div>
 </div>
 
-<div class="row bg-color-white white-box radius p20"> <!--White box starts--> 
+<div class="row bg-color-white white-box radius p20">
+  <!--White box starts-->
   <div class="">
 
     <!--Bitcoin box starts-->
@@ -85,7 +86,6 @@
             <div class="large-9 columns">
               <input type="number" ng-model="unit.fiat"
                 ng-change="updateFiat(unit.fiat, currency)" class="radius mb5" auto-select>
-
             </div>
           </div>
         </div>
@@ -110,22 +110,16 @@
 
       <div class="row collapse">
         <div class="mt20 text-center">
-          <p><span class="ubuntu-bold uppercase">1 BTC = {{currency.rate.toFixed(2)}} {{currency.code}}</span></br><span class="fnt07 uppercase">Exchange rates from</span><span class="fnt08"> <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span></p>
+          <p><span class="ubuntu-bold uppercase">1 BTC = {{currency.rate.toFixed(2)}} {{currency.code}}</span>
+            </br><span class="fnt07 uppercase">Exchange rates from</span><span class="fnt08"> <a href="https://bitpay.com/api/rates">bitpay.com/api/rates</a></span>
+          </p>
         </div>
       </div>
     </div>
-    <!--Fiat box ends--> 
-  </div>
-</div>  <!--White box ends--> 
-
-<div class="explanation">
-  <div class="row collapse">
-    <div class="small-12 columns">
-      <h3 class="fnt1">This is how it works!</h3>
-    </div>
-  </div>
-  <div class="row collapse">
-    <ng-include src="'components/code.html'"></ng-include>
-    <a href="http://bitcore.io/guide/unit.html"><button type="button" class="button tiny radius button1"><span class="icon-docs"></span> Read more in the bitcore developer guide</button></a>
+    <!--Fiat box ends-->
   </div>
 </div>
+<!--White box ends-->
+
+
+<ng-include src="'components/explanation.html'"></ng-include>
