@@ -307,7 +307,7 @@ border-radius: 10px;
 /* Header */
 #header {
 	 font-family: "Ubuntu-Light"!important;
-	 padding: 14px 0 0 0;
+	 padding: 14px 0 14px 0;
 }
 
 .v-align{
@@ -318,12 +318,16 @@ border-radius: 10px;
 	font-family: "Ubuntu-Light"!important;
 	font-style: italic;
 	color: #A0A1A0;
-	margin: 10px 0 0 2px;
+	margin: 5px 0 0 2px;
 	vertical-align: middle;
 	}
 .playground-logo img{	
 	vertical-align:-4px;
 		}
+
+#nav-hd {
+  margin-bottom: 0;
+}
 
 #nav-hd li, #nav-ft li {
 display: inline-block;
