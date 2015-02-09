@@ -11,6 +11,9 @@ angular.module('playApp.address', ['ngRoute'])
 
 .controller('AddressCtrl', function($scope, $routeParams, bitcore) {
 
+  $scope.bitcoreURL = 'http://bitcore.io/guide/address.html';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#term-address';
+
   $scope.$on('networkUpdate', function() {
     $scope.newKey();
   });
