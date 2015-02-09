@@ -11,6 +11,8 @@ angular.module('playApp.hdkeys', ['ngRoute'])
 
 .controller('HDKeysCtrl', function($scope, bitcore) {
 
+  $scope.bitcoreURL = 'http://bitcore.io/guide/hierarchical.html';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#hierarchical-deterministic-key-creation';
   var privateValidPath = function(path) {
     return !!(/^[mM][']?(\/[0-9]+[']?)*[/]?$/.exec(path));
   };

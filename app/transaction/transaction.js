@@ -11,6 +11,8 @@ angular.module('playApp.transaction', ['ngRoute'])
 
 .controller('TransactionCtrl', function($scope, $http, bitcore) {
 
+  $scope.bitcoreURL = 'http://bitcore.io/guide/transaction.html';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#transactions';
   var explorers = require('bitcore-explorers');
   var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
   var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';

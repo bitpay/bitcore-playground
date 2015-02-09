@@ -15,6 +15,8 @@ angular.module('playApp.unspent', ['ngRoute'])
 
   var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
   var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
+  $scope.bitcoreURL = 'http://bitcore.io/guide/module/explorers/index.html';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#term-output';
 
   $scope.$on('networkUpdate', function() {
     reset();

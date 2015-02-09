@@ -2,18 +2,22 @@
 
 angular.module('playApp.units', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/units', {
-    templateUrl: 'units/units.html',
-    controller: 'UnitsCtrl'
-  });
-}])
+.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.when('/units', {
+      templateUrl: 'units/units.html',
+      controller: 'UnitsCtrl'
+    });
+  }
+])
 
 .controller('UnitsCtrl', function($scope, $http, bitcore) {
   $scope.unit = {};
   $scope.currencies = [];
   $scope.currency = null;
-  $scope.exampleCode = "";
+  $scope.exampleCode = '';
+  $scope.bitcoreURL = 'http://bitcore.io/guide/unit.html';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#plain-text';
 
   function setExampleCode(value, code, fiat) {
     var template;
@@ -27,7 +31,7 @@ angular.module('playApp.units', ['ngRoute'])
     if (templates[code]) {
       template = templates[code].replace('@value', value);
     } else {
-      template = 'var rate = @rate; // @fiat/BTC exchange rate\n'; 
+      template = 'var rate = @rate; // @fiat/BTC exchange rate\n';
       template += 'var unit = new bitcore.Unit.fromFiat(@value, rate);';
       template = template.replace('@value', value);
       template = template.replace('@rate', code);
@@ -80,22 +84,22 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.updateUnit(1, 'BTC');
 
   $http.get('https://bitpay.com/api/rates').
-    success(function(rates) {
-      $scope.currencies = rates.filter(function(rate) {
-        return rate.code === 'USD' ||
-               rate.code === 'EUR' ||
-               rate.code === 'ARS' ||
-               rate.code === 'GBP' ||
-               rate.code === 'JPY' ||
-               rate.code === 'CAD' ||
-               rate.code === 'BRL' ||
-               rate.code === 'CLP';
+  success(function(rates) {
+    $scope.currencies = rates.filter(function(rate) {
+      return rate.code === 'USD' ||
+        rate.code === 'EUR' ||
+        rate.code === 'ARS' ||
+        rate.code === 'GBP' ||
+        rate.code === 'JPY' ||
+        rate.code === 'CAD' ||
+        rate.code === 'BRL' ||
+        rate.code === 'CLP';
 
-      });
-      $scope.currency = rates[0];
-      $scope.updateUnit(1, 'BTC');
-    }).
-    error(function() {
-      console.log('Error while fetching exchange rates');
     });
+    $scope.currency = rates[0];
+    $scope.updateUnit(1, 'BTC');
+  }).
+  error(function() {
+    console.log('Error while fetching exchange rates');
+  });
 });

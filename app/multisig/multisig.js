@@ -11,6 +11,9 @@ angular.module('playApp.multisig', ['ngRoute'])
 
 .controller('MultisigCtrl', function($scope, bitcore) {
 
+  $scope.bitcoreURL = 'http://bitcore.io/guide/transaction.html#Multisig_Transactions';
+  $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#term-multisig';
+
   $scope.$on('networkUpdate', function() {
     setupKeys();
   });
