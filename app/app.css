@@ -729,6 +729,12 @@ text-transform: uppercase;
 padding: 20px 0 20px 40px;
 } 
 
+.explanation h4 {
+  font-family: "Ubuntu-Bold";
+  text-transform: uppercase;
+  padding: 20px 0 20px 40px;
+} 
+
 .explanation p{
 	font-size: 0.9em
 } 
