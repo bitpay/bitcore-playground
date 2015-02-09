@@ -76,6 +76,21 @@
     <div class="small-6 columns p20">
       <h2 class="text-center">Fiat</h2>
 
+      <div class="row collapse">
+        <div class="large-12 columns">
+          <div class="row collapse ">
+            <div class="large-3 columns">
+              <label class="prefix prefix-clean fnt1">Amount</label>
+            </div>
+            <div class="large-9 columns">
+              <input type="number" ng-model="unit.fiat"
+                ng-change="updateFiat(unit.fiat, currency)" class="radius mb5" auto-select>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row collapse ">
         <div class="large-12 columns">
           <div class="row collapse ">
@@ -83,7 +98,6 @@
               <label class="prefix prefix-clean fnt1">Currency</label>
             </div>
             <div class="large-9 columns ">
-
               <select
                 ng-model="currency"
                 ng-options="opt as opt.name for opt in currencies"
@@ -93,20 +107,6 @@
         </div>
       </div>
 
-
-      <div class="row collapse">
-        <div class="large-12 columns">
-          <div class="row collapse ">
-            <div class="large-3 columns">
-              <label class="prefix prefix-clean fnt1">Amount</label>
-            </div>
-            <div class="large-9 columns">
-              <input type="number" ng-model="unit.fiat" ng-change="updateFiat(unit.fiat, currency)" class="radius" auto-select>
-
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div class="row collapse">
         <div class="mt20 text-center">
