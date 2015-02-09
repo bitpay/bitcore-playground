@@ -16,25 +16,28 @@ angular.module('playApp.units', ['ngRoute'])
   $scope.exampleCode = "";
 
   function setExampleCode(value, code, fiat) {
-    var template, templates = {
+    var template;
+    var templates = {
       BTC: 'var unit = new bitcore.Unit.fromBTC(@value);',
       mBTC: 'var unit = new bitcore.Unit.fromMilis(@value);',
       bits: 'var unit = new bitcore.Unit.fromBits(@value);',
       satoshis: 'var unit = new bitcore.Unit.fromSatoshis(@value);',
-    }
+    };
 
     if (templates[code]) {
       template = templates[code].replace('@value', value);
     } else {
-      template = 'var unit = new bitcore.Unit.fromFiat(@value, @rate);'
+      template = 'var rate = @rate; // @fiat/BTC exchange rate\n'; 
+      template += 'var unit = new bitcore.Unit.fromFiat(@value, rate);';
       template = template.replace('@value', value);
       template = template.replace('@rate', code);
+      template = template.replace('@fiat', fiat.code);
     }
 
     var rate = $scope.currency ? $scope.currency.rate : 0;
-    template += "\nconsole.log('Units', unit.BTC, unit.mBTC, unit.bits, unit.satoshis, unit.atRate(" + rate + "));";
+    template += "\nconsole.log('Units', unit.BTC, unit.mBTC, unit.bits, unit.satoshis, unit.atRate(rate));";
     $scope.exampleCode = template;
-  };
+  }
 
   $scope.jumpConsole = function() {
     $('#terminaltab').click();
@@ -67,7 +70,7 @@ angular.module('playApp.units', ['ngRoute'])
       $scope.unit.fiat = $scope.currency ? unit.atRate($scope.currency.rate) : 0;
     }
 
-    setExampleCode(value, code, angular.isString(code));
+    setExampleCode(value, code, $scope.currency);
   };
 
   $scope.updateFiat = function(value, rate) {
