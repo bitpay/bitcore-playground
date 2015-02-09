@@ -61,24 +61,18 @@
 
 <div class="main-nav-small show-for-medium-down">
 
-
-
 <nav class="top-bar" data-topbar role="navigation">
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="">
-      <li class="has-dropdown">
-        <a>Menu</a>
-        <ul class="dropdown expand">
-          <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span>Units</a></li>
-          <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
-          <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
-          <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
-          <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span>  Unspent Outputs</a></li>
-          <li ng-class="getClass('/transaction')"><a href="#/transaction"><span class="icon-double-arrow-solid fnt14 pr5"></span> Transaction</a></li>
-        </ul>
-      </li>
+    <ul class="left">
+      <li><a href="#/units"><span class="fi-list v-align fnt14 pr5"></span>Menu</a></li>
+      <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5"></span>Units</a></li>
+      <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
+      <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
+      <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
+      <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span>  Unspent Outputs</a></li>
+      <li ng-class="getClass('/transaction')"><a href="#/transaction"><span class="icon-double-arrow-solid fnt14 pr5"></span> Transaction</a></li>
     </ul>
   </section>
 
