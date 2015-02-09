@@ -19,13 +19,13 @@
       </div>
     </div>
     <div class="row collapse">
-      <div class="small-4 large-3 columns input-title mb5">
+      <div class="small-12 large-3 columns input-title mb5">
         <span class="prefix prefix-clean fnt1"><span class="icon-private-key fnt14 center-text"></span> Root HD Private Key</span>
       </div>
-      <div class="small-7 large-8 columns">
+      <div class="small-10 large-8 columns">
         <input type="text" ng-model="xpriv" ng-change="updatePrivate(xpriv)" xprivate-key auto-select>
       </div>
-      <div class="small-1 large-1 columns">
+      <div class="small-2 large-1 columns">
         <div class="row collapse">
           <div class="small-11 small-offset-1 columns">
             <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
@@ -34,10 +34,10 @@
       </div>
     </div>    
     <div class="row collapse">
-      <div class="small-4 large-3 columns input-title">
+      <div class="small-12 large-3 columns input-title">
         <span class="prefix prefix-clean fnt1"><span class="icon-public-key fnt14 center-text"></span> Root HD Public Key</span>
       </div>
-      <div class="small-8 large-9 columns">
+      <div class="small-12 large-9 columns">
         <input type="text" ng-model="xpub" ng-change="updatePublic(xpub)" xpublic-key auto-select>
       </div>
     </div>
@@ -88,42 +88,42 @@
         <div class="row p20tb" ng-show="node.visible">
           <div class="small-12 columns">
             <div class="row collapse pt10" ng-show="node.xpriv">
-              <div class="small-2 columns">
+              <div class="small-12 large-2 columns">
                 <div class="data-more-info prefix-clean prefix"><span class="icon-private-key fnt13 center-text"></span> HD Private Key</div>
               </div>
-              <div class="small-10 columns">
+              <div class="small-12 large-10 columns">
                 <input type="text" value="{{node.xpriv.toString()}}" readonly auto-select/>
               </div>  
             </div>
             <div class="row collapse pt10" ng-show="node.xpriv">
-              <div class="small-2 columns">
+              <div class="small-12 large-2 columns">
                 <div class="data-more-info prefix-clean prefix"><span class="icon-private-key fnt13 center-text"></span>  Private Key</div> 
               </div>
-              <div class="small-10 columns">
+              <div class="small-12 large-10 columns">
                 <input type="text" value="{{node.xpriv.privateKey.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row collapse pt10">
-              <div class="small-2 columns">
+              <div class="small-12 large-2 columns">
                 <div class="data-more-info prefix-clean prefix"><span class="icon-public-key fnt13 center-text"></span> HD Public Key</div>
               </div>
-              <div class="small-10 columns">
+              <div class="small-12 large-10 columns">
                 <input type="text" value="{{node.xpub.toString()}}" readonly auto-select/>
               </div>
             </div> 
             <div class="row collapse pt10">            
-              <div class="small-2 columns"> 
+              <div class="small-12 large-2 columns"> 
                 <div class="prefix-clean prefix data-more-info"><span class="icon-public-key fnt13 center-text"></span> Public Key</div>
               </div> 
-              <div class="small-10 columns">
+              <div class="small-12 large-10 columns">
                 <input type="text" value="{{node.xpub.publicKey.toString()}}" readonly auto-select/>
               </div> 
             </div> 
             <div class="row collapse pt10">  
-              <div class="small-2 columns"> 
+              <div class="small-12 large-2 columns"> 
                 <div class="data-more-info prefix-clean prefix">Address</div>
               </div>     
-              <div class="small-10 columns">
+              <div class="small-12 large-10 columns">
                 <input type="text" value="{{node.xpub.publicKey.toAddress().toString()}}" readonly auto-select/>
               </div>  
             </div>
