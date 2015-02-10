@@ -86,25 +86,25 @@ input.ng-pristine {
 font-family: 'Ubuntu-Light';
 font-style: normal;
 font-weight: 300;
-src: local('Ubuntu Light'), local('Ubuntu-Light'), url(../fonts/ubuntu-light.woff) format('woff');
+src: local('Ubuntu Light'), local('Ubuntu-Light'), url(fonts/ubuntu-light.woff) format('woff');
 }
 @font-face {
 font-family: 'Ubuntu';
 font-style: normal;
 font-weight: 400;
-src: local('Ubuntu'), url(../fonts/ubuntu.woff) format('woff');
+src: local('Ubuntu'), url(fonts/ubuntu.woff) format('woff');
 }
 @font-face {
 font-family: 'Ubuntu-Bold';
 font-style: normal;
 font-weight: 700;
-src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(../fonts/ubuntu-bold.woff) format('woff');
+src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(fonts/ubuntu-bold.woff) format('woff');
 }
 @font-face {
 font-family: 'Ubuntu-BoldItalic';
 font-style: italic;
 font-weight: 700;
-src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(../fonts/ubuntu-bold-italic.woff) format('woff');
+src: local('Ubuntu Bold Italic'), local('Ubuntu-BoldItalic'), url(fonts/ubuntu-bold-italic.woff) format('woff');
 }
 
 
@@ -353,27 +353,27 @@ color: #6B6B6A;
 background-repeat: no-repeat;
 } 
 
-.docs a{ background-image: url("../img/doc-icon.svg");
+.docs a{ background-image: url("img/doc-icon.svg");
 background-position: top left;
 padding: 4px 0 4px 25px;
 }
-.docs a:hover{ background-image: url("../img/doc-icon.svg");
+.docs a:hover{ background-image: url("img/doc-icon.svg");
 background-position: bottom left;
 } 
 
-.api a{ background-image: url("../img/api-icon.svg");
+.api a{ background-image: url("img/api-icon.svg");
 background-position: top left;
 padding: 4px 0 4px 25px;
 }
-.api a:hover{ background-image: url("../img/api-icon.svg");
+.api a:hover{ background-image: url("img/api-icon.svg");
 background-position: 2px left;
 } 
 
-.github a{ background-image: url("../img/githubcat-icon.svg");
+.github a{ background-image: url("img/githubcat-icon.svg");
 background-position: top left;
 padding: 4px 0 4px 35px;
 }
-.github a:hover{ background-image: url("../img/githubcat-icon.svg");
+.github a:hover{ background-image: url("img/githubcat-icon.svg");
 background-position: bottom left;
 }
 
@@ -491,7 +491,7 @@ ul.menu{
 	color: #979797;
 	text-transform: uppercase;
 	padding: 0.4rem 0.6rem 0.4rem;
-	background-image: url("../img/arrow-right-small-single.svg");
+	background-image: url("img/arrow-right-small-single.svg");
 	background-position: right 5px center;
 	background-repeat: no-repeat;
 	} 
@@ -543,7 +543,7 @@ ul.menu{
   }
 
   .remove-button{ 
-   background-image: url("../img/remove-icon.svg");
+   background-image: url("img/remove-icon.svg");
    background-repeat: no-repeat;
    background-position: top center;	
  	background-color: transparent;
@@ -644,11 +644,11 @@ a.share-link{
 
 
 .input-title-pub span{	
-	background-image: url("../img/public-key-icon.svg");
+	background-image: url("img/public-key-icon.svg");
 		} 
 
 .input-title-btcad span{	
-	background-image: url("../img/btc-icon-address.svg");
+	background-image: url("img/btc-icon-address.svg");
 		} 
 
 .input-title {	
@@ -661,13 +661,13 @@ a.share-link{
 	display: block;
 	height: 23px;
 	width: 22px;
-	background-image: url("../img/code-spot.svg");
+	background-image: url("img/code-spot.svg");
 	margin: 0 auto;
 	text-align: center;
 	} 	
 
 .code-spot a:hover{ 
-	background-image: url("../img/code-spot.svg");
+	background-image: url("img/code-spot.svg");
 	background-position: bottom center;
 } 
 
@@ -736,13 +736,13 @@ text-transform: uppercase;
 } 
 
 .console-title{
-background-image: url("../img/gear-icon-title.svg");
+background-image: url("img/gear-icon-title.svg");
 padding: 20px 0 20px 40px;
 } 
 
 
 .learn-more-title{
-background-image: url("../img/learn-title.svg");
+background-image: url("img/learn-title.svg");
 padding: 8px 0 8px 40px;
 } 
 
@@ -867,7 +867,7 @@ padding: 8px 0 8px 40px;
 	display: block;
 	width: 80px;
 	height: 50px;
-	background-image: url("../img/terminal-icon.svg");
+	background-image: url("img/terminal-icon.svg");
 	background-repeat: no-repeat;
 	background-position: center center;
   float: left;
