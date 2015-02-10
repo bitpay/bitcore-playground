@@ -18,14 +18,6 @@ angular.module('playApp.multisig', ['ngRoute'])
     setupKeys();
   });
 
-  $scope.serialize = function() {
-    return JSON.stringify({
-      network: bitcore.Networks.defaultNetwork.name,
-      keys: $scope.keys,
-      threshold: $scope.threshold
-    });
-  };
-
   $scope.totalKeysRange = function() {
     var size = Math.max($scope.keys.length, 7);
     return Range(size);

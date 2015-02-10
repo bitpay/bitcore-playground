@@ -49,14 +49,6 @@ angular.module('playApp.units', ['ngRoute'])
     window.REPL.scrollToBottom();
   };
 
-  $scope.serialize = function() {
-    return JSON.stringify({
-      network: bitcore.Networks.defaultNetwork.name,
-      satoshis: $scope.unit.satoshis,
-      currency: $scope.currency && $scope.currency.code
-    });
-  };
-
   $scope.updateUnit = function(value, code) {
     var unit = new bitcore.Unit(value, code);
 

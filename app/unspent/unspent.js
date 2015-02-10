@@ -76,13 +76,6 @@ angular.module('playApp.unspent', ['ngRoute'])
     }
   };
 
-  $scope.serialize = function() {
-    return JSON.stringify({
-      address: $scope.utxoAddress,
-      utxos: $scope.utxos.map(function(utxo) { return utxo.toObject(); })
-    });
-  };
-
   function setExampleCode() {
     var template = "";
     var address = $scope.utxoAddress || '1BitcoinEaterAddressDontSendf59kuE';

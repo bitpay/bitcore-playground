@@ -9,7 +9,7 @@ angular.module('playApp.address', ['ngRoute'])
   });
 }])
 
-.controller('AddressCtrl', function($scope, $routeParams, bitcore) {
+.controller('AddressCtrl', function($scope, bitcore) {
 
   $scope.bitcoreURL = 'http://bitcore.io/guide/address.html';
   $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#term-address';
@@ -44,14 +44,6 @@ angular.module('playApp.address', ['ngRoute'])
     }
   };
 
-  $scope.serialize = function() {
-    return JSON.stringify({
-      network: bitcore.Networks.defaultNetwork.name,
-      privateKey: $scope.privateKey.toString(),
-      publicKey: $scope.publicKey.toString()
-    });
-  };
-
   function setExampleCode(privkey, pubkey) {
     var template = "";
 
@@ -75,15 +67,6 @@ angular.module('playApp.address', ['ngRoute'])
     window.REPL.scrollToBottom();
   };
 
-  // Initialize
-  if ($routeParams.data) {
-    var data = JSON.parse($routeParams.data);
-    bitcore.Networks.defaultNetwork = bitcore.Networks.get(data.network);
-    $scope.privateKey = data.privateKey && new bitcore.PrivateKey(data.privateKey);
-    $scope.publicKey = data.publicKey && new bitcore.PublicKey(data.publicKey);
-    setExampleCode($scope.privateKey, $scope.publicKey);
-  } else {
-    $scope.newKey();
-  }
+  $scope.newKey();
 
 });
