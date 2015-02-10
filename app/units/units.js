@@ -30,13 +30,14 @@ angular.module('playApp.units', ['ngRoute'])
 
     if (templates[code]) {
       template = templates[code].replace('@value', value);
+      template += '\nvar rate = @rate; // @fiat/BTC exchange rate';
     } else {
       template = 'var rate = @rate; // @fiat/BTC exchange rate\n';
       template += 'var unit = new bitcore.Unit.fromFiat(@value, rate);';
-      template = template.replace('@value', value);
-      template = template.replace('@rate', code);
-      template = template.replace('@fiat', fiat.code);
     }
+    template = template.replace('@value', value);
+    template = template.replace('@rate', fiat && fiat.rate);
+    template = template.replace('@fiat', fiat && fiat.code);
 
     var rate = $scope.currency ? $scope.currency.rate : 0;
     template += "\nconsole.log('Units', unit.BTC, unit.mBTC, unit.bits, unit.satoshis, unit.atRate(rate));";
