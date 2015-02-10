@@ -15,7 +15,7 @@ angular.module('playApp.multisig', ['ngRoute'])
   $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#term-multisig';
 
   $scope.$on('networkUpdate', function() {
-    setupKeys();
+    $scope.keys = $scope.keys.map(getRandomKey);
   });
 
   $scope.totalKeysRange = function() {
