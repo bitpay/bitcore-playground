@@ -1,5 +1,5 @@
 <div class="row collapse">
-  <div class="large-9 small-7 columns content-title">
+  <div class="large-9 small-12 columns content-title">
     <h1>Address</h1>
   </div>
   <ng-include src="'components/network.html'"/>
@@ -13,13 +13,13 @@
 
 <!--White box starts--> 
   <div class="row collapse bg-color-white white-box radius p20">
-    <div class="small-5 large-2 columns input-title">
+    <div class="small-12 large-2 columns input-title">
       <span class="prefix prefix-clean fnt1"><span class="icon-private-key fnt16 center-text"></span> PRIVATE KEY</span>
     </div>
-    <div class="small-6 large-9 columns">
+    <div class="small-10 large-9 columns">
       <input type="text" placeholder="Hex format" ng-model="privateKey" ng-change="privateUpdated(privateKey)" private-key auto-select/>
     </div>
-    <div class="small-1 large-1 columns">
+    <div class="small-2 large-1 columns">
       <div class="row collapse">
         <div class="small-11 small-offset-1 columns">
           <button type="button" ng-click="newKey()" class="postfix radius button1 fnt12"> <i class="fi-die-five fnt12"></i></button>
@@ -40,10 +40,10 @@
 
 <!--White box starts--> 
   <div class="row collapse bg-color-white white-box radius p20">
-    <div class="small-5 large-2 columns input-title">
+    <div class="small-12 large-2 columns input-title">
       <span class="prefix prefix-clean fnt1"><span class="icon-public-key fnt16 center-text"></span> PUBLIC KEY</span>
     </div>
-    <div class="small-7 large-10 columns">
+    <div class="small-12 large-10 columns">
       <input id="publicKey" type="text" placeholder="Hex format" ng-model="publicKey" ng-change="publicUpdated(publicKey)" public-key auto-select/>
     </div>
   </div>
@@ -59,10 +59,10 @@
 
   <!--White box starts--> 
  <div class="row collapse bg-color-white white-box radius p20">
-    <div class="small-5 large-2 columns input-title">
+    <div class="small-12 large-2 columns input-title">
       <span class="prefix prefix-clean fnt1"><span class="icon-qr-solid fnt16 center-text"></span> ADDRESS</span>
     </div>
-    <div class="small-9 large-10 columns">
+    <div class="small-12 large-10 columns">
       <input id="address" type="text" placeholder="Bitcoin address" value="{{publicKey.toAddress().toString()}}" readonly auto-select/>
     </div>
   </div>

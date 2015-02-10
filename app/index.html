@@ -45,7 +45,7 @@
         </a>
       </div>
       <div class="medium-8 columns text-right">
-        <ul id="nav-hd" class="">
+        <ul id="nav-hd" class="show-for-large-up">
           <li class=""><a href="http://bitcore.io/guide/" target="_blank"><span class="icon-docs"></span> Docs</a></li>
           <li class=""><a href="http://bitcore.io/api/" target="_blank"><span class="icon-api"></span> API</a></li>
           <li class=""><a href="http://bitpaylabs.com/c/bitcore" target="_blank"><span class="icon-lab-solid"></span> Forum</a></li>
@@ -61,24 +61,18 @@
 
 <div class="main-nav-small show-for-medium-down">
 
-
-
 <nav class="top-bar" data-topbar role="navigation">
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <ul class="">
-      <li class="has-dropdown">
-        <a>Menu</a>
-        <ul class="dropdown expand">
-          <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5 "></span>Units</a></li>
-          <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
-          <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
-          <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
-          <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span>  Unspent Outputs</a></li>
-          <li ng-class="getClass('/transaction')"><a href="#/transaction"><span class="icon-double-arrow-solid fnt14 pr5"></span> Transaction</a></li>
-        </ul>
-      </li>
+    <ul class="left">
+      <li><a href="#/units"><span class="fi-list v-align fnt14 pr5"></span>Menu</a></li>
+      <li ng-class="getClass('/units')"><a href="#/units"><span class="icon-btc-solid v-align fnt14 pr5"></span>Units</a></li>
+      <li ng-class="getClass('/address')"><a href="#/address"><span class="icon-public-key-solid v-align fnt14 pr5"></span> Address</a></li>
+      <li ng-class="getClass('/multisig')"><a href="#/multisig"><span class="icon-keyring-solid v-align fnt14 pr5"></span> Multisig Address</a></li>
+      <li ng-class="getClass('/hdkeys')"><a href="#/hdkeys"><span class="icon-tree-solid v-align fnt14 pr5"></span> HD Keys</a></li>
+      <li ng-class="getClass('/unspent')"><a href="#/unspent"><span class="icon-coin v-align fnt14 pr5"></span>  Unspent Outputs</a></li>
+      <li ng-class="getClass('/transaction')"><a href="#/transaction"><span class="icon-double-arrow-solid fnt14 pr5"></span> Transaction</a></li>
     </ul>
   </section>
 
@@ -116,7 +110,7 @@
 <div class="show-for-medium-down">
     <!--Content starts--> 
     <div class="no-p small-12 columns">
-      <div ng-view class="bg-color-gray1 p4060"></div>
+      <div ng-view class="bg-color-gray1 p4060s"></div>
     </div>
     <!--Content ends--> 
 </div>
@@ -127,7 +121,7 @@
 <!--Footer Starts-->
 <section id="footer" class="bg-color-black2 ng-cloak" ng-show="showFooter">
 
-  <div id="terminal" class="bg-color-gray1">
+  <div id="terminal" class="bg-color-gray1 show-for-large-up">
     <div id="terminaltab" class="bg-color-black2 rdt3 goto-repl"></div>
     <div id="terminaltab-sticky" class="bg-color-black2 rdt3 goto-repl"></div>
     <div id="terminal-content" class="bg-color-black2 p30 fntwhite">
@@ -136,7 +130,7 @@
   </div>
 
   <div class="row p10t footer">
-    <div class="medium-4 columns">
+    <div class="medium-4 columns show-for-large-up">
       <a><img src="../img/bitcore-logo-hd.svg" width="55" alt="bitcore"/>
         <span class="playground-logo">playground</span>
       </a>

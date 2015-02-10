@@ -9,7 +9,7 @@ angular.module('playApp.transaction', ['ngRoute'])
   });
 }])
 
-.controller('TransactionCtrl', function($scope, $http, bitcore) {
+.controller('TransactionCtrl', function($scope, $rootScope, $http, bitcore) {
 
   $scope.bitcoreURL = 'http://bitcore.io/guide/transaction.html';
   $scope.bitcoinURL = 'https://bitcoin.org/en/developer-guide#transactions';
@@ -30,13 +30,13 @@ angular.module('playApp.transaction', ['ngRoute'])
     $scope.utxos = [];
     $scope.loading = false;
     $scope.currentAddress = '';
-    $scope.transaction = new bitcore.Transaction();
+    $rootScope.transaction = new bitcore.Transaction();
     $scope.privateKey = '';
 
     $scope.fromAddresses = [];
-    $scope.toAddresses = {};
-    $scope.addData = [];
-    $scope.privateKeys = [];
+    $rootScope.toAddresses = {};
+    $rootScope.addData = [];
+    $rootScope.privateKeys = [];
     $scope.change = '';
     $scope.loading = false;
     setExampleCode();
@@ -46,9 +46,9 @@ angular.module('playApp.transaction', ['ngRoute'])
   $scope.privateKey = '';
 
   $scope.fromAddresses = [];
-  $scope.toAddresses = {};
-  $scope.addData = [];
-  $scope.privateKeys = [];
+  $rootScope.toAddresses = {};
+  $rootScope.addData = [];
+  $rootScope.privateKeys = [];
   $scope.change = '';
   $scope.nLockTime = undefined;
   $scope.loading = false;
@@ -57,7 +57,7 @@ angular.module('playApp.transaction', ['ngRoute'])
     if (!newValue) {
       $scope.currentAddress = undefined;
     } else {
-      $scope.transaction.nLockTime = newValue;
+      $rootScope.transaction.nLockTime = newValue;
     }
     setExampleCode();
   });
@@ -98,12 +98,12 @@ angular.module('playApp.transaction', ['ngRoute'])
         return;
       }
       var privateKey = new bitcore.PrivateKey(privKey);
-      $scope.privateKeys.push(privateKey);
-      var signatures = $scope.transaction.getSignatures(privateKey);
+      $rootScope.privateKeys.push(privateKey);
+      var signatures = $rootScope.transaction.getSignatures(privateKey);
       if (!signatures.length) {
         $('#noSignatures').foundation('reveal', 'open');
       } else {
-        $scope.transaction.sign(privateKey);
+        $rootScope.transaction.sign(privateKey);
       }
       setExampleCode();
     } catch (e) {
@@ -113,13 +113,13 @@ angular.module('playApp.transaction', ['ngRoute'])
 
   $scope.addUTXO = function(utxo) {
     utxo.used = true;
-    $scope.transaction.from(utxo);
+    $rootScope.transaction.from(utxo);
     setExampleCode();
   };
 
   $scope.removeUtxo = function(utxo) {
     var txId = utxo.txId.toString('hex');
-    $scope.transaction.removeInput(txId, utxo.outputIndex);
+    $rootScope.transaction.removeInput(txId, utxo.outputIndex);
     for (var i in $scope.utxos) {
       if ($scope.utxos[i].txId.toString('hex') === txId && $scope.utxos[i].outputIndex === utxo.outputIndex) {
         $scope.utxos[i].used = false;
@@ -131,7 +131,7 @@ angular.module('playApp.transaction', ['ngRoute'])
     $scope.removeUtxo({txId: input.prevTxId, outputIndex: input.outputIndex});
   };
   $scope.removeOutput = function(index) {
-    $scope.transaction.removeOutput(index);
+    $rootScope.transaction.removeOutput(index);
     setExampleCode();
     $scope.$apply();
   };
@@ -143,34 +143,34 @@ angular.module('playApp.transaction', ['ngRoute'])
       return;
     }
     amount = bitcore.Unit.fromBTC(amount).toSatoshis();
-    $scope.toAddresses[address] = amount;
-    $scope.transaction.to(address, amount);
+    $rootScope.toAddresses[address] = amount;
+    $rootScope.transaction.to(address, amount);
     setExampleCode();
   };
 
-  $scope.addDataOutput = function(info) {
+  $rootScope.addDataOutput = function(info) {
     $('#addDataModal').foundation('reveal', 'close');
-    $scope.addData.push(info);
-    $scope.transaction.addData(info);
+    $rootScope.addData.push(info);
+    $rootScope.transaction.addData(info);
     setExampleCode();
   };
 
   $scope.addPrivateKey = function(privKey) {
-    $scope.privateKeys.push(privKey);
+    $rootScope.privateKeys.push(privKey);
     setExampleCode();
   };
 
   $scope.canSerialize = function() {
     try {
-      $scope.transaction.serialize();
+      $rootScope.transaction.serialize();
     } catch (err) {
       return false;
     }
-    return $scope.transaction.inputs.length > 0;
+    return $rootScope.transaction.inputs.length > 0;
   }
 
   $scope.broadcast = function() {
-    var serialized = $scope.transaction.serialize();
+    var serialized = $rootScope.transaction.serialize();
     var client = new explorers.Insight();
     $scope.broadcasting = true;
     client.broadcast(serialized, function(err, id) {
@@ -178,7 +178,7 @@ angular.module('playApp.transaction', ['ngRoute'])
       if (err) {
         $('#broadcastError').foundation('reveal', 'open');
       } else {
-        $scope.transactionUrl = client.url + '/tx/' + $scope.transaction.id;
+        $rootScope.transactionUrl = client.url + '/tx/' + $rootScope.transaction.id;
         $scope.$apply();
         $('#broadcastSuccess').foundation('reveal', 'open');
       }
@@ -195,14 +195,14 @@ angular.module('playApp.transaction', ['ngRoute'])
         template += "    .from(" + $scope.utxos[i].toJSON() + ")\n";
       }
     }
-    for (i in $scope.toAddresses) {
-      template += "    .to('" + i + "', " + $scope.toAddresses[i] + ")\n";
+    for (i in $rootScope.toAddresses) {
+      template += "    .to('" + i + "', " + $rootScope.toAddresses[i] + ")\n";
     }
-    for (i in $scope.addData) {
-      template += "    .addData('" + $scope.addData[i] + "')\n";
+    for (i in $rootScope.addData) {
+      template += "    .addData('" + $rootScope.addData[i] + "')\n";
     }
-    for (i in $scope.privateKeys) {
-      template += "    .sign('" + $scope.privateKeys[i] + "')\n";
+    for (i in $rootScope.privateKeys) {
+      template += "    .sign('" + $rootScope.privateKeys[i] + "')\n";
     }
     if ($scope.change) {
       template += "    .change('" + $scope.change + "')\n";
@@ -219,6 +219,12 @@ angular.module('playApp.transaction', ['ngRoute'])
     window.REPL.console.SetPromptText($scope.exampleCode);
     window.REPL.scrollToBottom();
   };
+
+  $scope.getAddress = function(output) {
+    return output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()
+    ? output.script.toAddress().toString()
+    : '';
+  }
 
   function initialExample() {
     var template = "";

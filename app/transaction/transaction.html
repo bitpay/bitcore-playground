@@ -1,5 +1,5 @@
 <div class="row collapse" require-modal>
-  <div class="large-9 small-7 columns content-title">
+  <div class="large-9 small-12 columns content-title">
     <h1>Transaction</h1>
   </div>
   <ng-include src="'components/network.html'"/>
@@ -17,10 +17,10 @@
 
     <!-- Fetch unspent form -->
     <div class="row collapse">
-      <div class="columns small-10">
+      <div class="columns small-9 large-10">
         <input type="text" ng-model="utxoAddress" placeholder="enter an address" class="radius" address auto-select ng-change="addressUpdated(utxoAddress)">
       </div>
-      <div class="columns small-2">
+      <div class="columns small-3 large-2">
         <div class="row collapse">
           <div class="small-11 small-offset-1">
             <button type="button" ng-click="fetchUTXO(utxoAddress)" class="button expand tiny radius button1">
@@ -89,23 +89,15 @@
 <div class="row mt20">
   <div class="small-12 columns bg-color-white white-box radius p20">
     <h2 class="text-center">Transaction</h2>
-      <div class="row collapse border-bottom">
-        <div class="small-8 columns  pt10 pb10">
-          <span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{transaction.id}}</span>
-        </div>
-        <!--
-        <div class="small-2 columns pt10 pb10">
-          <span class="item-title">nLockTime:</span>
-        </div>
-        <div class="small-2 columns text-right pt10 pb10">
-          <input class="nlocktime" type="number" ng-model="nLockTime" ng-max="2147483647"></input>
-        </div>
+    <div class="row collapse border-bottom">
+      <div class="fnt09 mt2 row collapse">
+        <span class="item-title large-1 small-3 columns center">TX ID:</span>
+        <span class="item-data large-11 small-9 columns fntgrey1">{{transaction.id}}</span>
       </div>
-      -->
-
+    </div>
 
       <div class="row collapse border-bottom">
-        <div class="small-6 columns  pt10 pb10">
+        <div class="small-6 columns pt10 pb10">
           <div class="row collapse">
             <div class="small-12 columns">
               <span class="item-title">Total Inputs:</span> <span class="item-data fntgrey1">{{transaction._inputAmount | btc}}</span>
@@ -114,10 +106,10 @@
         </div>
        <div class="small-6 columns  pt10 pb10">
           <div class="row collapse">
-            <div class="small-6 columns">
+            <div class="large-6 small-12 columns">
               <span class="item-title">Total Outputs: </span> <span class="item-data fntgrey1">{{transaction._outputAmount | btc}}</span>
             </div>
-            <div class="small-6 columns text-right">
+            <div class="large-6 small-12 columns text-right">
               <span class="item-title">Fee:</span> <span class="item-data fntgrey1"> {{transaction._getUnspentValue() | btc}}</span>
             </div>
           </div>
@@ -126,12 +118,11 @@
 
 
       <div class="row collapse">
-        <div class="small-6 columns vertical-sep mt20">
-
+        <div class="small-12 large-6 columns vertical-sep mt20">
 
 
           <div class="row collapse">
-            <div class="small-11 columns">
+            <div class="small-12 large-11 columns">
               <h2 class="text-center">Inputs</h2>
               <!-- Sign inputs form -->
               <div class="row collapse ">
@@ -170,9 +161,18 @@
                 </div>
                 <div class="row collapse" ng-show="input.visible">
                   <div class="small-10 columns">
-                    <div class="fnt08 mt5"><span class="item-title">TX ID:</span> <span class="item-data fntgrey1">{{input.prevTxId.toString('hex')}}</span></div>
-                    <div class="fnt08 mt5"><span class="item-title">OUT #:</span> <span class="item-data fntgrey1">{{input.outputIndex}}</span></div>
-                    <div class="fnt08 mt5"><span class="item-title">Script:</span> <span class="item-data fntgrey1">{{input.output.script.toString()}}</span></div>
+                    <div class="fnt08 mt5 row collapse">
+                      <span class="item-title large-2 small-3 columns center">TX ID:</span>
+                      <span class="item-data large-10 small-9 columns fntgrey1">{{input.prevTxId.toString('hex')}}</span>
+                    </div>
+                    <div class="fnt08 mt5 row collapse">
+                      <span class="item-title large-2 small-3 columns center">OUT #:</span>
+                      <span class="item-data large-10 small-9 columns fntgrey1">{{input.outputIndex}}</span>
+                    </div>
+                    <div class="fnt08 mt5 row collapse">
+                      <span class="item-title large-2 small-3 columns center">Script:</span>
+                      <span class="item-data large-10 small-9 columns fntgrey1">{{input.output.script.toString()}}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -184,9 +184,9 @@
 
         </div>
 
-        <div class="small-6 columns mt20">
+        <div class="small-12 large-6 columns mt20">
           <div class="row collapse">
-            <div class="small-11 small-offset-1 columns">
+            <div class="small-12 large-11 large-offset-1 columns">
               <h2 class="text-center">Outputs</h2>
                 <div class="row collapse mb5">
                     <div class="small-6 columns">
@@ -210,7 +210,7 @@
                         <div class="row collapse">
                           <div class="small-8 columns">
                             <span ng-show="output.script.isScriptHashOut() || output.script.isPublicKeyHashOut()">
-                              {{output.satoshis|btc}} BTC to {{output.script.toAddress().toString() | ellipsify}}
+                              {{output.satoshis|btc}} BTC to {{getAddress(output) | ellipsify}}
                             </span>
                             <span ng-show="output.script.isDataOut()">
                               <span class="btc">Data</span>
@@ -237,13 +237,13 @@
                         </div>
                       </div>
                       <div class="row collapse" ng-show="output.visible">
-                        <div class="fnt08 mt5">
-                          <span class="item-title">Data:</span>
-                          <span class="item-data fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
+                        <div class="fnt08 mt5 row collapse">
+                          <span class="item-title large-2 small-3 columns center">Data:</span>
+                          <span class="item-data large-10 small-9 columns fntgrey1">0x{{output.script.getData().toString('hex')}}</span>
                         </div>
-                        <div class="fnt08 mt5">
-                          <span class="item-title">Script:</span>
-                          <span class="item-data fntgrey1">{{output.script.toString()}}</span>
+                        <div class="fnt08 mt5 row collapse">
+                          <span class="item-title large-2 small-3 columns center">Script:</span>
+                          <span class="item-data large-10 small-9 columns fntgrey1">{{output.script.toString()}}</span>
                         </div>
                       </div>
                     </div>
@@ -289,20 +289,20 @@
 <div id="addAddressModal" class="reveal-modal fixed-position white-box" data-reveal>
   <h2>Add a Pay to Address</h2>
   <form name="formAddress">
-    <div class="row collapse">
-      <div class="small-4 columns">
+    <div class="row">
+      <div class="small-12 large-4 columns">
         <input type="text" ng-model="toAddress" placeholder="enter an address" address auto-select>
       </div>
-      <div class="small-4 columns">
+      <div class="small-12 large-4 columns">
         <div class="row collapse">
-          <div class="small-11 small-offset-1">
+          <div class="small-12 large-11 large-offset-1">
             <input type="number" ng-min="0.00000001" ng-max="2100000000000000" ng-model="amount" placeholder="enter an amount in BTC" auto-select required>
           </div>
         </div>     
       </div>
-      <div class="small-4 columns">
+      <div class="small-12 large-4 columns">
         <div class="row collapse">
-          <div class="small-11 small-offset-1">
+          <div class="small-12 large-11 large-offset-1">
             <button type="button" ng-disabled="formAddress.$invalid" ng-click="addAddressOutput(toAddress, amount)" data-reveal-id="addAddressModal" class="button expand tiny radius button1">Send to Address</button>
           </div>
         </div>
@@ -320,12 +320,12 @@
   <h2>Add a OP_RETURN Output</h2>
   <form name="formData">
     <div class="row collapse">
-      <div class="small-10 columns">
+      <div class="small-12 large-10 columns">
         <input type="text" ng-model="info" placeholder="enter an hexa or normal string" auto-select required>
       </div>
-      <div class="columns small-2">
+      <div class="columns small-12 large-2">
         <div class="row collapse">
-          <div class="small-11 small-offset-1">
+          <div class="small-12 large-12 large-offset-1">
             <button type="button" ng-disabled="formData.$invalid" ng-click="addDataOutput(info)" class="button expand tiny radius button1">Add Data</button>
           </div>
         </div>
@@ -343,12 +343,12 @@
   <h2>Sign transaction</h2>
   <form name="formSign">
     <div class="row collapse">
-      <div class="columns small-10">
+      <div class="columns small-12 large-10">
         <input type="text" placeholder="enter a private key" ng-model="privkey" private-key auto-select class="radius" required>
       </div>
-      <div class="columns small-2">
+      <div class="columns small-12 large-2">
         <div class="row collapse">
-          <div class="small-11 small-offset-1">
+          <div class="small-12 large-11 large-offset-1">
             <button type="button" ng-disabled="formSign.$invalid"  ng-click="signWith(privkey)" class="button expand tiny radius button1">Sign</button>
           </div>
         </div>

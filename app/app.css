@@ -138,6 +138,7 @@ input.nlocktime {
 .p20 {padding: 20px;}
 .p30 {padding: 30px;}
 .p4060 {padding: 40px 60px;}
+.p4060s {padding: 15px 20px;}
 .p60 {padding: 60px;}
 .pt5 {padding-top: 5px}
 .pt6 {padding-top: 6px}
@@ -182,6 +183,7 @@ input.nlocktime {
 .ml10por {margin-left: 10%;}
 .mr10por {margin-right: 10%;}
 .m50 {margin: 50px;}
+.center {text-align: center;}
 
 
 .100pr {
@@ -307,7 +309,7 @@ border-radius: 10px;
 /* Header */
 #header {
 	 font-family: "Ubuntu-Light"!important;
-	 padding: 14px 0 0 0;
+	 padding: 14px 0 14px 0;
 }
 
 .v-align{
@@ -318,12 +320,16 @@ border-radius: 10px;
 	font-family: "Ubuntu-Light"!important;
 	font-style: italic;
 	color: #A0A1A0;
-	margin: 10px 0 0 2px;
+	margin: 5px 0 0 2px;
 	vertical-align: middle;
 	}
 .playground-logo img{	
 	vertical-align:-4px;
 		}
+
+#nav-hd {
+  margin-bottom: 0;
+}
 
 #nav-hd li, #nav-ft li {
 display: inline-block;
@@ -754,6 +760,11 @@ padding: 8px 0 8px 40px;
 	font-family: "Ubuntu-Bold" !important;
 	} 
 
+.item-data {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 
 .item-data, .btc{
