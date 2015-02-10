@@ -1,7 +1,6 @@
 {
   "name": "bitcore-playground",
-  "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A bitcoin playground powered by bitcore",
   "repository": "https://github.com/bitpay/bitcore-playground",
   "license": "MIT",
