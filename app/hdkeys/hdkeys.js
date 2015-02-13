@@ -19,7 +19,7 @@ angular.module('playApp.hdkeys', ['ngRoute'])
   var publicValidPath = function(path) {
     return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(path));
   };
-  $scope.path = "m/44'/0/1337";
+  $scope.path = "m/44'/0'/0'/0/1337";
   $scope.keys = [];
 
   $scope.$on('networkUpdate', function() {
