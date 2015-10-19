@@ -1,63 +1,63 @@
-  /* reset foundation */
-  /*body{max-width:1000px !important;}*/
-  body {
-    font-family: 'Ubuntu';
-  }
-  label.inline {
-    margin: 0 0 0 0;
-  }
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="month"],
-  input[type="week"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="url"],
-  input[type="color"],
-  textarea {
-    margin: 0 0 0 0
-  }
-  input[type="file"],
-  input[type="checkbox"],
-  input[type="radio"],
-  select {
-    margin: 0 0 0.5rem 0;
-  }
-  a {
-    color: #BD1900;
-  }
-  a:hover {
-    color: #E7280A;
-  }
-  .link1 {
-    color: #AAAAAA;
-  }
-  .link1:hover {
-    color: #BD1900;
-  }
-  button,
-  .button {
-    margin: 0px 0px 0rem;
-  }
-  input.ng-invalid {
-    background-color: pink !important;
-    border: 1px dashed red;
-  }
-  input.ng-pristine {
-    background-color: inherit !important;
-    border-color: #cccccc;
-    border-style: solid;
-  }
-  .row {
-    max-width: 100% !important;
-  }
+/* reset foundation */
+/*body{max-width:1000px !important;}*/
+body {
+  font-family: 'Ubuntu';
 }
+label.inline {
+  margin: 0 0 0 0;
+}
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+  margin: 0 0 0 0
+}
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+  margin: 0 0 0.5rem 0;
+}
+a {
+  color: #BD1900;
+}
+a:hover {
+  color: #E7280A;
+}
+.link1 {
+  color: #AAAAAA;
+}
+.link1:hover {
+  color: #BD1900;
+}
+button,
+.button {
+  margin: 0px 0px 0rem;
+}
+input.ng-invalid {
+  background-color: pink !important;
+  border: 1px dashed red;
+}
+input.ng-pristine {
+  background-color: inherit !important;
+  border-color: #cccccc;
+  border-style: solid;
+}
+.row {
+  max-width: 100% !important;
+}
+
 .ng-cloak {
   display: none !important;
 }
