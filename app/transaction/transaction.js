@@ -16,6 +16,7 @@ angular.module('playApp.transaction', ['ngRoute'])
   var explorers = require('bitcore-explorers');
   var defaultLivenetAddress = '1PPQ2anP7DVWmeScdo8fCSTeWCpfBDFAhy';
   var defaultTestnetAddress = 'mfnUxBP3JjS4pU1kddzUshF8bcU7wF99mx';
+  var _ = bitcore.deps._;
 
   $scope.$on('networkUpdate', function() {
     reset();
@@ -192,7 +193,7 @@ angular.module('playApp.transaction', ['ngRoute'])
     template += "var transaction = new bitcore.Transaction()\n";
     for (i in $scope.utxos) {
       if ($scope.utxos[i].used) {
-        template += "    .from(" + $scope.utxos[i].toJSON() + ")\n";
+        template += "    .from(" + JSON.stringify($scope.utxos[i]) + ")\n";
       }
     }
     for (i in $rootScope.toAddresses) {
