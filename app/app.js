@@ -111,7 +111,7 @@ registerValidator(app, 'publicHdpath', function(bitcore, value, scope) {
   return !!(/^[mM](\/[0-9]+)*[/]?$/.exec(value));
 });
 registerValidator(app, 'address', function(bitcore, value) {
-  return bitcore.Address.isValid(value);
+  return !value || bitcore.Address.isValid(value);
 });
 
 // Sidebar
